@@ -4,7 +4,16 @@ import re
 from enum import Enum
 
 
-
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 def check_commit_msg_pattern():
     # The argument passed to the "commit-msg" hook is the path to a
@@ -21,7 +30,7 @@ def check_commit_msg_pattern():
     has_warning = False
     if len(lines) > 1:
         message = "Commit message should be one line"
-        print(message)
+        print(bcolors.FAIL + message + bcolors.ENDC)
         exit(-1)
 
     
@@ -31,7 +40,7 @@ def check_commit_msg_pattern():
             "There should be less then 100 characters"
         )
 
-        print(message)
+        print(bcolors.FAIL + message + bcolors.ENDC)
         exit(-1)
 
     
@@ -40,7 +49,7 @@ def check_commit_msg_pattern():
         message = (
             "Commit message must comform to the following format: 'SUBJECT: COMMENT' "
         )
-        print(message)
+        print(bcolors.FAIL + message + bcolors.ENDC)
     
         exit(-1)
 
@@ -58,7 +67,7 @@ def check_commit_msg_pattern():
     result = re.search("feat|fix|chore|refactor",text)
     if result == None:
         message = "Commit subject must be one of the followings...feat, fix, chore, refactor"
-        print(message)
+        print(bcolors.FAIL + message + bcolors.ENDC)
         exit(-1)
 
     
