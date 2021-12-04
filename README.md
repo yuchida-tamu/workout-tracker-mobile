@@ -1,15 +1,17 @@
 # workout-tracker-mobile
 
 ## Setup
+
 ### プロジェクトをローカルにクローンする
+
 `git clone https://github.com/yuchida-tamu/workout-tracker-mobile.git`
 
-### モジュールをインストールする（yarnがない場合 `npm install --global yarn`）
+### モジュールをインストールする（yarn がない場合 `npm install --global yarn`）
+
 `yarn install`
 
-### git hooksの設定
-- 目的： コミット前にフォーマットなどのチェックを行うためのスクリプトを実行する
-- スクリプトは.githooksで管理する。
-- ローカル環境でスクリプトを設定するために以下のコマンドを実行
+### Husky
 
-`git config core.hooksPath .githooks`
+- Husky をつかうことで GitHook を利用する
+- commit-msg: コミットメッセージの形式のチェックを行う(commitlint を利用)
+- pre-commit: コミット前に eslint を走らせて lint チェックを行う
