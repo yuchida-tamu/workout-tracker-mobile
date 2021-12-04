@@ -7,9 +7,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint \"**/*.{ts,tsx}\"",
+    "eslint": "eslint \"**/*.{ts,tsx}\"",
     "format": "prettier -w src/**/*",
-    "fix": "yarn format && yarn lint"
+    "fix": "yarn format && yarn eslint"
   },
   "dependencies": {
     "ansi-regex": "^5.0.1",
