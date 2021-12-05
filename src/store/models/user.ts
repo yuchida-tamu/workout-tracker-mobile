@@ -11,12 +11,12 @@ const create = (args: Partial<UserModelType>) => {
   };
 };
 
-const updateUsername = (username: string) => {
-  return create({ username });
+const updateUsername = (data: UserModelType, username: string) => {
+  return create({ ...data, username });
 };
 
-const updateIconUrl = (iconUrl: string) => {
-  return create({ iconUrl });
+const updateIconUrl = (data: UserModelType, iconUrl: string) => {
+  return create({ ...data, iconUrl });
 };
 
 export const UserModel = Object.freeze({
