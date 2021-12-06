@@ -1,5 +1,5 @@
 import { SchdeuleModel, ScheduleType } from './schedule';
-import { WorkoutModel, WorkoutModelType } from './workout';
+import { WorkoutModelType } from './workout';
 
 type ProgramType = {
   id: string;
