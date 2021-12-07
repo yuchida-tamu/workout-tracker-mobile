@@ -1,9 +1,9 @@
-type UserModelType = {
+export type UserModelType = {
   username: string;
   iconUrl: string;
 };
 
-const create = (args: Partial<UserModelType>) => {
+const create = (args: Partial<UserModelType> = {}) => {
   return {
     username: '',
     iconUrl: '',
