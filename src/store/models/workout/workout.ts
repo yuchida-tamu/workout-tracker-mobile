@@ -1,4 +1,4 @@
-import { Category } from '../../enums/categories';
+import { Category } from '../../../enums/categories';
 
 export type WorkoutModelType = {
   id: string;
