@@ -1,4 +1,4 @@
-import { UserModelType } from '../../models/user';
+import { UserModelType } from '../../models/user/user';
 import { ActionTypes } from './types';
 
 type CreateNewUserAction = {
