@@ -1,12 +1,10 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { COLOR } from '../../../constants/colors';
 import { UserModel } from '../../../store/models/user/user';
 import { userSelector } from '../../../store/selectors/user/userSelector';
 import { UserCard } from '../../molecules/User/UserCard';
-import { styles } from './styles';
 
 export const UserInfo: React.FC = () => {
   const user = useSelector(userSelector);
