@@ -1,16 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { COLOR } from '../../../constants/colors';
 import { SIZES } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
-import { boxShadow } from '../../../styles/styles';
+
+const width = Dimensions.get('screen').width;
 
 export const styles = StyleSheet.create({
   headerContainer: {
-    width: '100%',
-    ...boxShadow,
-  },
-  headerBackground: {
-    width: '100%',
+    width: width,
     paddingVertical: SPACING.LARGE,
   },
   headerText: {
