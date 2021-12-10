@@ -1,7 +1,7 @@
 import { SchdeuleModel, ScheduleType } from './schedule';
 import { WorkoutModelType } from '../workout/workout';
 
-type ProgramType = {
+export type ProgramType = {
   id: string;
   name: string;
   ownerId: string;
