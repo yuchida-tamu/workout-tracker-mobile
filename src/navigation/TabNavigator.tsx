@@ -25,6 +25,7 @@ const screenOptions: BottomTabNavigationOptions = {
   headerStyle: {
     backgroundColor: COLOR.PRIMARY,
   },
+  headerTintColor: COLOR.WHITE,
   tabBarActiveTintColor: COLOR.SECONDARY,
   tabBarInactiveTintColor: COLOR.WHITE,
 };
