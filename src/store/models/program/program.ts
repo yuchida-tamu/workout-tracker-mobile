@@ -9,7 +9,7 @@ export type ProgramType = {
   schedule: ScheduleType;
 };
 
-const create = (args: Partial<ProgramType>) => {
+const create = (args: Partial<ProgramType> = {}) => {
   return {
     id: `program=${Math.random()}`,
     name: '',

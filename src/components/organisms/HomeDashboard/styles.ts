@@ -4,6 +4,7 @@ import { SIZES } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
 
 const width = Dimensions.get('screen').width;
+export const ITEM_HEIGHT = 156;
 
 export const styles = StyleSheet.create({
   headerContainer: {
@@ -29,5 +30,33 @@ export const styles = StyleSheet.create({
     color: COLOR.WHITE,
     fontWeight: 'bold',
     fontSize: SIZES.font.SMALL,
+  },
+  dashboardItemContainer: {
+    height: ITEM_HEIGHT,
+    flexDirection: 'row',
+    marginVertical: SPACING.SMALL,
+  },
+  dashboardItem: {
+    height: '100%',
+    justifyContent: 'center',
+    borderRadius: SIZES.BORDER_RADIUS,
+    paddingHorizontal: SPACING.MEDIUM,
+    marginHorizontal: SPACING.SMALL,
+  },
+  dashboardItemText: {
+    color: COLOR.text.BLACK,
+    textAlign: 'center',
+  },
+  dashboardItemHeadingText: {
+    fontSize: SIZES.font.SMALL,
+  },
+  dashboardItemContentText: {
+    marginVertical: SPACING.MEDIUM,
+    fontSize: SIZES.font.LARGE,
+    fontWeight: 'bold',
+  },
+  dashboardItemGraphConatainer: {
+    width: ITEM_HEIGHT,
+    height: ITEM_HEIGHT,
   },
 });
