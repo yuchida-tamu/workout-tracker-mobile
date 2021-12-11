@@ -1,7 +1,7 @@
 import { SchdeuleModel, ScheduleType } from './schedule';
 import { WorkoutModelType } from '../workout/workout';
 
-type ProgramType = {
+export type ProgramType = {
   id: string;
   name: string;
   ownerId: string;
@@ -9,7 +9,7 @@ type ProgramType = {
   schedule: ScheduleType;
 };
 
-const create = (args: Partial<ProgramType>) => {
+const create = (args: Partial<ProgramType> = {}) => {
   return {
     id: `program=${Math.random()}`,
     name: '',

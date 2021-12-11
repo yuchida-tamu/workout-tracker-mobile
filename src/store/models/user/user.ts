@@ -1,3 +1,4 @@
+import { ProgramType } from '../program/program';
 import { AchievementModel, AchievementType } from './achievement';
 import { GoalModel, GoalType } from './goal';
 
@@ -6,6 +7,7 @@ export type UserModelType = {
   iconUrl: string;
   goal: GoalType;
   achievement: AchievementType;
+  programs: ProgramType[];
 };
 
 const create = (args: Partial<UserModelType> = {}) => {
@@ -14,6 +16,7 @@ const create = (args: Partial<UserModelType> = {}) => {
     iconUrl: '',
     goal: GoalModel.create(),
     achievement: AchievementModel.create(),
+    programs: [],
     ...args,
   };
 };
