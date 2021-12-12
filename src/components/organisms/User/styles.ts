@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: SIZES.BORDER_RADIUS,
     paddingVertical: SPACING.MEDIUM,
   },
-  iconContainer: { marginVertical: SPACING.MEDIUM },
+  iconContainer: { marginVertical: SPACING.XSMALL },
   iconImage: {
     height: SIZES.ICON_HEIGHT,
     width: SIZES.ICON_HEIGHT,

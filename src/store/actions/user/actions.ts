@@ -17,6 +17,22 @@ export const createNewUser = (data: UserModelType): CreateNewUserAction => {
   };
 };
 
+type UpateUserAction = {
+  type: ActionTypes.R_UPDATE_USER;
+  payload: {
+    user: UserModelType;
+  };
+};
+
+export const updateUser = (data: UserModelType): UpateUserAction => {
+  return {
+    type: ActionTypes.R_UPDATE_USER,
+    payload: {
+      user: data,
+    },
+  };
+};
+
 type UpdateUsernameAction = {
   type: ActionTypes.R_UPDATE_USERNAME;
   payload: {
