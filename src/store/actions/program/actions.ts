@@ -2,7 +2,7 @@ import { ProgramType } from '../../models/program/program';
 import { ActionTypes } from './types';
 
 type CreateNewProgramAction = {
-  action: ActionTypes.R_CREATE_NEW_PROGRAM;
+  type: ActionTypes.R_CREATE_NEW_PROGRAM;
   payload: {
     program: ProgramType;
   };
@@ -10,7 +10,7 @@ type CreateNewProgramAction = {
 
 export const createNewProgram = (data: ProgramType): CreateNewProgramAction => {
   return {
-    action: ActionTypes.R_CREATE_NEW_PROGRAM,
+    type: ActionTypes.R_CREATE_NEW_PROGRAM,
     payload: {
       program: data,
     },
@@ -18,7 +18,7 @@ export const createNewProgram = (data: ProgramType): CreateNewProgramAction => {
 };
 
 type UpdateProgramNameAction = {
-  action: ActionTypes.R_UPDATE_PROGRAM_NAME;
+  type: ActionTypes.R_UPDATE_PROGRAM_NAME;
   payload: {
     name: string;
   };
@@ -26,7 +26,7 @@ type UpdateProgramNameAction = {
 
 export const updateProgramName = (name: string): UpdateProgramNameAction => {
   return {
-    action: ActionTypes.R_UPDATE_PROGRAM_NAME,
+    type: ActionTypes.R_UPDATE_PROGRAM_NAME,
     payload: {
       name,
     },

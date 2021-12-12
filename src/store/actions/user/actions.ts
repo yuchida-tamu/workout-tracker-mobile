@@ -2,7 +2,7 @@ import { UserModelType } from '../../models/user/user';
 import { ActionTypes } from './types';
 
 type CreateNewUserAction = {
-  action: ActionTypes.R_CREATE_NEW_USER;
+  type: ActionTypes.R_CREATE_NEW_USER;
   payload: {
     user: UserModelType;
   };
@@ -10,7 +10,7 @@ type CreateNewUserAction = {
 
 export const createNewUser = (data: UserModelType): CreateNewUserAction => {
   return {
-    action: ActionTypes.R_CREATE_NEW_USER,
+    type: ActionTypes.R_CREATE_NEW_USER,
     payload: {
       user: data,
     },
@@ -18,7 +18,7 @@ export const createNewUser = (data: UserModelType): CreateNewUserAction => {
 };
 
 type UpdateUsernameAction = {
-  action: ActionTypes.R_UPDATE_USERNAME;
+  type: ActionTypes.R_UPDATE_USERNAME;
   payload: {
     username: string;
   };
@@ -26,7 +26,7 @@ type UpdateUsernameAction = {
 
 export const updateUsername = (username: string): UpdateUsernameAction => {
   return {
-    action: ActionTypes.R_UPDATE_USERNAME,
+    type: ActionTypes.R_UPDATE_USERNAME,
     payload: {
       username,
     },

@@ -4,7 +4,7 @@ import { ActionTypes } from '../actions/user/types';
 import { UserModel, UserModelType } from '../models/user/user';
 
 export function userReducer(data: UserModelType = UserModel.create(mockUser), action: UserActions) {
-  switch (action.action) {
+  switch (action.type) {
   case ActionTypes.R_CREATE_NEW_USER:
     return UserModel.create(action.payload.user);
   case ActionTypes.R_UPDATE_USERNAME:
