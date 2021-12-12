@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: SIZES.BORDER_RADIUS,
     paddingVertical: SPACING.MEDIUM,
   },
-  iconContainer: { marginVertical: SPACING.MEDIUM },
+  iconContainer: { marginVertical: SPACING.XSMALL },
   iconImage: {
     height: SIZES.ICON_HEIGHT,
     width: SIZES.ICON_HEIGHT,
@@ -48,5 +48,10 @@ export const styles = StyleSheet.create({
     fontSize: SIZES.font.SMALL,
     color: COLOR.text.WHITE,
     textAlign: 'center',
+  },
+  userEditIcon: {
+    position: 'absolute',
+    top: SPACING.SMALL,
+    right: SPACING.SMALL,
   },
 });
