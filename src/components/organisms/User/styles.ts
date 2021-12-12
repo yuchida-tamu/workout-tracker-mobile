@@ -49,4 +49,9 @@ export const styles = StyleSheet.create({
     color: COLOR.text.WHITE,
     textAlign: 'center',
   },
+  userEditIcon: {
+    position: 'absolute',
+    top: SPACING.SMALL,
+    right: SPACING.SMALL,
+  },
 });

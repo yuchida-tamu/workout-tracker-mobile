@@ -1,9 +1,10 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { COLOR } from '../../../constants/colors';
 import { userSelector } from '../../../store/selectors/user/userSelector';
+import { EditIcon } from '../../atoms/icons/EditIcon';
 import { styles } from './styles';
 
 export const UserHeader: React.FC = () => {
@@ -12,6 +13,9 @@ export const UserHeader: React.FC = () => {
     <LinearGradient
       colors={[COLOR.bg.gradient.PURPLE, COLOR.bg.gradient.LIGHT_BLUE]}
       style={styles.userHeader}>
+      <TouchableOpacity style={styles.userEditIcon}>
+        <EditIcon />
+      </TouchableOpacity>
       <View style={styles.iconContainer}>
         <Image style={styles.iconImage} source={{ uri: user.iconUrl }} />
       </View>
