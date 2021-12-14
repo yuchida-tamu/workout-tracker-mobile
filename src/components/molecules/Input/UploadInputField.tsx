@@ -1,28 +1,71 @@
-import React from 'react';
-import { View, StyleSheet, Text, Button, TouchableOpacity } from 'react-native';
+import React, { useCallback } from 'react';
+import { View, StyleSheet, Text, TouchableOpacity, Platform, Image } from 'react-native';
 import { COLOR } from '../../../constants/colors';
 import { SIZES } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
 import { UploadIcon } from '../../atoms/icons/UploadIcon';
 import { Row } from '../../atoms/Row';
-import { TextInput } from '../../atoms/TextInput';
+import * as ImagePicker from 'expo-image-picker';
+import { boxShadow } from '../../../styles/styles';
 
 type Props = {
-  onChangeText: (text: string) => void;
-  onBlur: () => void;
-  value: string;
   label: string;
+  uri: string;
+  setImage: (uri: string) => void;
 };
 
 const height = 70;
 
-export const UploadInputField: React.FC<Props> = ({ onChangeText, onBlur, value, label }) => {
+export const UploadInputField: React.FC<Props> = ({ label, uri, setImage }) => {
+  const openPhotoLibrary = useCallback(async () => {
+    if (Platform.OS !== 'web') {
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+      if (status !== ImagePicker.PermissionStatus.GRANTED) {
+        return;
+      }
+
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: false,
+        quality: 1,
+      });
+
+      if (!result.cancelled) {
+        setImage(result.uri);
+      }
+    }
+  }, [setImage]);
+
+  const openCamera = useCallback(async () => {
+    if (Platform.OS !== 'web') {
+      const { status } = await ImagePicker.requestCameraPermissionsAsync();
+
+      if (status !== ImagePicker.PermissionStatus.GRANTED) {
+        return;
+      }
+
+      const result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: false,
+        quality: 1,
+      });
+
+      if (!result.cancelled) {
+        setImage(result.uri);
+      }
+    }
+  }, [setImage]);
+
   return (
     <View style={styles.inputField}>
       <Text style={styles.label}>{label}</Text>
-      <Row>
-        <TextInput style={styles.input} onChangeText={onChangeText} onBlur={onBlur} value={value} />
-        <TouchableOpacity style={styles.uploadButton}>
+      <Row style={styles.row}>
+        <Image style={styles.image} source={{ uri: uri }} />
+        <TouchableOpacity style={[styles.uploadButton, styles.library]} onPress={openPhotoLibrary}>
+          <UploadIcon />
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.uploadButton, styles.camera]} onPress={openCamera}>
           <UploadIcon />
         </TouchableOpacity>
       </Row>
@@ -33,7 +76,7 @@ export const UploadInputField: React.FC<Props> = ({ onChangeText, onBlur, value,
 const styles = StyleSheet.create({
   inputField: {
     width: '80%',
-    height: height,
+
     justifyContent: 'center',
     marginTop: SPACING.MEDIUM,
   },
@@ -41,15 +84,32 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: SIZES.font.SMALL,
   },
+  row: {
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginVertical: SPACING.MEDIUM,
+  },
   label: {
     color: COLOR.GRAY,
   },
   uploadButton: {
-    flex: 0.4,
+    flex: 0.5,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLOR.GRAY,
     borderRadius: SIZES.BORDER_RADIUS,
     marginHorizontal: SPACING.XSMALL,
+    ...boxShadow,
+  },
+  camera: {
+    backgroundColor: COLOR.bg.gradient.TEAL,
+  },
+  library: {
+    backgroundColor: COLOR.bg.gradient.ORANGE,
+  },
+  image: {
+    height: SIZES.ICON_HEIGHT,
+    width: SIZES.ICON_HEIGHT,
+    borderRadius: SIZES.ICON_HEIGHT / 2,
   },
 });
