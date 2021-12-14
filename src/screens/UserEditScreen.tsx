@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import { commonStyle } from '../styles/styles';
 import { Controller, useForm } from 'react-hook-form';
@@ -18,6 +18,7 @@ type UserEditFormType = {
 export const UserEditScreen: React.FC = () => {
   const dispatch = useDispatch();
   const user = useSelector(userSelector);
+  const [image, setImage] = useState(user.iconUrl);
   const {
     control,
     handleSubmit,
@@ -25,21 +26,25 @@ export const UserEditScreen: React.FC = () => {
   } = useForm({
     defaultValues: {
       username: user.username,
-      iconUrl: user.iconUrl,
     },
   });
 
   const onSubmit = (data: UserEditFormType) => {
     const update = {
       username: data.username,
-      iconUrl: data.iconUrl,
+      iconUrl: image,
     };
 
     dispatch(createNewUserThunk(UserModel.create(UserModel.create(update))));
   };
 
+  const onPickImageHandler = (uri: string) => {
+    setImage(uri);
+  };
+
   return (
     <View style={commonStyle.container}>
+      <UploadInputField uri={image} label="プロフィール画像" setImage={onPickImageHandler} />
       <Controller
         name="username"
         control={control}
@@ -49,20 +54,6 @@ export const UserEditScreen: React.FC = () => {
         )}
       />
       {errors.username && <Text>ユーザー名を入力してください</Text>}
-
-      <Controller
-        name="iconUrl"
-        control={control}
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <UploadInputField
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-            label="プロフィール画像"
-          />
-        )}
-      />
 
       <SubmitButton title="編集" onPress={handleSubmit(onSubmit)} />
     </View>
