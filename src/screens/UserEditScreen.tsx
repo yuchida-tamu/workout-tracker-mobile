@@ -35,7 +35,7 @@ export const UserEditScreen: React.FC = () => {
       iconUrl: image,
     };
 
-    dispatch(createNewUserThunk(UserModel.create(UserModel.create(update))));
+    dispatch(createNewUserThunk(UserModel.create(update)));
   };
 
   const onPickImageHandler = (uri: string) => {

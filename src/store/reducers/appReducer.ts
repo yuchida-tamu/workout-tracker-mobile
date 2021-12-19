@@ -6,6 +6,8 @@ export function appReducer(data: AppModelType = AppModel.create(), action: AppAc
   switch (action.type) {
   case ActionTypes.R_UPDATE_PROCESSING_STATUS:
     return AppModel.updateIsProcessing(data, action.payload.isProcessing);
+  case ActionTypes.R_UPDATE_BOOTING_STATUS:
+    return AppModel.updateIsBooting(data, action.payload.isBooting);
   default:
     return data;
   }

@@ -16,6 +16,7 @@ export function createNewUserThunk(
 
     try {
       const response = await UserStorageUtil.StoreUser(user);
+
       if (response.result && !response.error) {
         dispatch(createNewUser(response.result as UserModelType));
       }

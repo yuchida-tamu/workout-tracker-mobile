@@ -15,5 +15,20 @@ export const updateProcessingStatus = (isProcessing: boolean): UpdateProcessingS
     },
   };
 };
+type UpdateBootingStatusAction = {
+  type: ActionTypes.R_UPDATE_BOOTING_STATUS;
+  payload: {
+    isBooting: boolean;
+  };
+};
 
-export type AppActions = UpdateProcessingStatusAction;
+export const updateBootingStatus = (isBooting: boolean): UpdateBootingStatusAction => {
+  return {
+    type: ActionTypes.R_UPDATE_BOOTING_STATUS,
+    payload: {
+      isBooting,
+    },
+  };
+};
+
+export type AppActions = UpdateProcessingStatusAction | UpdateBootingStatusAction;
