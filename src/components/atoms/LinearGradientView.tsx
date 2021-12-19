@@ -8,7 +8,7 @@ type LinneaGradientViewProps = {
   color2: string;
   style?: StyleProp<ViewStyle>;
   isBoxShadow?: boolean;
-  children?: ReactElement;
+  children?: JSX.Element | JSX.Element[];
   start?: { x: number; y: number };
   end?: { x: number; y: number };
 };
