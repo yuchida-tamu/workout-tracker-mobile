@@ -16,4 +16,8 @@ export class UserStorageUtil {
   public static GetUser(identifier: string = this.userKey) {
     return AsyncStorageUtil.GetData(identifier);
   }
+
+  public static Initialize() {
+    return AsyncStorageUtil.RemoveItem(this.userKey);
+  }
 }

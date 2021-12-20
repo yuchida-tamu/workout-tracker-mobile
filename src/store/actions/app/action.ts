@@ -31,4 +31,23 @@ export const updateBootingStatus = (isBooting: boolean): UpdateBootingStatusActi
   };
 };
 
-export type AppActions = UpdateProcessingStatusAction | UpdateBootingStatusAction;
+type UpdateNeedSetupAction = {
+  type: ActionTypes.R_UPDATE_SETUP_STATUS;
+  payload: {
+    needSetup: boolean;
+  };
+};
+
+export const updateSetupStatus = (needSetup: boolean): UpdateNeedSetupAction => {
+  return {
+    type: ActionTypes.R_UPDATE_SETUP_STATUS,
+    payload: {
+      needSetup,
+    },
+  };
+};
+
+export type AppActions =
+  | UpdateProcessingStatusAction
+  | UpdateBootingStatusAction
+  | UpdateNeedSetupAction;

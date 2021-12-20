@@ -21,4 +21,13 @@ export class AsyncStorageUtil {
       return { error: err as unknown };
     }
   }
+
+  public static async RemoveItem(identifier: string) {
+    try {
+      await AsyncStorage.removeItem(identifier);
+      return { result: {} };
+    } catch (err) {
+      return { error: err as unknown };
+    }
+  }
 }

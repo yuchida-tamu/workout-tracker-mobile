@@ -8,20 +8,18 @@ import { RootState } from '../../../store';
 import { createNewUser } from '../../user/actions';
 import { AppActions, updateBootingStatus, updateSetupStatus } from '../action';
 
-export function onLaunchThunk(): ThunkAction<void, RootState, undefined, AppActions> {
+export function setupOnLaunchThunk(
+  user: UserModelType,
+): ThunkAction<void, RootState, undefined, AppActions> {
   return async (dispatch: Dispatch<Action>) => {
     // dispatch action to set isBooting true,
     dispatch(updateBootingStatus(true));
     // fetch user data from cache
     try {
-      const { result, error } = await fetchUserDataFromLocalStorage();
-
-      if (result === null || error) {
-        console.log(result);
-        dispatch(updateSetupStatus(true));
-      }
-      if (result && !error) {
-        dispatch(createNewUser(result as UserModelType));
+      const response = await UserStorageUtil.StoreUser(user);
+      if (response.result || !response.error) {
+        dispatch(createNewUser(user));
+        dispatch(updateSetupStatus(false));
       }
     } catch (error) {
       dispatch(updateBootingStatus(true));
@@ -31,8 +29,4 @@ export function onLaunchThunk(): ThunkAction<void, RootState, undefined, AppActi
     // dispatch action to set isBooting false
     dispatch(updateBootingStatus(false));
   };
-}
-
-function fetchUserDataFromLocalStorage() {
-  return UserStorageUtil.GetUser();
 }
