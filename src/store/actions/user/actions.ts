@@ -49,4 +49,14 @@ export const updateUsername = (username: string): UpdateUsernameAction => {
   };
 };
 
-export type UserActions = CreateNewUserAction | UpdateUsernameAction;
+type ClearUserAction = {
+  type: ActionTypes.R_CLEAR_USER;
+};
+
+export const clearUser = (): ClearUserAction => {
+  return {
+    type: ActionTypes.R_CLEAR_USER,
+  };
+};
+
+export type UserActions = CreateNewUserAction | UpdateUsernameAction | ClearUserAction;

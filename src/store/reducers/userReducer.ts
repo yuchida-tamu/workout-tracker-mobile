@@ -9,6 +9,11 @@ export function userReducer(data: UserModelType = UserModel.create(mockUser), ac
     return UserModel.create(action.payload.user);
   case ActionTypes.R_UPDATE_USERNAME:
     return UserModel.updateUsername(data, action.payload.username);
+  case ActionTypes.R_CLEAR_USER:
+    return UserModel.create({
+      username: '',
+      iconUrl: '',
+    });
   default:
     return data;
   }

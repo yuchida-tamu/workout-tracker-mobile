@@ -8,6 +8,8 @@ export function appReducer(data: AppModelType = AppModel.create(), action: AppAc
     return AppModel.updateIsProcessing(data, action.payload.isProcessing);
   case ActionTypes.R_UPDATE_BOOTING_STATUS:
     return AppModel.updateIsBooting(data, action.payload.isBooting);
+  case ActionTypes.R_UPDATE_SETUP_STATUS:
+    return AppModel.updateNeedSetup(data, action.payload.needSetup);
   default:
     return data;
   }
