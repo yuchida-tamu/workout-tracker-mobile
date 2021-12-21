@@ -7,6 +7,7 @@ import { UploadIcon } from '../../atoms/icons/UploadIcon';
 import { Row } from '../../atoms/Row';
 import * as ImagePicker from 'expo-image-picker';
 import { boxShadow } from '../../../styles/styles';
+import { CameraIcon } from '../../atoms/icons/CameraIcon';
 
 type Props = {
   label: string;
@@ -60,15 +61,19 @@ export const UploadInputField: React.FC<Props> = ({ label, uri, setImage }) => {
   return (
     <View style={styles.inputField}>
       <Text style={styles.label}>{label}</Text>
-      <Row style={styles.row}>
+      <View style={styles.container}>
         <Image style={styles.image} source={{ uri: uri }} />
-        <TouchableOpacity style={[styles.uploadButton, styles.library]} onPress={openPhotoLibrary}>
-          <UploadIcon />
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.uploadButton, styles.camera]} onPress={openCamera}>
-          <UploadIcon />
-        </TouchableOpacity>
-      </Row>
+        <Row>
+          <TouchableOpacity
+            style={[styles.uploadButton, styles.library]}
+            onPress={openPhotoLibrary}>
+            <UploadIcon size={SIZES.icon.small} color={COLOR.bg.gradient.ORANGE} />
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.uploadButton, styles.camera]} onPress={openCamera}>
+            <CameraIcon size={SIZES.icon.small} color={COLOR.bg.gradient.TEAL} />
+          </TouchableOpacity>
+        </Row>
+      </View>
     </View>
   );
 };
@@ -93,23 +98,28 @@ const styles = StyleSheet.create({
     color: COLOR.GRAY,
   },
   uploadButton: {
-    flex: 0.5,
-    height: 50,
+    height: 30,
+    width: 85,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: SIZES.BORDER_RADIUS,
     marginHorizontal: SPACING.XSMALL,
-    ...boxShadow,
+    borderWidth: 2,
   },
   camera: {
-    backgroundColor: COLOR.bg.gradient.TEAL,
+    borderColor: COLOR.bg.gradient.TEAL,
   },
   library: {
-    backgroundColor: COLOR.bg.gradient.ORANGE,
+    borderColor: COLOR.bg.gradient.ORANGE,
   },
   image: {
     height: SIZES.ICON_HEIGHT,
     width: SIZES.ICON_HEIGHT,
     borderRadius: SIZES.ICON_HEIGHT / 2,
+    backgroundColor: COLOR.GRAY,
+    marginVertical: SPACING.SMALL,
+  },
+  container: {
+    alignItems: 'center',
   },
 });
