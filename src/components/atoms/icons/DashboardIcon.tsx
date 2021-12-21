@@ -3,12 +3,12 @@ import Svg, { Line, Path, Rect } from 'react-native-svg';
 
 type Props = {
   color?: string;
-  size?: number;
+  size: number;
 };
 
 export const DashbaordIcon: React.FC<Props> = ({ color, size }) => {
   return (
-    <Svg width={size} height={size} viewBox="0 0 43 46" fill="none">
+    <Svg width={size} height={size * 1.1} viewBox="0 0 43 46" fill="none">
       <Path d="M23 16L24.5 11L28 12.5L32 11.5L34 6L36 14" stroke={color} strokeLinecap="round" />
       <Rect x="1.5" y="1.5" width={40} height={30} rx={2.5} stroke={color} strokeWidth={3} />
       <Path
