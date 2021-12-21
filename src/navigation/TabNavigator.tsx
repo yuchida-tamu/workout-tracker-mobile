@@ -11,6 +11,7 @@ import { UserEditScreen } from '../screens/UserEditScreen';
 import { RootStackParamList } from './RootStack';
 import { HomeDashboardProgramInfoItem } from '../components/organisms/HomeDashboard/HomeDashboardProgramInfoItem';
 import { DashbaordIcon } from '../components/atoms/icons/DashboardIcon';
+import { UserIcon } from '../components/atoms/icons/UserIcon';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -80,7 +81,13 @@ export const BottomTabNavigator = () => {
           tabBarIcon: ({ color, size }) => <DashbaordIcon color={color} size={size} />,
         }}
       />
-      <Tab.Screen name="User" component={UserStackScreen} />
+      <Tab.Screen
+        name="User"
+        component={UserStackScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <UserIcon color={color} size={size} />,
+        }}
+      />
     </Tab.Navigator>
   );
 };
