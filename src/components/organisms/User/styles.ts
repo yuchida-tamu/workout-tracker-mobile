@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
     height: SIZES.ICON_HEIGHT,
     width: SIZES.ICON_HEIGHT,
     borderRadius: SIZES.ICON_HEIGHT / 2,
+    backgroundColor: COLOR.GRAY,
   },
   usernameConatiner: {},
   usernameText: {
