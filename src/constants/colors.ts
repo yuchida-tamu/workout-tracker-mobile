@@ -1,6 +1,6 @@
 const BASE = {
   PRIMARY: '#BB72DE',
-  SECONDARY: '#09CBB4',
+  SECONDARY: '#1DDEC7',
   TERTIARY: '#FFDA56',
   GRAY: '#888888',
   BLACK: '#313131',
@@ -20,7 +20,7 @@ export const COLOR = {
       ORANGE: '#FF8B49',
       YELLOW: '#FFDA56',
       PURPLE: BASE.PRIMARY,
-      LIGHT_BLUE: '#95FFF2',
+      LIGHT_BLUE: BASE.SECONDARY,
     },
   },
 };
