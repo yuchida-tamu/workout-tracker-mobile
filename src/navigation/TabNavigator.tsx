@@ -18,7 +18,7 @@ const Tab = createBottomTabNavigator<RootStackParamList>();
 const screenOptions: BottomTabNavigationOptions = {
   headerShown: false,
   tabBarStyle: {
-    backgroundColor: COLOR.PRIMARY,
+    backgroundColor: COLOR.SECONDARY,
     shadowColor: COLOR.BLACK,
     shadowOffset: {
       width: 0,
@@ -33,7 +33,7 @@ const screenOptions: BottomTabNavigationOptions = {
     backgroundColor: COLOR.PRIMARY,
   },
   headerTintColor: COLOR.WHITE,
-  tabBarActiveTintColor: COLOR.SECONDARY,
+  tabBarActiveTintColor: COLOR.PRIMARY,
   tabBarInactiveTintColor: COLOR.WHITE,
 };
 
