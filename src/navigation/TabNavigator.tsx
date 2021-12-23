@@ -74,9 +74,9 @@ export const UserStackScreen = () => {
 export const ProgramsStack = createStackNavigator();
 export const ProgramsStackScreen = () => {
   return (
-    <ProgramsStack.Navigator initialRouteName="Programs" screenOptions={stackNavigationOptions}>
+    <ProgramsStack.Navigator initialRouteName="ProgramList" screenOptions={stackNavigationOptions}>
       <ProgramsStack.Screen
-        name="Programs"
+        name="ProgramList"
         component={ProgramsScreen}
         options={{ title: 'あなたのプログラム' }}
       />
