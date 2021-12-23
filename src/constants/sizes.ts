@@ -12,4 +12,9 @@ export const SIZES = {
     medium: 32,
     large: 48,
   },
+  card: {
+    small: 120,
+    medium: 144,
+    large: 200,
+  },
 };

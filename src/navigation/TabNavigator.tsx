@@ -6,10 +6,10 @@ import {
 } from '@react-navigation/bottom-tabs';
 import { HomeDashboardScreen } from '../screens/HomeDashboardScreen';
 import { UserScreen } from '../screens/UserScreen';
+import { ProgramsScreen } from '../screens/ProgramsScreen';
 import { COLOR } from '../constants/colors';
 import { UserEditScreen } from '../screens/UserEditScreen';
 import { RootStackParamList } from './RootStack';
-import { HomeDashboardProgramInfoItem } from '../components/organisms/HomeDashboard/HomeDashboardProgramInfoItem';
 import { DashbaordIcon } from '../components/atoms/icons/DashboardIcon';
 import { UserIcon } from '../components/atoms/icons/UserIcon';
 
@@ -71,6 +71,19 @@ export const UserStackScreen = () => {
   );
 };
 
+export const ProgramsStack = createStackNavigator();
+export const ProgramsStackScreen = () => {
+  return (
+    <ProgramsStack.Navigator initialRouteName="Programs" screenOptions={stackNavigationOptions}>
+      <ProgramsStack.Screen
+        name="Programs"
+        component={ProgramsScreen}
+        options={{ title: 'あなたのプログラム' }}
+      />
+    </ProgramsStack.Navigator>
+  );
+};
+
 export const BottomTabNavigator = () => {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
@@ -81,6 +94,7 @@ export const BottomTabNavigator = () => {
           tabBarIcon: ({ color, size }) => <DashbaordIcon color={color} size={size} />,
         }}
       />
+      <Tab.Screen name="Programs" component={ProgramsStackScreen} />
       <Tab.Screen
         name="User"
         component={UserStackScreen}

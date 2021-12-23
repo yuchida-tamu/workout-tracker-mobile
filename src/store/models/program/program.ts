@@ -1,5 +1,6 @@
 import { SchdeuleModel, ScheduleType } from './schedule';
 import { WorkoutModelType } from '../workout/workout';
+import { Category } from '../../../enums/categories';
 
 export type ProgramType = {
   id: string;
@@ -7,6 +8,7 @@ export type ProgramType = {
   ownerId: string;
   workoutList: WorkoutModelType[];
   schedule: ScheduleType;
+  category: Category;
 };
 
 const create = (args: Partial<ProgramType> = {}) => {
@@ -16,6 +18,7 @@ const create = (args: Partial<ProgramType> = {}) => {
     ownerId: '',
     workoutList: [],
     schedule: SchdeuleModel.create(),
+    category: Category.Default,
     ...args,
   };
 };

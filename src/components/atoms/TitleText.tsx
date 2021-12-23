@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleProp, StyleSheet, Text, TextStyle } from 'react-native';
 import { COLOR } from '../../constants/colors';
 import { SIZES } from '../../constants/sizes';
 import { SPACING } from '../../constants/spacing';
@@ -14,10 +14,11 @@ export enum FONT_SIZE {
 type Props = {
   text: string;
   size?: FONT_SIZE;
+  style?: StyleProp<TextStyle>;
 };
 
-export const Title: React.FC<Props> = ({ text, size = FONT_SIZE.regular }) => {
-  return <Text style={[{ fontSize: size }, styles.title]}>{text}</Text>;
+export const Title: React.FC<Props> = ({ text, size = FONT_SIZE.regular, style }) => {
+  return <Text style={[{ fontSize: size }, styles.title, style]}>{text}</Text>;
 };
 
 const styles = StyleSheet.create({

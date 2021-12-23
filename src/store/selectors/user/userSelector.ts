@@ -4,3 +4,4 @@ export const userSelector = (state: RootState) => state.user;
 export const usernameSelector = (state: RootState) => state.user.username;
 export const iconUrlSelector = (state: RootState) => state.user.iconUrl;
 export const numberOfProgramsSelector = (state: RootState) => state.user.programs.length;
+export const programsSelector = (state: RootState) => state.user.programs;
