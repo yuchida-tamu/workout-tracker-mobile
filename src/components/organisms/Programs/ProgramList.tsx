@@ -27,7 +27,11 @@ export const ProgramList: React.FC = () => {
       <LinearGradientView
         color1={COLOR.bg.gradient.PURPLE}
         color2={COLOR.SECONDARY}
-        style={styles.programListContainer}>
+        style={styles.programListContainer}
+        end={{
+          x: 0.5,
+          y: 0.8,
+        }}>
         <FlatList
           columnWrapperStyle={{ justifyContent: 'space-between' }}
           numColumns={2}

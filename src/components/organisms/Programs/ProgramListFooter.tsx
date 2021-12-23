@@ -5,9 +5,13 @@ import { styles } from './styles';
 export const ProgramListFooter = () => {
   return (
     <View style={styles.programListFooter}>
-      <TouchableOpacity style={styles.addButton}>
-        <Text style={styles.addButtonText}>+</Text>
-      </TouchableOpacity>
+      <View style={styles.addButtonContainer}>
+        <TouchableOpacity style={styles.addButtonBackground}>
+          <View style={styles.addButton}>
+            <Text style={styles.addButtonText}>+</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

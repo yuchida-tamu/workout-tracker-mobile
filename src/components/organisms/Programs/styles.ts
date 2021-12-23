@@ -6,6 +6,7 @@ import { boxShadow } from '../../../styles/styles';
 
 const CARD_DIMENSION_RATIO = 1.2;
 const BUTTON_SIZE = 36;
+const BUTTON_CONTAINER_SIZE = BUTTON_SIZE + SPACING.MEDIUM;
 
 export const styles = StyleSheet.create({
   programListContainer: {
@@ -27,19 +28,37 @@ export const styles = StyleSheet.create({
     letterSpacing: 0,
   },
   programListFooter: {
-    backgroundColor: COLOR.SECONDARY,
-    borderBottomLeftRadius: SIZES.BORDER_RADIUS,
-    borderBottomRightRadius: SIZES.BORDER_RADIUS,
+    // backgroundColor: COLOR.SECONDARY,
+    // borderBottomLeftRadius: SIZES.BORDER_RADIUS,
+    // borderBottomRightRadius: SIZES.BORDER_RADIUS,
     alignItems: 'center',
-    paddingVertical: SPACING.SMALL,
-    ...boxShadow,
+    // paddingVertical: SPACING.SMALL,
+    // ...boxShadow,
+  },
+  addButtonContainer: {
+    position: 'absolute',
+    top: -BUTTON_CONTAINER_SIZE / 2,
+    height: BUTTON_CONTAINER_SIZE,
+    width: BUTTON_CONTAINER_SIZE,
+
+    borderRadius: BUTTON_CONTAINER_SIZE / 2,
+    backgroundColor: COLOR.SECONDARY,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  addButtonBackground: {
+    height: BUTTON_CONTAINER_SIZE,
+    width: BUTTON_CONTAINER_SIZE,
+    borderRadius: BUTTON_CONTAINER_SIZE / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   addButton: {
+    borderWidth: 3,
+    borderColor: COLOR.PRIMARY,
     height: BUTTON_SIZE,
     width: BUTTON_SIZE,
     borderRadius: BUTTON_SIZE / 2,
-    borderWidth: 3,
-    borderColor: COLOR.PRIMARY,
   },
   addButtonText: {
     color: COLOR.PRIMARY,
