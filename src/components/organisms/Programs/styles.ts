@@ -28,9 +28,11 @@ export const styles = StyleSheet.create({
   },
   programListFooter: {
     backgroundColor: COLOR.SECONDARY,
-
+    borderBottomLeftRadius: SIZES.BORDER_RADIUS,
+    borderBottomRightRadius: SIZES.BORDER_RADIUS,
     alignItems: 'center',
     paddingVertical: SPACING.SMALL,
+    ...boxShadow,
   },
   addButton: {
     height: BUTTON_SIZE,
