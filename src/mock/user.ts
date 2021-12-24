@@ -9,26 +9,31 @@ export const mockUser: UserModelType = {
   username: 'Bradly Beal',
   programs: [
     ProgramModel.create({
+      id: 'nadslkal',
       name: '腕のトレーニング',
       ownerId: 'user',
       category: Category.Arms,
     }),
     ProgramModel.create({
+      id: 'naddfa2dfakal',
       name: '腕のトレーニング',
       ownerId: 'user',
       category: Category.Arms,
     }),
     ProgramModel.create({
+      id: 'nadafabdslkal',
       name: '腕のトレーニング',
       ownerId: 'user',
       category: Category.Arms,
     }),
     ProgramModel.create({
+      id: 'nadslksdafaal',
       name: '腕のトレーニング',
       ownerId: 'user',
       category: Category.Arms,
     }),
     ProgramModel.create({
+      id: 'nadslk12vsadal',
       name: '腕のトレーニング',
       ownerId: 'user',
       category: Category.Arms,

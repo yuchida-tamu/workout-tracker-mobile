@@ -1,11 +1,20 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
+import React, { useCallback } from 'react';
+import { View } from 'react-native';
 import { ProgramList } from '../components/organisms/Programs/ProgramList';
+import { RootStackParamList } from '../navigation/RootStack';
 
-export const ProgramsScreen = () => {
+type Props = StackScreenProps<RootStackParamList, 'ProgramList'>;
+
+export const ProgramsScreen: React.FC<Props> = ({ navigation }) => {
+  const navigateToProgramDetail = useCallback(
+    (programId: string) => navigation.navigate('ProgramDetail', { programId }),
+    [navigation],
+  );
+
   return (
     <View>
-      <ProgramList />
+      <ProgramList navigate={navigateToProgramDetail} />
     </View>
   );
 };

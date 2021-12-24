@@ -7,7 +7,7 @@ export type ScheduleType = {
 const create = (args: Partial<ScheduleType> = {}) => {
   return {
     isRepeated: false,
-    days: [false, false, false, false, false, false, false],
+    days: [false, true, false, false, false, false, false],
     numberOfRepeat: 0,
     ...args,
   };
@@ -20,7 +20,7 @@ const updateIsRepeated = (data: ScheduleType, isRepeated: boolean) => {
   };
 };
 
-const updateDays = (data: ScheduleType, days: number[]) => {
+const updateDays = (data: ScheduleType, days: boolean[]) => {
   return {
     ...data,
     days,

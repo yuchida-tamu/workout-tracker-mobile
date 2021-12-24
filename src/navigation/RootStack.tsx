@@ -4,6 +4,9 @@ type UserEditParam = undefined;
 type UserHomeParam = undefined;
 type ProgramsParam = undefined;
 type ProgramListParam = undefined;
+type ProgramDetailParam = {
+  programId: string;
+};
 
 export type RootStackParamList = {
   Home: HomeScreenParam;
@@ -12,6 +15,7 @@ export type RootStackParamList = {
   UserHome: UserHomeParam;
   Programs: ProgramsParam;
   ProgramList: ProgramListParam;
+  ProgramDetail: ProgramDetailParam;
 };
 
 export type RootStackParamTypes =
@@ -20,4 +24,5 @@ export type RootStackParamTypes =
   | UserEditParam
   | UserHomeParam
   | ProgramsParam
-  | ProgramListParam;
+  | ProgramListParam
+  | ProgramDetailParam;

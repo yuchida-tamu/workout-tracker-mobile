@@ -1,3 +1,4 @@
+import { ScheduleType } from '../../models/program/schedule';
 import { UserModelType } from '../../models/user/user';
 import { ActionTypes } from './types';
 
@@ -59,4 +60,29 @@ export const clearUser = (): ClearUserAction => {
   };
 };
 
-export type UserActions = CreateNewUserAction | UpdateUsernameAction | ClearUserAction;
+type UpdateProgramScheduleAction = {
+  type: ActionTypes.R_UPDATE_PROGRAM_SCHEDULE;
+  payload: {
+    programId: string;
+    schedule: ScheduleType;
+  };
+};
+
+export const updateProgramSchedule = (
+  programId: string,
+  schedule: ScheduleType,
+): UpdateProgramScheduleAction => {
+  return {
+    type: ActionTypes.R_UPDATE_PROGRAM_SCHEDULE,
+    payload: {
+      programId,
+      schedule,
+    },
+  };
+};
+
+export type UserActions =
+  | CreateNewUserAction
+  | UpdateUsernameAction
+  | ClearUserAction
+  | UpdateProgramScheduleAction;

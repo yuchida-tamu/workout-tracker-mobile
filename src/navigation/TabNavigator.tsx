@@ -12,6 +12,7 @@ import { UserEditScreen } from '../screens/UserEditScreen';
 import { RootStackParamList } from './RootStack';
 import { DashbaordIcon } from '../components/atoms/icons/DashboardIcon';
 import { UserIcon } from '../components/atoms/icons/UserIcon';
+import { ProgramDetailScreen } from '../screens/ProgramDetailScreen';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -78,6 +79,11 @@ export const ProgramsStackScreen = () => {
       <ProgramsStack.Screen
         name="ProgramList"
         component={ProgramsScreen}
+        options={{ title: 'あなたのプログラム' }}
+      />
+      <ProgramsStack.Screen
+        name="ProgramDetail"
+        component={ProgramDetailScreen}
         options={{ title: 'あなたのプログラム' }}
       />
     </ProgramsStack.Navigator>

@@ -15,14 +15,17 @@ import { ITEM_HEIGHT, styles } from './styles';
 
 const strokeWidth = 20;
 
-export const HomeDashboardProgramInfoItem: React.FC = () => {
-  const programId = useSelector(programIdSelector);
+type Props = {
+  navigate: () => void;
+};
+
+export const HomeDashboardProgramInfoItem: React.FC<Props> = ({ navigate }) => {
   const numberOfPrograms = useSelector(numberOfProgramsSelector);
 
   return (
     <HomeDashboardItemWrapper>
       <>
-        <TouchableOpacity onPress={() => console.log(programId)}>
+        <TouchableOpacity onPress={navigate}>
           <LinearGradientView
             style={styles.dashboardItem}
             color1={COLOR.bg.gradient.PURPLE}

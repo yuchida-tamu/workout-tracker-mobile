@@ -14,12 +14,18 @@ import { styles } from './styles';
 //DELETE
 const mockPrograms = mockUser.programs;
 
-export const ProgramList: React.FC = () => {
+type Props = {
+  navigate: (programId: string) => void;
+};
+
+export const ProgramList: React.FC<Props> = ({ navigate }) => {
   const programs = useSelector(programsSelector);
 
   const renderItem = useCallback(
-    ({ item }: { item: ProgramType }) => <ProgramListItem programName={item.name} id={item.id} />,
-    [],
+    ({ item }: { item: ProgramType }) => {
+      return <ProgramListItem program={item} navigate={navigate} />;
+    },
+    [navigate],
   );
 
   return (
@@ -35,7 +41,7 @@ export const ProgramList: React.FC = () => {
         <FlatList
           columnWrapperStyle={{ justifyContent: 'space-between' }}
           numColumns={2}
-          data={mockPrograms}
+          data={programs}
           renderItem={renderItem}
           style={styles.programList}
         />

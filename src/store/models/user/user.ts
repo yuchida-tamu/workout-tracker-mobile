@@ -1,4 +1,5 @@
-import { ProgramType } from '../program/program';
+import { ProgramModel, ProgramType } from '../program/program';
+import { SchdeuleModel, ScheduleType } from '../program/schedule';
 import { AchievementModel, AchievementType } from './achievement';
 import { GoalModel, GoalType } from './goal';
 
@@ -33,9 +34,24 @@ const getNumberOfAchievements = (data: UserModelType) => {
   return AchievementModel.getNumberOfAchievements(data.achievement);
 };
 
+const updateProgramSchedule = (data: UserModelType, programId: string, schedule: ScheduleType) => {
+  const programs = data.programs.map((p) => {
+    if (p.id === programId) {
+      return ProgramModel.create({
+        ...p,
+        schedule: SchdeuleModel.create({ ...schedule }),
+      });
+    }
+    return p;
+  });
+
+  return create({ ...data, programs });
+};
+
 export const UserModel = Object.freeze({
   create,
   updateUsername,
   updateIconUrl,
   getNumberOfAchievements,
+  updateProgramSchedule,
 });
