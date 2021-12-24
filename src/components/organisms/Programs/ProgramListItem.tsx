@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { COLOR } from '../../../constants/colors';
 import { ProgramType } from '../../../store/models/program/program';
 import { LinearGradientView } from '../../atoms/LinearGradientView';
