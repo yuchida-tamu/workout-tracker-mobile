@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+    alignItems: 'center',
   },
   bannerOverlay: {
     position: 'absolute',
@@ -53,5 +54,5 @@ export const styles = StyleSheet.create({
   },
   dayText: { color: COLOR.text.WHITE, textAlign: 'center', fontSize: SIZES.font.SMALL },
   workoutDisplayList: {},
-  button: {},
+  startButton: { marginVertical: SPACING.SMALL },
 });

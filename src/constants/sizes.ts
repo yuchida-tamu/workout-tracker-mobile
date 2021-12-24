@@ -18,3 +18,9 @@ export const SIZES = {
     large: 200,
   },
 };
+
+export enum BUTTON_SIZE {
+  SMALL = 128,
+  MEDIUM = 256,
+  LARGE = 312,
+}
