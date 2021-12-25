@@ -45,48 +45,48 @@ export const SetupForm: React.FC<SetupFormPanelProps> = ({ index = 0, onPress, o
 
   const renderPanel = useMemo(() => {
     switch (index) {
-      case 0:
-        return (
-          <>
-            <Title text="あなたの名前は？" size={FONT_SIZE.regular} />
-            <Controller
-              name="username"
-              control={control}
-              rules={{ required: true }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <LineTextInput onBlur={onBlur} onChangeText={onChange} value={value} />
-              )}
-            />
-          </>
-        );
-      case 1:
-        return (
-          <>
-            <Title text="あなたの目標は？" size={FONT_SIZE.regular} />
-            <Controller
-              name="goal"
-              control={control}
-              rules={{ required: true }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <LineTextInput onBlur={onBlur} onChangeText={onChange} value={value} />
-              )}
-            />
-          </>
-        );
-      default:
-        return (
-          <>
-            <Title text="あなたの名前は？" size={FONT_SIZE.regular} />
-            <Controller
-              name="username"
-              control={control}
-              rules={{ required: true }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <LineTextInput onBlur={onBlur} onChangeText={onChange} value={value} />
-              )}
-            />
-          </>
-        );
+    case 0:
+      return (
+        <>
+          <Title text="あなたの名前は？" size={FONT_SIZE.regular} />
+          <Controller
+            name="username"
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <LineTextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            )}
+          />
+        </>
+      );
+    case 1:
+      return (
+        <>
+          <Title text="あなたの目標は？" size={FONT_SIZE.regular} />
+          <Controller
+            name="goal"
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <LineTextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            )}
+          />
+        </>
+      );
+    default:
+      return (
+        <>
+          <Title text="あなたの名前は？" size={FONT_SIZE.regular} />
+          <Controller
+            name="username"
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <LineTextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            )}
+          />
+        </>
+      );
     }
   }, [index, control]);
 
