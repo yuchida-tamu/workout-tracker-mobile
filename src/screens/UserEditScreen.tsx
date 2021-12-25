@@ -31,6 +31,7 @@ export const UserEditScreen: React.FC = () => {
 
   const onSubmit = (data: UserEditFormType) => {
     const update = {
+      ...user,
       username: data.username,
       iconUrl: image,
     };

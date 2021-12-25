@@ -12,8 +12,6 @@ export function createNewUserThunk(
   user: UserModelType,
 ): ThunkAction<void, RootState, undefined, UserActions> {
   return async (dispatch: Dispatch<Action>) => {
-    dispatch(updateProcessingStatus(true));
-
     try {
       const response = await UserStorageUtil.StoreUser(user);
 
