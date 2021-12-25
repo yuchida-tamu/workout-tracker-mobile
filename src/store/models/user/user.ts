@@ -53,6 +53,14 @@ const addProgram = (data: UserModelType, program: ProgramType) => {
   return create({ ...data, programs });
 };
 
+const deleteProgram = (data: UserModelType, programId: string) => {
+  const programs = data.programs.filter((program) => program.id !== programId);
+  return create({
+    ...data,
+    programs,
+  });
+};
+
 export const UserModel = Object.freeze({
   create,
   updateUsername,
@@ -60,4 +68,5 @@ export const UserModel = Object.freeze({
   getNumberOfAchievements,
   updateProgramSchedule,
   addProgram,
+  deleteProgram,
 });

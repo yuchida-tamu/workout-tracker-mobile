@@ -23,4 +23,7 @@ export const COLOR = {
       LIGHT_BLUE: BASE.SECONDARY,
     },
   },
+  button: {
+    WARNING: '#FF5656',
+  },
 };

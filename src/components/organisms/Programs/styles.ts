@@ -4,8 +4,8 @@ import { SIZES } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
 import { boxShadow } from '../../../styles/styles';
 
-const CARD_DIMENSION_RATIO = 1.2;
-const BUTTON_SIZE = 36;
+export const CARD_DIMENSION_RATIO = 1.2;
+export const BUTTON_SIZE = 36;
 export const BUTTON_CONTAINER_SIZE = BUTTON_SIZE + SPACING.XSMALL;
 
 export const styles = StyleSheet.create({
@@ -16,13 +16,13 @@ export const styles = StyleSheet.create({
     paddingVertical: SPACING.MEDIUM,
   },
   programListItemContainer: {
+    flexDirection: 'row',
     ...boxShadow,
     height: SIZES.card.small,
-    width: SIZES.card.small * CARD_DIMENSION_RATIO,
+    flex: 1,
     borderRadius: SIZES.BORDER_RADIUS,
-    marginTop: SPACING.XSMALL,
-    marginHorizontal: SPACING.MEDIUM,
-    justifyContent: 'center',
+    paddingLeft: SPACING.XSMALL,
+    alignItems: 'center',
   },
   programListItemText: {
     letterSpacing: 0,
@@ -75,5 +75,23 @@ export const styles = StyleSheet.create({
   },
   addController: {
     marginTop: SPACING.SMALL,
+  },
+  deleteButton: {
+    position: 'absolute',
+    right: 0,
+    backgroundColor: COLOR.button.WARNING,
+    height: SIZES.card.small,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  deleteButtonText: {
+    color: COLOR.text.WHITE,
+    fontSize: SIZES.font.LARGE,
+  },
+  deleteTouchArea: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

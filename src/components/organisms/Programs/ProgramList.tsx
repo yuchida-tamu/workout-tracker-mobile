@@ -8,11 +8,13 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { COLOR } from '../../../constants/colors';
 import { windowHeight } from '../../../constants/sizes';
+import { updateUserThunk } from '../../../store/actions/user/thunks/updateUserThunk';
 import { ProgramType } from '../../../store/models/program/program';
-import { programsSelector } from '../../../store/selectors/user/userSelector';
+import { UserModel } from '../../../store/models/user/user';
+import { programsSelector, userSelector } from '../../../store/selectors/user/userSelector';
 import { LinearGradientView } from '../../atoms/LinearGradientView';
 import { ProgramListItem } from './ProgramListItem';
 import { styles } from './styles';
@@ -27,6 +29,16 @@ export const ProgramList: React.FC<Props> = ({ navigate, isShrunk }) => {
   const bottomTabHeight = useBottomTabBarHeight();
   const stackHeaderHeight = useHeaderHeight();
   const listHeight = useSharedValue(windowHeight - bottomTabHeight - stackHeaderHeight);
+  const user = useSelector(userSelector);
+  const dispatch = useDispatch();
+  const deleteProgramById = useCallback(
+    (id: string) => {
+      const updated = UserModel.deleteProgram(user, id);
+      dispatch(updateUserThunk(updated));
+    },
+    [dispatch, user],
+  );
+
   const config = {
     duration: 500,
     easing: Easing.bezier(0.5, 0.01, 0, 1),
@@ -45,9 +57,15 @@ export const ProgramList: React.FC<Props> = ({ navigate, isShrunk }) => {
 
   const renderItem = useCallback(
     ({ item }: { item: ProgramType }) => {
-      return <ProgramListItem program={item} navigate={navigate} />;
+      return (
+        <ProgramListItem
+          program={item}
+          navigate={navigate}
+          deleteProgram={() => deleteProgramById(item.id)}
+        />
+      );
     },
-    [navigate],
+    [deleteProgramById, navigate],
   );
 
   return (
@@ -57,7 +75,7 @@ export const ProgramList: React.FC<Props> = ({ navigate, isShrunk }) => {
         color2={COLOR.SECONDARY}
         style={[styles.programListContainer, { height: '100%' }]}>
         <FlatList
-          columnWrapperStyle={{ justifyContent: 'space-between' }}
+          columnWrapperStyle={{ justifyContent: 'space-around' }}
           numColumns={2}
           data={programs}
           renderItem={renderItem}
