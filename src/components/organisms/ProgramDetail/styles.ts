@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   bannerOverlay: {
     position: 'absolute',
@@ -32,6 +33,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
+  scheduleList: { height: SCHEDULE_CONTAINER_HEIGHT },
   dayContainer: {
     padding: SPACING.SMALL,
   },
@@ -55,4 +57,18 @@ export const styles = StyleSheet.create({
   dayText: { color: COLOR.text.WHITE, textAlign: 'center', fontSize: SIZES.font.SMALL },
   workoutDisplayList: {},
   startButton: { marginVertical: SPACING.SMALL },
+  quantityDisplayContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: windowWidth,
+    alignItems: 'center',
+  },
+  quantityDisplayLabel: {
+    color: COLOR.WHITE,
+    textAlign: 'center',
+  },
+  startButtonContainer: {},
+  workoutListContainer: {
+    flex: 1,
+  },
 });

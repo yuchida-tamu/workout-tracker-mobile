@@ -1,9 +1,12 @@
 import React from 'react';
+import { View } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import { COLOR } from '../../../constants/colors';
 import { ProgramType } from '../../../store/models/program/program';
 import { LinearGradientButton } from '../../atoms/Button';
 import { LinearGradientView } from '../../atoms/LinearGradientView';
 import { ProgramDetailHeader } from './ProgramDetailHeader';
+import { ProgramDetailQuantityDisplay } from './ProgramDetailQuantityDisplay';
 import { ProgramDetailSchedule } from './ProgramDetailSchedule';
 import { styles } from './styles';
 
@@ -19,13 +22,17 @@ export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
       style={styles.contentContainer}>
       <ProgramDetailHeader programName={program.name} />
       <ProgramDetailSchedule schedule={program.schedule} programId={program.id} />
-      <LinearGradientButton
-        color1={COLOR.bg.gradient.ORANGE}
-        color2={COLOR.bg.gradient.YELLOW}
-        title="開始"
-        style={styles.startButton}
-        isShadow={true}
-      />
+      <ProgramDetailQuantityDisplay quantity={program.workoutList.length} />
+      <View style={styles.workoutListContainer}></View>
+      <View style={styles.startButtonContainer}>
+        <LinearGradientButton
+          color1={COLOR.bg.gradient.ORANGE}
+          color2={COLOR.bg.gradient.YELLOW}
+          title="開始"
+          style={styles.startButton}
+          isShadow={true}
+        />
+      </View>
     </LinearGradientView>
   );
 };

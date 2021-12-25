@@ -54,13 +54,15 @@ export const ProgramDetailSchedule: React.FC<Props> = ({ programId, schedule }) 
   }, [days, daysState, dispatch, programId, schedule]);
 
   return (
-    <FlatList
-      data={week}
-      keyExtractor={keyExtractor}
-      renderItem={renderItem}
-      horizontal
-      contentContainerStyle={styles.sheduleContainer}
-      scrollEnabled={false}
-    />
+    <View style={styles.scheduleList}>
+      <FlatList
+        data={week}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        horizontal
+        contentContainerStyle={styles.sheduleContainer}
+        scrollEnabled={false}
+      />
+    </View>
   );
 };
