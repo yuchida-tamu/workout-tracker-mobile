@@ -46,7 +46,6 @@ export const ProgramList: React.FC<Props> = ({ navigate }) => {
           style={styles.programList}
         />
       </LinearGradientView>
-      <ProgramListFooter />
     </View>
   );
 };

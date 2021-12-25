@@ -17,7 +17,6 @@ export function onLaunchThunk(): ThunkAction<void, RootState, undefined, AppActi
       const { result, error } = await fetchUserDataFromLocalStorage();
 
       if (result === null || error) {
-        console.log(result);
         dispatch(updateSetupStatus(true));
       }
       if (result && !error) {

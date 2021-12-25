@@ -10,7 +10,6 @@ type CreateNewUserAction = {
 };
 
 export const createNewUser = (data: UserModelType): CreateNewUserAction => {
-  console.log(data);
   return {
     type: ActionTypes.R_CREATE_NEW_USER,
     payload: {
