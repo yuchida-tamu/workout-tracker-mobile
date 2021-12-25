@@ -8,6 +8,7 @@ import { LinearGradientView } from '../../atoms/LinearGradientView';
 import { ProgramDetailHeader } from './ProgramDetailHeader';
 import { ProgramDetailQuantityDisplay } from './ProgramDetailQuantityDisplay';
 import { ProgramDetailSchedule } from './ProgramDetailSchedule';
+import { ProgramDetailWokroutDisplay } from './ProgramDetailWorkoutDisplay';
 import { styles } from './styles';
 
 type Props = {
@@ -23,7 +24,7 @@ export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
       <ProgramDetailHeader programName={program.name} />
       <ProgramDetailSchedule schedule={program.schedule} programId={program.id} />
       <ProgramDetailQuantityDisplay quantity={program.workoutList.length} />
-      <View style={styles.workoutListContainer}></View>
+      <ProgramDetailWokroutDisplay workoutList={program.workoutList} />
       <View style={styles.startButtonContainer}>
         <LinearGradientButton
           color1={COLOR.bg.gradient.ORANGE}

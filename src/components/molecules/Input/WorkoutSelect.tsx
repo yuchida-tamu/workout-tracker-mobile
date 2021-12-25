@@ -22,7 +22,7 @@ type Props = {
   onChange: (value: WorkoutModelType[]) => void;
 };
 //delete
-const workoutData = categories.map((c) => WorkoutModel.create({ category: c }));
+const workoutData = categories.map((c) => WorkoutModel.create({ category: c, name: c }));
 
 export const WorkoutSelect: React.FC<Props> = ({ onChange }) => {
   //TODO: useSelector
@@ -55,7 +55,7 @@ export const WorkoutSelect: React.FC<Props> = ({ onChange }) => {
 
     return (
       <TouchableOpacity onPress={() => onPressHandler(item)} style={styles.itemCard}>
-        <Text>{item.id}</Text>
+        <Text>{item.name}</Text>
         <Text>{isSelected ? 'CHECKED' : 'NOT'}</Text>
       </TouchableOpacity>
     );
@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
   },
   itemCard: {
     height: SIZES.card.small,
+    width: SIZES.card.medium,
     borderRadius: SIZES.BORDER_RADIUS,
     marginHorizontal: SPACING.XSMALL,
     paddingVertical: SPACING.SMALL,

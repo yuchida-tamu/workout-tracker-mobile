@@ -2,6 +2,7 @@ import { Dimensions, StyleSheet } from 'react-native';
 import { COLOR } from '../../../constants/colors';
 import { SIZES } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
+import { boxShadow } from '../../../styles/styles';
 
 const BANNER_HEIGHT = 96;
 const SCHEDULE_CONTAINER_HEIGHT = 72;
@@ -70,5 +71,32 @@ export const styles = StyleSheet.create({
   startButtonContainer: {},
   workoutListContainer: {
     flex: 1,
+    width: windowWidth,
+  },
+  workoutItemContainer: {
+    height: SIZES.card.large,
+    width: SIZES.card.large,
+    marginHorizontal: SPACING.SMALL,
+    backgroundColor: COLOR.WHITE,
+    ...boxShadow,
+  },
+  workoutImageContainer: {
+    flex: 0.6,
+    backgroundColor: COLOR.GRAY,
+  },
+  workoutItemDescription: {
+    flex: 0.4,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  displayContentContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  workoutItemTitle: {
+    color: COLOR.PRIMARY,
+    textAlign: 'center',
+    fontSize: SIZES.font.REGULAR,
+    letterSpacing: 4,
   },
 });
