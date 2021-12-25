@@ -85,4 +85,5 @@ export type UserActions =
   | CreateNewUserAction
   | UpdateUsernameAction
   | ClearUserAction
-  | UpdateProgramScheduleAction;
+  | UpdateProgramScheduleAction
+  | UpateUserAction;

@@ -48,10 +48,16 @@ const updateProgramSchedule = (data: UserModelType, programId: string, schedule:
   return create({ ...data, programs });
 };
 
+const addProgram = (data: UserModelType, program: ProgramType) => {
+  const programs = [...data.programs, program];
+  return create({ ...data, programs });
+};
+
 export const UserModel = Object.freeze({
   create,
   updateUsername,
   updateIconUrl,
   getNumberOfAchievements,
   updateProgramSchedule,
+  addProgram,
 });

@@ -1,25 +1,47 @@
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import { useHeaderHeight } from '@react-navigation/elements';
 import React, { useCallback } from 'react';
-import { Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { useDispatch, useSelector } from 'react-redux';
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import { useSelector } from 'react-redux';
 import { COLOR } from '../../../constants/colors';
-import { mockUser } from '../../../mock/user';
+import { windowHeight } from '../../../constants/sizes';
 import { ProgramType } from '../../../store/models/program/program';
 import { programsSelector } from '../../../store/selectors/user/userSelector';
 import { LinearGradientView } from '../../atoms/LinearGradientView';
-import { ProgramListFooter } from './ProgramListFooter';
 import { ProgramListItem } from './ProgramListItem';
 import { styles } from './styles';
 
-//DELETE
-const mockPrograms = mockUser.programs;
-
 type Props = {
   navigate: (programId: string) => void;
+  isShrunk: boolean;
 };
 
-export const ProgramList: React.FC<Props> = ({ navigate }) => {
+export const ProgramList: React.FC<Props> = ({ navigate, isShrunk }) => {
   const programs = useSelector(programsSelector);
+  const bottomTabHeight = useBottomTabBarHeight();
+  const stackHeaderHeight = useHeaderHeight();
+  const listHeight = useSharedValue(windowHeight - bottomTabHeight - stackHeaderHeight);
+  const config = {
+    duration: 500,
+    easing: Easing.bezier(0.5, 0.01, 0, 1),
+  };
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      height: withTiming(isShrunk ? 0 : listHeight.value, config),
+    };
+  });
+
+  const animatedFlatLisStyle = useAnimatedStyle(() => {
+    return {
+      opacity: isShrunk ? 0 : 1,
+    };
+  });
 
   const renderItem = useCallback(
     ({ item }: { item: ProgramType }) => {
@@ -29,23 +51,19 @@ export const ProgramList: React.FC<Props> = ({ navigate }) => {
   );
 
   return (
-    <View>
+    <Animated.View style={animatedStyle}>
       <LinearGradientView
         color1={COLOR.bg.gradient.PURPLE}
         color2={COLOR.SECONDARY}
-        style={styles.programListContainer}
-        end={{
-          x: 0.5,
-          y: 0.8,
-        }}>
+        style={[styles.programListContainer, { height: '100%' }]}>
         <FlatList
           columnWrapperStyle={{ justifyContent: 'space-between' }}
           numColumns={2}
           data={programs}
           renderItem={renderItem}
-          style={styles.programList}
+          style={[styles.programList, animatedFlatLisStyle]}
         />
       </LinearGradientView>
-    </View>
+    </Animated.View>
   );
 };

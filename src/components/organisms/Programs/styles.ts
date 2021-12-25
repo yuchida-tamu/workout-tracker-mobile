@@ -6,7 +6,7 @@ import { boxShadow } from '../../../styles/styles';
 
 const CARD_DIMENSION_RATIO = 1.2;
 const BUTTON_SIZE = 36;
-const BUTTON_CONTAINER_SIZE = BUTTON_SIZE + SPACING.MEDIUM;
+export const BUTTON_CONTAINER_SIZE = BUTTON_SIZE + SPACING.XSMALL;
 
 export const styles = StyleSheet.create({
   programListContainer: {
@@ -28,23 +28,25 @@ export const styles = StyleSheet.create({
     letterSpacing: 0,
   },
   programListFooter: {
-    // backgroundColor: COLOR.SECONDARY,
     // borderBottomLeftRadius: SIZES.BORDER_RADIUS,
     // borderBottomRightRadius: SIZES.BORDER_RADIUS,
     alignItems: 'center',
     // paddingVertical: SPACING.SMALL,
     // ...boxShadow,
+    elevation: 10,
+    zIndex: 100,
   },
   addButtonContainer: {
     position: 'absolute',
-    top: -BUTTON_CONTAINER_SIZE / 2,
+    top: -BUTTON_CONTAINER_SIZE,
     height: BUTTON_CONTAINER_SIZE,
     width: BUTTON_CONTAINER_SIZE,
 
     borderRadius: BUTTON_CONTAINER_SIZE / 2,
-    backgroundColor: COLOR.SECONDARY,
     justifyContent: 'center',
     alignItems: 'center',
+    elevation: 10,
+    zIndex: 100,
   },
   addButtonBackground: {
     height: BUTTON_CONTAINER_SIZE,
@@ -65,5 +67,13 @@ export const styles = StyleSheet.create({
     fontSize: SIZES.font.REGULAR,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  addFormContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: SPACING.LARGE,
+  },
+  addController: {
+    marginTop: SPACING.SMALL,
   },
 });
