@@ -29,10 +29,10 @@ export default function Root() {
   const modal = useMemo(() => {
     console.log(openedModal);
     switch (openedModal) {
-      case ModalType.RECORD_PICKER:
-        return <ProgramProgressRecordPicker />;
-      default:
-        return;
+    case ModalType.RECORD_PICKER:
+      return <ProgramProgressRecordPicker />;
+    default:
+      return;
     }
   }, [openedModal]);
 
