@@ -33,4 +33,21 @@ export const updateProgramName = (name: string): UpdateProgramNameAction => {
   };
 };
 
-export type ProgramActions = CreateNewProgramAction | UpdateProgramNameAction;
+type UpdateRecordType = {
+  type: ActionTypes.R_UPDATE_RECORD;
+  payload: {
+    load: number;
+    reps: number;
+  };
+};
+export const updateRecord = (load: number, reps: number): UpdateRecordType => {
+  return {
+    type: ActionTypes.R_UPDATE_RECORD,
+    payload: {
+      load,
+      reps,
+    },
+  };
+};
+
+export type ProgramActions = CreateNewProgramAction | UpdateProgramNameAction | UpdateRecordType;

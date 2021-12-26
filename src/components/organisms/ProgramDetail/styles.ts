@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
+    width: windowWidth,
   },
   bannerOverlay: {
     position: 'absolute',
