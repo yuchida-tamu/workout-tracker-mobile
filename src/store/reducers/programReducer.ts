@@ -8,6 +8,8 @@ export function programReducer(data: ProgramType = ProgramModel.create(), action
     return ProgramModel.create(action.payload.program);
   case ActionTypes.R_UPDATE_PROGRAM_NAME:
     return ProgramModel.updateName(data, action.payload.name);
+  case ActionTypes.R_UPDATE_RECORD:
+    return ProgramModel.updateRecordMap(data, action.payload.record, action.payload.recordGroup);
   default:
     return data;
   }

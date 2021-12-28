@@ -55,4 +55,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  recordPickerButton: {
+    marginVertical: SPACING.MEDIUM,
+  },
 });

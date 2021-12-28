@@ -81,9 +81,25 @@ export const updateProgramSchedule = (
   };
 };
 
+type AddNewRecordGroupToProgramAction = {
+  type: ActionTypes.R_ADD_NEW_RECORD_GROUP;
+  payload: {
+    programId: string;
+  };
+};
+export const addNewRecordGroupToProgram = (programId: string): AddNewRecordGroupToProgramAction => {
+  return {
+    type: ActionTypes.R_ADD_NEW_RECORD_GROUP,
+    payload: {
+      programId,
+    },
+  };
+};
+
 export type UserActions =
   | CreateNewUserAction
   | UpdateUsernameAction
   | ClearUserAction
   | UpdateProgramScheduleAction
-  | UpateUserAction;
+  | UpateUserAction
+  | AddNewRecordGroupToProgramAction;

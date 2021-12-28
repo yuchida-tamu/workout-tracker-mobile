@@ -13,7 +13,6 @@ export function appReducer(data: AppModelType = AppModel.create(), action: AppAc
   case ActionTypes.R_OPEN_MODAL:
     return AppModel.openModal(data, action.payload.modal);
   case ActionTypes.R_CLOSE_MODAL:
-    console.log('close');
     return AppModel.closeModal(data);
   default:
     return data;

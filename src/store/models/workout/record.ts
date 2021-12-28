@@ -2,9 +2,9 @@ export type RecordType = {
   id: string;
   userId: string;
   workoutId: string;
-  date: Date;
+  date: string;
   reps: number;
-  sets: number;
+  indexOfSet: number;
   load: number;
 };
 
@@ -13,9 +13,9 @@ const create = (args: Partial<RecordType> = {}) => {
     id: '',
     userId: '',
     workoutId: '',
-    date: new Date(),
+    date: new Date().toDateString(),
     reps: 0,
-    sets: 0,
+    indexOfSet: 0,
     load: 0,
     ...args,
   };
@@ -29,10 +29,10 @@ const updateReps = (data: RecordType, reps: number) => {
   return { ...data, reps };
 };
 
-const updateSets = (data: RecordType, sets: number) => {
+const updateSets = (data: RecordType, indexOfSet: number) => {
   return {
     ...data,
-    sets,
+    indexOfSet,
   };
 };
 
