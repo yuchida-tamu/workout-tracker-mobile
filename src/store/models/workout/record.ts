@@ -10,7 +10,7 @@ export type RecordType = {
 
 const create = (args: Partial<RecordType> = {}) => {
   return {
-    id: '',
+    id: `r_${Math.random()}`,
     userId: '',
     workoutId: '',
     date: new Date().toDateString(),

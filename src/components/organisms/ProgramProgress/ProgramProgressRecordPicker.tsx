@@ -1,31 +1,24 @@
 import { Picker } from '@react-native-picker/picker';
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
-import { batch, useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { COLOR } from '../../../constants/colors';
 import { BUTTON_SIZE } from '../../../constants/sizes';
 import { ProgramContext } from '../../../context/program';
 import { closeModal } from '../../../store/actions/app/action';
-import { updateRecord } from '../../../store/actions/program/actions';
-import { updateUser } from '../../../store/actions/user/actions';
-import { updateUserThunk } from '../../../store/actions/user/thunks/updateUserThunk';
-import { UserModel } from '../../../store/models/user/user';
 import { RecordModel } from '../../../store/models/workout/record';
-import { userSelector, workoutIndexSelector } from '../../../store/selectors/user/userSelector';
+import { RecordHolderModel } from '../../../store/models/workout/recordHolder';
 import { Backdrop } from '../../atoms/Backdrop';
 import { LinearGradientButton } from '../../atoms/Button';
 import { styles } from './styles';
 
 export const ProgramProgressRecordPicker = () => {
-  const user = useSelector(userSelector);
-  const [selectedLoadValue, setLoadValue] = useState<number>();
-  const [selectedRepValue, setRepValue] = useState<number>();
-  const { programId, workoutId, recordGroupId, recordHolderId } = useContext(ProgramContext);
-  const indexOfCurrentRecord = useSelector(
-    workoutIndexSelector(programId, workoutId, recordGroupId),
-  );
-
   const dispatch = useDispatch();
+  const [selectedLoadValue, setLoadValue] = useState<number>(0);
+  const [selectedRepValue, setRepValue] = useState<number>(0);
+  const { workoutId, recordHolder, setRecordHolder, indexOfRecord, setIndexOfRecord } =
+    useContext(ProgramContext);
+
   const onLoadValueChange = useCallback((itemValue: number) => {
     setLoadValue(itemValue);
   }, []);
@@ -53,17 +46,28 @@ export const ProgramProgressRecordPicker = () => {
   }, []);
 
   const onPress = () => {
-    const record = RecordModel.create({
-      load: selectedLoadValue,
-      reps: selectedRepValue,
-      workoutId,
-      indexOfSet: indexOfCurrentRecord,
-    });
+    if (
+      selectedLoadValue === undefined ||
+      !selectedRepValue === undefined ||
+      !selectedLoadValue ||
+      !selectedRepValue
+    ) {
+      return;
+    }
+    if (setRecordHolder && setIndexOfRecord) {
+      const record = RecordModel.create({
+        load: selectedLoadValue,
+        reps: selectedRepValue,
+        workoutId,
+        indexOfSet: indexOfRecord,
+      });
 
-    const update = UserModel.addRecordToProgram(user, record, programId, recordGroupId);
+      const records = [...recordHolder.records, record];
+      const updatedRecordHolder = RecordHolderModel.create({ ...recordHolder, records });
 
-    dispatch(updateUser(update));
-
+      setRecordHolder(updatedRecordHolder);
+      setIndexOfRecord(indexOfRecord + 1);
+    }
     dispatch(closeModal());
   };
   const close = () => {

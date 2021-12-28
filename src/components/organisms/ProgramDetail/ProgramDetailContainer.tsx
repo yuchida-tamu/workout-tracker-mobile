@@ -11,9 +11,9 @@ import { ProgramDetailSchedule } from './ProgramDetailSchedule';
 import { ProgramDetailWokroutDisplay } from './ProgramDetailWorkoutDisplay';
 import { styles } from './styles';
 import { ProgramContext } from '../../../context/program';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addNewRecordGroupToProgram } from '../../../store/actions/user/actions';
-import { lastRecordGroupSelector } from '../../../store/selectors/user/userSelector';
+import { RecordGroupModel } from '../../../store/models/workout/recordGroup';
 
 type Props = {
   program: ProgramType;
@@ -21,16 +21,8 @@ type Props = {
 
 export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
   const [isStarted, setIsStarted] = useState(false);
-  const { setProgramId, setRecordGroupId } = useContext(ProgramContext);
+  const { setProgramId, setProgress } = useContext(ProgramContext);
   const dispatch = useDispatch();
-
-  const idOfLastRecordGroup = useSelector(lastRecordGroupSelector(program.id));
-
-  useEffect(() => {
-    if (setRecordGroupId && idOfLastRecordGroup) {
-      setRecordGroupId(idOfLastRecordGroup.id);
-    }
-  }, [idOfLastRecordGroup, setRecordGroupId]);
 
   const start = () => {
     setIsStarted(!isStarted);
@@ -39,6 +31,11 @@ export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
     }
     dispatch(addNewRecordGroupToProgram(program.id));
   };
+
+  useEffect(() => {
+    if (setProgress) setProgress(RecordGroupModel.cerateRecordGroup());
+  }, []);
+
   return (
     <LinearGradientView
       color1={COLOR.bg.gradient.PURPLE}
@@ -50,20 +47,20 @@ export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
           <ProgramDetailSchedule schedule={program.schedule} programId={program.id} />
           <ProgramDetailQuantityDisplay quantity={program.workoutList.length} />
           <ProgramDetailWokroutDisplay workoutList={program.workoutList} />
+          <View style={styles.startButtonContainer}>
+            <LinearGradientButton
+              color1={COLOR.bg.gradient.ORANGE}
+              color2={COLOR.bg.gradient.YELLOW}
+              title="開始"
+              style={styles.startButton}
+              isShadow={true}
+              onPress={start}
+            />
+          </View>
         </>
       ) : (
         <ProgramProgress program={program} />
       )}
-      <View style={styles.startButtonContainer}>
-        <LinearGradientButton
-          color1={COLOR.bg.gradient.ORANGE}
-          color2={COLOR.bg.gradient.YELLOW}
-          title="開始"
-          style={styles.startButton}
-          isShadow={true}
-          onPress={start}
-        />
-      </View>
     </LinearGradientView>
   );
 };

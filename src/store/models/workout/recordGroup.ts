@@ -15,7 +15,7 @@ export const cerateRecordGroup = (args: Partial<RecordGroupType> = {}): RecordGr
   const date = new Date();
   const dateString = formatDate(date);
   return {
-    id: '',
+    id: `rg_${Math.random()}`,
     date: dateString,
     recordHolders: new Array<RecordHolderType>(),
     ...args,

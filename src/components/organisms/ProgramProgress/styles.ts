@@ -25,6 +25,24 @@ export const styles = StyleSheet.create({
   recordLabelText: {
     color: COLOR.WHITE,
   },
+  recordText: {
+    color: COLOR.WHITE,
+    fontSize: SIZES.font.REGULAR,
+  },
+  recordTextContainer: {
+    flexDirection: 'row',
+    flex: 1,
+  },
+  recordValText: {
+    flex: 2,
+  },
+  recordRepText: {
+    paddingHorizontal: SPACING.MEDIUM,
+    flex: 1,
+  },
+  recordUnitText: {
+    flex: 0.3,
+  },
   emptyInput: {
     flex: 1,
     borderBottomColor: COLOR.SECONDARY,
@@ -50,7 +68,6 @@ export const styles = StyleSheet.create({
     zIndex: 100,
     elevation: 10,
   },
-  recordUnitText: {},
   backdrop: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -58,4 +75,8 @@ export const styles = StyleSheet.create({
   recordPickerButton: {
     marginVertical: SPACING.MEDIUM,
   },
+  buttonContainer: {
+    alignItems: 'center',
+  },
+  nextButton: { marginVertical: SPACING.MEDIUM },
 });

@@ -17,7 +17,7 @@ export type ProgramType = {
   workoutList: WorkoutModelType[];
   schedule: ScheduleType;
   category: Category;
-  recordMap: RecordGroupType[];
+  progressList: RecordGroupType[];
 };
 
 const create = (args: Partial<ProgramType> = {}) => {
@@ -28,7 +28,7 @@ const create = (args: Partial<ProgramType> = {}) => {
     workoutList: [],
     schedule: SchdeuleModel.create(),
     category: Category.Default,
-    recordMap: new Array<RecordGroupType>(),
+    progressList: new Array<RecordGroupType>(),
     ...args,
   };
 };
@@ -48,24 +48,24 @@ const updateSchedule = (data: ProgramType, schedule: ScheduleType) => {
 const addNewRecordGroup = (data: ProgramType) => {
   return create({
     ...data,
-    recordMap: [
-      ...data.recordMap,
+    progressList: [
+      ...data.progressList,
       RecordGroupModel.cerateRecordGroup({ id: `rg_${Math.random()}` }),
     ],
   });
 };
 
 const updateRecordMap = (data: ProgramType, record: RecordType, groupId: string): ProgramType => {
-  const group = data.recordMap.filter((g) => g.id === groupId);
+  const group = data.progressList.filter((g) => g.id === groupId);
   if (group.length < 1)
     return create({
       ...data,
-      recordMap: [
+      progressList: [
         cerateRecordGroup({ recordHolders: [RecordHolderModel.create({ records: [record] })] }),
       ],
     });
   const updatedGroup = addRecordToGroup(group[0], record);
-  return create({ ...data, recordMap: [...data.recordMap, updatedGroup] });
+  return create({ ...data, progressList: [...data.progressList, updatedGroup] });
 };
 
 export const ProgramModel = Object.freeze({

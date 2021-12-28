@@ -1,4 +1,6 @@
 import React, { createContext, Dispatch, SetStateAction, useState } from 'react';
+import { RecordGroupModel, RecordGroupType } from '../store/models/workout/recordGroup';
+import { RecordHolderModel, RecordHolderType } from '../store/models/workout/recordHolder';
 
 export enum SELECTED_PROGRAM_STATE {
   NO_PROGRAM_SELECTED = 'NO_PROGRAM_SELECTED',
@@ -16,10 +18,16 @@ type ProgramContextType = {
   workoutId: workoutIdType;
   recordGroupId: string;
   recordHolderId: string;
+  progress: RecordGroupType;
+  recordHolder: RecordHolderType;
+  indexOfRecord: number;
   setProgramId?: Dispatch<SetStateAction<programIdType>>;
   setWorkoutId?: Dispatch<SetStateAction<workoutIdType>>;
   setRecordGroupId?: Dispatch<SetStateAction<string>>;
   setRecordHolderId?: Dispatch<SetStateAction<string>>;
+  setProgress?: Dispatch<SetStateAction<RecordGroupType>>;
+  setRecordHolder?: Dispatch<SetStateAction<RecordHolderType>>;
+  setIndexOfRecord?: Dispatch<SetStateAction<number>>;
 };
 
 export const ProgramContext = createContext<ProgramContextType>({
@@ -27,6 +35,9 @@ export const ProgramContext = createContext<ProgramContextType>({
   workoutId: SELECTED_WORKOUT_STATE.NO_WORKOUT_SELECTED,
   recordGroupId: '',
   recordHolderId: '',
+  progress: RecordGroupModel.cerateRecordGroup(),
+  recordHolder: RecordHolderModel.create(),
+  indexOfRecord: 0,
 });
 
 type Prop = {
@@ -42,6 +53,11 @@ export const ProgramContextProvider: React.FC<Prop> = ({ children }) => {
   );
   const [recordGroupId, setRecordGroupId] = useState<string>('');
   const [recordHolderId, setRecordHolderId] = useState<string>('');
+  const [recordGroup, setRecordGroup] = useState<RecordGroupType>(
+    RecordGroupModel.cerateRecordGroup(),
+  );
+  const [recordHolder, setRecordHolder] = useState<RecordHolderType>(RecordHolderModel.create());
+  const [indexOfRecord, setIndexOfRecord] = useState<number>(0);
   return (
     <ProgramContext.Provider
       value={{
@@ -49,10 +65,16 @@ export const ProgramContextProvider: React.FC<Prop> = ({ children }) => {
         workoutId,
         recordGroupId,
         recordHolderId,
+        progress: recordGroup,
+        recordHolder,
+        indexOfRecord,
         setRecordHolderId,
         setProgramId,
         setWorkoutId,
         setRecordGroupId,
+        setProgress: setRecordGroup,
+        setRecordHolder,
+        setIndexOfRecord,
       }}>
       {children}
     </ProgramContext.Provider>
