@@ -10,43 +10,68 @@ import { Title } from '../../atoms/TitleText';
 import { ProgramDetailHeader } from '../ProgramDetail/ProgramDetailHeader';
 import { ProgramProgressEmptyRecord } from './ProgramProgressEmptyRecord';
 import { styles } from './styles';
+import { RecordType } from '../../../store/models/workout/record';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProgramProgress } from '../../../store/actions/user/actions';
+import { userSelector } from '../../../store/selectors/user/userSelector';
+import { updateUserThunk } from '../../../store/actions/user/thunks/updateUserThunk';
+import { navigate } from '../../../navigation/RootNavigation';
+
+type RecordItemProp = {
+  record: RecordType;
+};
+
+const RecordItem: React.FC<RecordItemProp> = ({ record }) => {
+  return (
+    <View key={record.id} style={styles.emptyRecordContainer}>
+      <View style={styles.recordLabel}>
+        <Text style={styles.recordLabelText}>{record.indexOfSet + 1}</Text>
+      </View>
+      <View style={styles.recordTextContainer}>
+        <Text style={[styles.recordText, styles.recordValText]}>
+          {record.load.toString() + 'kg'}
+        </Text>
+        <Text style={[styles.recordText, styles.recordUnitText]}>x</Text>
+        <Text style={[styles.recordText, styles.recordRepText]}>{record.reps.toString()}</Text>
+      </View>
+    </View>
+  );
+};
 
 type Props = {
   program: ProgramType;
+  goBack: () => void;
 };
 
-export const ProgramProgress: React.FC<Props> = ({ program }) => {
+export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
   const { setProgress, recordHolder, setRecordHolder, setIndexOfRecord, progress } =
     useContext(ProgramContext);
   const [position, setPosition] = useState(0);
   const [isLast, setIsLast] = useState(false);
   const nextPosition = position + 1;
+  const dispatch = useDispatch();
+  const user = useSelector(userSelector);
+
   useEffect(() => {
     //initialize progress context
-    if (nextPosition + 1 > program.workoutList.length - 1) {
-      setIsLast(true);
-    }
+
     if (setRecordHolder && setIndexOfRecord) {
       setRecordHolder(RecordHolderModel.create({ workoutId: program.workoutList[0].id }));
       setIndexOfRecord(0);
     }
   }, []);
 
+  useEffect(() => {
+    setIsLast(false);
+    if (nextPosition >= program.workoutList.length) {
+      setIsLast(true);
+    }
+  }, [nextPosition]);
+
+  const isDisabled = useMemo(() => recordHolder.records.length <= 0, [recordHolder.records.length]);
+
   const renderRecords = useMemo(() => {
-    return recordHolder.records.map((record) => (
-      <View key={record.id} style={styles.emptyRecordContainer}>
-        <View style={styles.recordLabel}>
-          <Text style={styles.recordLabelText}>{record.indexOfSet + 1}</Text>
-        </View>
-        <View style={styles.recordTextContainer}>
-          <Text style={[styles.recordText, styles.recordValText]}>
-            {record.load.toString() + 'kg'}
-          </Text>
-          <Text style={[styles.recordText, styles.recordUnitText]}>x</Text>
-          <Text style={[styles.recordText, styles.recordRepText]}>{record.reps.toString()}</Text>
-        </View>
-      </View>
-    ));
+    return recordHolder.records.map((record) => <RecordItem key={record.id} record={record} />);
   }, [recordHolder]);
 
   const totalWeight = useMemo(() => {
@@ -75,10 +100,14 @@ export const ProgramProgress: React.FC<Props> = ({ program }) => {
       setPosition(nextPosition);
 
       setIndexOfRecord(0);
+
+      //update state in redux
+      dispatch(updateProgramProgress(updatedRecordGroup, program.id));
     }
-    if (isLast) {
-      //store the progress to the app
-    }
+  }, []);
+  const finish = useCallback(() => {
+    console.log('save');
+    dispatch(updateUserThunk(user));
   }, []);
 
   return (
@@ -101,7 +130,8 @@ export const ProgramProgress: React.FC<Props> = ({ program }) => {
           title={isLast ? 'FINISH' : '次へ'}
           style={styles.nextButton}
           isShadow={true}
-          onPress={next}
+          onPress={isLast ? finish : next}
+          isDisable={isDisabled}
         />
       </View>
     </View>

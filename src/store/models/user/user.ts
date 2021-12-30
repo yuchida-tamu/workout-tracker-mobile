@@ -5,6 +5,8 @@ import { RecordType } from '../workout/record';
 import { RecordHolderType } from '../workout/recordHolder';
 import { AchievementModel, AchievementType } from './achievement';
 import { GoalModel, GoalType } from './goal';
+import { RecordGroupType } from '../workout/recordGroup';
+import { updateProgramProgressById } from './utils/utils';
 
 export type UserModelType = {
   username: string;
@@ -64,20 +66,6 @@ const deleteProgram = (data: UserModelType, programId: string) => {
   });
 };
 
-const addRecordToProgram = (
-  data: UserModelType,
-  record: RecordType,
-  programId: string,
-  groupId: string,
-) => {
-  const target = data.programs.filter((p) => p.id === programId);
-  if (target.length < 1) return create();
-  const updated = ProgramModel.updateRecordMap(target[0], record, groupId);
-  const filtered = data.programs.filter((p) => p.id !== programId);
-  const programs: ProgramType[] = [...filtered, updated];
-  return create({ ...data, programs });
-};
-
 const addNewRecordGroupToProgram = (data: UserModelType, programId: string) => {
   const filtered = data.programs.filter((p) => p.id !== programId);
   const target = data.programs.filter((p) => p.id === programId)[0];
@@ -88,6 +76,18 @@ const addNewRecordGroupToProgram = (data: UserModelType, programId: string) => {
   });
 };
 
+const updateProgramProgress = (
+  data: UserModelType,
+  progress: RecordGroupType,
+  programId: string,
+) => {
+  const updatedPrograms = data.programs.map((program) =>
+    updateProgramProgressById(program, programId, progress),
+  );
+
+  return create({ ...data, programs: updatedPrograms });
+};
+
 export const UserModel = Object.freeze({
   create,
   updateUsername,
@@ -96,6 +96,6 @@ export const UserModel = Object.freeze({
   updateProgramSchedule,
   addProgram,
   deleteProgram,
-  addRecordToProgram,
   addNewRecordGroupToProgram,
+  updateProgramProgress,
 });

@@ -55,17 +55,12 @@ const addNewRecordGroup = (data: ProgramType) => {
   });
 };
 
-const updateRecordMap = (data: ProgramType, record: RecordType, groupId: string): ProgramType => {
-  const group = data.progressList.filter((g) => g.id === groupId);
-  if (group.length < 1)
-    return create({
-      ...data,
-      progressList: [
-        cerateRecordGroup({ recordHolders: [RecordHolderModel.create({ records: [record] })] }),
-      ],
-    });
-  const updatedGroup = addRecordToGroup(group[0], record);
-  return create({ ...data, progressList: [...data.progressList, updatedGroup] });
+const addProgramProgress = (data: ProgramType, progress: RecordGroupType) => {
+  const filtered = data.progressList.filter((p) => p.id !== progress.id);
+  return create({
+    ...data,
+    progressList: [...filtered, progress],
+  });
 };
 
 export const ProgramModel = Object.freeze({
@@ -73,6 +68,6 @@ export const ProgramModel = Object.freeze({
   updateName,
   updateWorkoutList,
   updateSchedule,
-  updateRecordMap,
+  addProgramProgress,
   addNewRecordGroup,
 });

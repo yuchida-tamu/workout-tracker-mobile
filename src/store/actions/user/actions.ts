@@ -1,6 +1,7 @@
 import { ScheduleType } from '../../models/program/schedule';
 import { UserModelType } from '../../models/user/user';
 import { ActionTypes } from './types';
+import { RecordGroupType, RecordGroupModel } from '../../models/workout/recordGroup';
 
 type CreateNewUserAction = {
   type: ActionTypes.R_CREATE_NEW_USER;
@@ -95,6 +96,26 @@ export const addNewRecordGroupToProgram = (programId: string): AddNewRecordGroup
     },
   };
 };
+type UpdateProgramProgressAction = {
+  type: ActionTypes.R_UPDATE_PROGRAM_PROGRESS;
+  payload: {
+    progress: RecordGroupType;
+    programId: string;
+  };
+};
+
+export const updateProgramProgress = (
+  progress: RecordGroupType,
+  programId: string,
+): UpdateProgramProgressAction => {
+  return {
+    type: ActionTypes.R_UPDATE_PROGRAM_PROGRESS,
+    payload: {
+      progress,
+      programId,
+    },
+  };
+};
 
 export type UserActions =
   | CreateNewUserAction
@@ -102,4 +123,5 @@ export type UserActions =
   | ClearUserAction
   | UpdateProgramScheduleAction
   | UpateUserAction
-  | AddNewRecordGroupToProgramAction;
+  | AddNewRecordGroupToProgramAction
+  | UpdateProgramProgressAction;

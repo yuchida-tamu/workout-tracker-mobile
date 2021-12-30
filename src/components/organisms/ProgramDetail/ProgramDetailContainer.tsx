@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { COLOR } from '../../../constants/colors';
 import { ProgramType } from '../../../store/models/program/program';
 import { LinearGradientButton } from '../../atoms/Button';
@@ -21,7 +21,7 @@ type Props = {
 
 export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
   const [isStarted, setIsStarted] = useState(false);
-  const { setProgramId, setProgress } = useContext(ProgramContext);
+  const { setProgramId, setProgress, progress } = useContext(ProgramContext);
   const dispatch = useDispatch();
 
   const start = () => {
@@ -30,6 +30,10 @@ export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
       setProgramId(program.id);
     }
     dispatch(addNewRecordGroupToProgram(program.id));
+  };
+
+  const goBack = () => {
+    setIsStarted(false);
   };
 
   useEffect(() => {
@@ -59,7 +63,7 @@ export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
           </View>
         </>
       ) : (
-        <ProgramProgress program={program} />
+        <ProgramProgress program={program} goBack={goBack} />
       )}
     </LinearGradientView>
   );

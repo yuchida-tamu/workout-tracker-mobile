@@ -2,6 +2,7 @@ const BASE = {
   PRIMARY: '#BB72DE',
   SECONDARY: '#1DDEC7',
   TERTIARY: '#FFDA56',
+  LIGHT_GRAY: '#CFCFCF',
   GRAY: '#888888',
   BLACK: '#313131',
   WHITE: '#fff',
