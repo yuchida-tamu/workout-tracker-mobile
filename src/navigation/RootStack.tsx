@@ -7,6 +7,9 @@ type ProgramListParam = undefined;
 type ProgramDetailParam = {
   programId: string;
 };
+type ProgramCompleteParam = {
+  programId: string;
+};
 
 export type RootStackParamList = {
   Home: HomeScreenParam;
@@ -16,6 +19,7 @@ export type RootStackParamList = {
   Programs: ProgramsParam;
   ProgramList: ProgramListParam;
   ProgramDetail: ProgramDetailParam;
+  ProgramComplete: ProgramCompleteParam;
 };
 
 export type RootStackParamTypes =
@@ -25,4 +29,5 @@ export type RootStackParamTypes =
   | UserHomeParam
   | ProgramsParam
   | ProgramListParam
-  | ProgramDetailParam;
+  | ProgramDetailParam
+  | ProgramCompleteParam;

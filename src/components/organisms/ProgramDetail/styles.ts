@@ -100,4 +100,8 @@ export const styles = StyleSheet.create({
     fontSize: SIZES.font.REGULAR,
     letterSpacing: 4,
   },
+  completeMessageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
 });

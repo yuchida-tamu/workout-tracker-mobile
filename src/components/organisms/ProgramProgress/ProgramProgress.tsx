@@ -16,6 +16,9 @@ import { updateProgramProgress } from '../../../store/actions/user/actions';
 import { userSelector } from '../../../store/selectors/user/userSelector';
 import { updateUserThunk } from '../../../store/actions/user/thunks/updateUserThunk';
 import { navigate } from '../../../navigation/RootNavigation';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../../navigation/RootStack';
 
 type RecordItemProp = {
   record: RecordType;
@@ -51,6 +54,7 @@ export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
   const nextPosition = position + 1;
   const dispatch = useDispatch();
   const user = useSelector(userSelector);
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'ProgramDetail'>>();
 
   useEffect(() => {
     //initialize progress context
@@ -106,8 +110,12 @@ export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
     }
   }, []);
   const finish = useCallback(() => {
-    console.log('save');
     dispatch(updateUserThunk(user));
+    goBack();
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'ProgramComplete', params: { programId: program.id } }],
+    });
   }, []);
 
   return (
