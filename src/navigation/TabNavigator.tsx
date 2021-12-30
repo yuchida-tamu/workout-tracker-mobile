@@ -6,12 +6,15 @@ import {
 } from '@react-navigation/bottom-tabs';
 import { HomeDashboardScreen } from '../screens/HomeDashboardScreen';
 import { UserScreen } from '../screens/UserScreen';
+import { ProgramsScreen } from '../screens/ProgramsScreen';
 import { COLOR } from '../constants/colors';
 import { UserEditScreen } from '../screens/UserEditScreen';
 import { RootStackParamList } from './RootStack';
-import { HomeDashboardProgramInfoItem } from '../components/organisms/HomeDashboard/HomeDashboardProgramInfoItem';
 import { DashbaordIcon } from '../components/atoms/icons/DashboardIcon';
 import { UserIcon } from '../components/atoms/icons/UserIcon';
+import { ProgramDetailScreen } from '../screens/ProgramDetailScreen';
+import { ProgramCompletePage } from '../components/organisms/ProgramDetail/ProgramCompletePage';
+import { ProgramCompleteScreen } from '../screens/ProgramCompleteScreen';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -71,6 +74,29 @@ export const UserStackScreen = () => {
   );
 };
 
+export const ProgramsStack = createStackNavigator();
+export const ProgramsStackScreen = () => {
+  return (
+    <ProgramsStack.Navigator initialRouteName="ProgramList" screenOptions={stackNavigationOptions}>
+      <ProgramsStack.Screen
+        name="ProgramList"
+        component={ProgramsScreen}
+        options={{ title: 'あなたのプログラム' }}
+      />
+      <ProgramsStack.Screen
+        name="ProgramDetail"
+        component={ProgramDetailScreen}
+        options={{ title: 'あなたのプログラム' }}
+      />
+      <ProgramsStack.Screen
+        name="ProgramComplete"
+        component={ProgramCompleteScreen}
+        options={{ title: 'あなたのプログラム' }}
+      />
+    </ProgramsStack.Navigator>
+  );
+};
+
 export const BottomTabNavigator = () => {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
@@ -81,6 +107,7 @@ export const BottomTabNavigator = () => {
           tabBarIcon: ({ color, size }) => <DashbaordIcon color={color} size={size} />,
         }}
       />
+      <Tab.Screen name="Programs" component={ProgramsStackScreen} />
       <Tab.Screen
         name="User"
         component={UserStackScreen}

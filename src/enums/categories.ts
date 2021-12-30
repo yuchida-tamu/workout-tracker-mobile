@@ -5,5 +5,7 @@ export enum Category {
   Legs = 'LEGS',
   Chest = 'CHEST',
   Abs = 'ABS',
+  FullBody = 'FULL_BODY',
+  Other = 'Other',
   Default = 'DEFAULT',
 }

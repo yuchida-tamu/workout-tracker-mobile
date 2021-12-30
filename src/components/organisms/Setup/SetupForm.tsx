@@ -6,6 +6,7 @@ import { GoalModel } from '../../../store/models/user/goal';
 import { FONT_SIZE, Title } from '../../atoms/TitleText';
 import { LineTextInput } from '../../molecules/Input/LineInputField';
 import { styles } from './styles';
+import { mockUser } from '../../../mock/user';
 
 type SetupFormPanelProps = {
   index: number;
@@ -36,6 +37,8 @@ export const SetupForm: React.FC<SetupFormPanelProps> = ({ index = 0, onPress, o
     const user = UserModel.create({
       username: data.username,
       goal: GoalModel.create({ goal: data.goal }),
+      //Delete only for development
+      programs: mockUser.programs,
     });
     onSubmit(user);
   };

@@ -14,6 +14,23 @@ export function userReducer(data: UserModelType = UserModel.create(mockUser), ac
       username: '',
       iconUrl: '',
     });
+  case ActionTypes.R_UPDATE_PROGRAM_SCHEDULE:
+    return UserModel.updateProgramSchedule(
+      data,
+      action.payload.programId,
+      action.payload.schedule,
+    );
+  case ActionTypes.R_UPDATE_USER:
+    return UserModel.create(action.payload.user);
+
+  case ActionTypes.R_ADD_NEW_RECORD_GROUP:
+    return UserModel.addNewRecordGroupToProgram(data, action.payload.programId);
+  case ActionTypes.R_UPDATE_PROGRAM_PROGRESS:
+    return UserModel.updateProgramProgress(
+      data,
+      action.payload.progress,
+      action.payload.programId,
+    );
   default:
     return data;
   }

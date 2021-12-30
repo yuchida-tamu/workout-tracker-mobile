@@ -1,4 +1,5 @@
 import { ProgramType } from '../../models/program/program';
+import { RecordType } from '../../models/workout/record';
 import { ActionTypes } from './types';
 
 type CreateNewProgramAction = {
@@ -33,4 +34,27 @@ export const updateProgramName = (name: string): UpdateProgramNameAction => {
   };
 };
 
-export type ProgramActions = CreateNewProgramAction | UpdateProgramNameAction;
+type UpdateRecordType = {
+  type: ActionTypes.R_UPDATE_RECORD;
+  payload: {
+    date: string;
+    record: RecordType;
+    recordGroup: string;
+  };
+};
+export const updateRecord = (
+  date: string,
+  record: RecordType,
+  recordGroup: string,
+): UpdateRecordType => {
+  return {
+    type: ActionTypes.R_UPDATE_RECORD,
+    payload: {
+      date: date,
+      record,
+      recordGroup,
+    },
+  };
+};
+
+export type ProgramActions = CreateNewProgramAction | UpdateProgramNameAction | UpdateRecordType;

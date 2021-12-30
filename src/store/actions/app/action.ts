@@ -1,3 +1,4 @@
+import { ModalType } from '../../models/app/app';
 import { ActionTypes } from './types';
 
 type UpdateProcessingStatusAction = {
@@ -47,7 +48,35 @@ export const updateSetupStatus = (needSetup: boolean): UpdateNeedSetupAction => 
   };
 };
 
+type OpenModalAction = {
+  type: ActionTypes.R_OPEN_MODAL;
+  payload: {
+    modal: ModalType;
+  };
+};
+
+export const openModal = (modal: ModalType): OpenModalAction => {
+  return {
+    type: ActionTypes.R_OPEN_MODAL,
+    payload: {
+      modal,
+    },
+  };
+};
+
+type CloseModalAction = {
+  type: ActionTypes.R_CLOSE_MODAL;
+};
+
+export const closeModal = (): CloseModalAction => {
+  return {
+    type: ActionTypes.R_CLOSE_MODAL,
+  };
+};
+
 export type AppActions =
   | UpdateProcessingStatusAction
   | UpdateBootingStatusAction
-  | UpdateNeedSetupAction;
+  | UpdateNeedSetupAction
+  | OpenModalAction
+  | CloseModalAction;
