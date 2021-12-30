@@ -12,10 +12,28 @@ import { Backdrop } from '../../atoms/Backdrop';
 import { LinearGradientButton } from '../../atoms/Button';
 import { styles } from './styles';
 
+type ValueSet = {
+  min: number;
+  max: number;
+  increment: number;
+};
+
+const loadSet: ValueSet = {
+  min: 5.0,
+  max: 200,
+  increment: 0.25,
+};
+
+const repSet: ValueSet = {
+  min: 1,
+  max: 30,
+  increment: 1,
+};
+
 export const ProgramProgressRecordPicker = () => {
   const dispatch = useDispatch();
-  const [selectedLoadValue, setLoadValue] = useState<number>(0);
-  const [selectedRepValue, setRepValue] = useState<number>(0);
+  const [selectedLoadValue, setLoadValue] = useState<number>(loadSet.min);
+  const [selectedRepValue, setRepValue] = useState<number>(repSet.min);
   const { workoutId, recordHolder, setRecordHolder, indexOfRecord, setIndexOfRecord } =
     useContext(ProgramContext);
 
@@ -29,7 +47,7 @@ export const ProgramProgressRecordPicker = () => {
 
   const renderLoadPickerItems = useMemo(() => {
     const loadPickerItems: JSX.Element[] = [];
-    for (let i = 5.0; i <= 200; i += 0.25) {
+    for (let i = loadSet.min; i <= loadSet.max; i += loadSet.increment) {
       const pickerItem = <Picker.Item label={i.toString()} value={i} key={`${i}_load`} />;
       loadPickerItems.push(pickerItem);
     }
@@ -38,7 +56,7 @@ export const ProgramProgressRecordPicker = () => {
 
   const renderRepPickerItems = useMemo(() => {
     const refPickerItems: JSX.Element[] = [];
-    for (let i = 0; i <= 30; i += 1) {
+    for (let i = repSet.min; i <= repSet.max; i += repSet.increment) {
       const pickerItem = <Picker.Item label={i.toString()} value={i} key={`${i}_set`} />;
       refPickerItems.push(pickerItem);
     }
