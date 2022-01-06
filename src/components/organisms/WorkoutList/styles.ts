@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     top: 0,
     height: '100%',
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: '#BB72DE',
     shadowColor: 'black',
     shadowRadius: 1,
     shadowOpacity: 0.2,
@@ -18,11 +18,11 @@ export const styles = StyleSheet.create({
   iconAndTextInput: {
     flexDirection: 'row',
     top: '10%',
-    margin: 15,
   },
   icon: {
     width: 50,
     marginLeft: 10,
+    color: '#FFFFFF',
   },
   textInput: {
     height: 30,
@@ -31,6 +31,10 @@ export const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     backgroundColor: '#F0F0F0',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   workoutCard: {
     display: 'flex',
@@ -77,7 +81,7 @@ export const styles = StyleSheet.create({
     width: '20%',
     borderTopRightRadius: 16,
     borderBottomRightRadius: 16,
-    backgroundColor: '#CECECE',
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
@@ -88,11 +92,12 @@ export const styles = StyleSheet.create({
   },
   workoutNameAndLevel: {
     borderBottomWidth: 3,
-    borderBottomColor: '#09CBB4',
+    borderBottomColor: '#FFFFFF',
     marginBottom: 20,
   },
   workoutName: {
     fontSize: 30,
+    color: '#BB72DE',
   },
   workoutLevel: {
     flexDirection: 'row',

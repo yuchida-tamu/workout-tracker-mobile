@@ -6,12 +6,14 @@ import {
 } from '@react-navigation/bottom-tabs';
 import { HomeDashboardScreen } from '../screens/HomeDashboardScreen';
 import { UserScreen } from '../screens/UserScreen';
+import { WorkoutListScreen } from '../screens/WorkoutListScreen';
 import { COLOR } from '../constants/colors';
 import { UserEditScreen } from '../screens/UserEditScreen';
 import { RootStackParamList } from './RootStack';
 import { HomeDashboardProgramInfoItem } from '../components/organisms/HomeDashboard/HomeDashboardProgramInfoItem';
 import { DashbaordIcon } from '../components/atoms/icons/DashboardIcon';
 import { UserIcon } from '../components/atoms/icons/UserIcon';
+import { WorkoutListIcon } from '../components/atoms/icons/WorkoutListIcon';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -71,6 +73,19 @@ export const UserStackScreen = () => {
   );
 };
 
+export const WorkoutListStack = createStackNavigator();
+export const WorkoutListStackScreen = () => {
+  return (
+    <WorkoutListStack.Navigator initialRouteName="Workout" screenOptions={stackNavigationOptions}>
+      <WorkoutListStack.Screen
+        name="Workout"
+        component={WorkoutListScreen}
+        options={{ title: 'ワークアウト' }}
+      />
+    </WorkoutListStack.Navigator>
+  );
+};
+
 export const BottomTabNavigator = () => {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
@@ -87,6 +102,11 @@ export const BottomTabNavigator = () => {
         options={{
           tabBarIcon: ({ color, size }) => <UserIcon color={color} size={size} />,
         }}
+      />
+      <Tab.Screen
+        name="Workout"
+        component={WorkoutListStackScreen}
+        options={{ tabBarIcon: ({ color, size }) => <WorkoutListIcon color={color} size={size} /> }}
       />
     </Tab.Navigator>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { WorkoutListHeader } from '../components/organisms/WorkoutList/WorkoutListHeader';
 import { WorkoutList } from '../components/organisms/WorkoutList/WorkoutList';
+import { COLOR } from '../constants/colors';
 
 export const WorkoutListScreen = () => {
   return (
