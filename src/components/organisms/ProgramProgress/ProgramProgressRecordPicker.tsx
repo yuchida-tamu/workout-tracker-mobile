@@ -82,7 +82,6 @@ export const ProgramProgressRecordPicker = () => {
 
       const records = [...recordHolder.records, record];
       const updatedRecordHolder = RecordHolderModel.create({ ...recordHolder, records });
-
       setRecordHolder(updatedRecordHolder);
       setIndexOfRecord(indexOfRecord + 1);
     }

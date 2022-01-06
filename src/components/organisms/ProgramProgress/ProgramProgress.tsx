@@ -88,9 +88,6 @@ export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
 
   const next = useCallback(() => {
     if (setRecordHolder && setIndexOfRecord && setProgress) {
-      if (nextPosition > program.workoutList.length - 1) {
-        return;
-      }
       const p = RecordGroupModel.cerateRecordGroup({ ...progress });
       const updatedRecordGroup = RecordGroupModel.cerateRecordGroup({
         recordHolders: [...p.recordHolders, recordHolder],
@@ -98,23 +95,31 @@ export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
 
       setProgress(updatedRecordGroup);
 
-      setRecordHolder(
-        RecordHolderModel.create({ workoutId: program.workoutList[nextPosition].id }),
-      );
       setPosition(nextPosition);
-
+      if (nextPosition <= program.workoutList.length - 1) {
+        setRecordHolder(
+          RecordHolderModel.create({ workoutId: program.workoutList[nextPosition].id }),
+        );
+      }
       setIndexOfRecord(0);
 
       //update state in redux
       dispatch(updateProgramProgress(updatedRecordGroup, program.id));
     }
-  }, []);
+    if (isLast) {
+      finish();
+    }
+  }, [recordHolder, setRecordHolder, setIndexOfRecord, setProgress]);
   const finish = useCallback(() => {
     dispatch(updateUserThunk(user));
+    console.log('finish', user);
     goBack();
     navigation.reset({
-      index: 0,
-      routes: [{ name: 'ProgramComplete', params: { programId: program.id } }],
+      index: 1,
+      routes: [
+        { name: 'ProgramList' },
+        { name: 'ProgramComplete', params: { programId: program.id } },
+      ],
     });
   }, []);
 
@@ -138,7 +143,7 @@ export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
           title={isLast ? 'FINISH' : '次へ'}
           style={styles.nextButton}
           isShadow={true}
-          onPress={isLast ? finish : next}
+          onPress={next}
           isDisable={isDisabled}
         />
       </View>

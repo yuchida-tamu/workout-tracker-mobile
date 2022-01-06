@@ -14,6 +14,7 @@ import { ProgramContext } from '../../../context/program';
 import { useDispatch } from 'react-redux';
 import { addNewRecordGroupToProgram } from '../../../store/actions/user/actions';
 import { RecordGroupModel } from '../../../store/models/workout/recordGroup';
+import { useSharedValue } from 'react-native-reanimated';
 
 type Props = {
   program: ProgramType;
@@ -21,8 +22,15 @@ type Props = {
 
 export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
   const [isStarted, setIsStarted] = useState(false);
-  const { setProgramId, setProgress, progress } = useContext(ProgramContext);
+  const { setProgramId, setProgress } = useContext(ProgramContext);
   const dispatch = useDispatch();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const opacity = useSharedValue(1);
+
+  const onPress = (index: number) => {
+    opacity.value = 0;
+    setIsExpanded(true);
+  };
 
   const start = () => {
     setIsStarted(!isStarted);
@@ -49,8 +57,14 @@ export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
         <>
           <ProgramDetailHeader programName={program.name} />
           <ProgramDetailSchedule schedule={program.schedule} programId={program.id} />
-          <ProgramDetailQuantityDisplay quantity={program.workoutList.length} />
-          <ProgramDetailWokroutDisplay workoutList={program.workoutList} />
+          {!isExpanded && <ProgramDetailQuantityDisplay quantity={program.workoutList.length} />}
+          <ProgramDetailWokroutDisplay
+            workoutList={program.workoutList}
+            isExpanded={isExpanded}
+            onPress={onPress}
+            opacity={opacity}
+            programId={program.id}
+          />
           <View style={styles.startButtonContainer}>
             <LinearGradientButton
               color1={COLOR.bg.gradient.ORANGE}
