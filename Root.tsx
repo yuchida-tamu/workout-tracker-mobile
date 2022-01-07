@@ -19,12 +19,14 @@ import {
   programIdType,
   SELECTED_PROGRAM_STATE,
 } from './src/context/program';
+import { userSelector } from './src/store/selectors/user/userSelector';
 
 export default function Root() {
   const dispatch = useDispatch();
   const isBooting = useSelector(appIsBootingSelector);
   const needSetup = useSelector(appNeedSetupSelector);
   const openedModal = useSelector(appOpenedModalSelector);
+  const user = useSelector(userSelector);
 
   useEffect(() => {
     dispatch(onLaunchThunk());
@@ -32,10 +34,10 @@ export default function Root() {
 
   const modal = useMemo(() => {
     switch (openedModal) {
-    case ModalType.RECORD_PICKER:
-      return <ProgramProgressRecordPicker />;
-    default:
-      return;
+      case ModalType.RECORD_PICKER:
+        return <ProgramProgressRecordPicker />;
+      default:
+        return;
     }
   }, [openedModal]);
 

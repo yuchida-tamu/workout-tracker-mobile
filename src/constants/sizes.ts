@@ -16,9 +16,11 @@ export const SIZES = {
     large: 48,
   },
   card: {
+    xsmall: 96,
     small: 120,
     medium: 144,
     large: 200,
+    xLarge: 288,
   },
 };
 

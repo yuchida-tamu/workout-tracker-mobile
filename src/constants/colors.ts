@@ -15,6 +15,8 @@ export const COLOR = {
     WHITE: BASE.WHITE,
   },
   bg: {
+    DARK_PRIMARY: '#683780',
+    DARK_SECONDARY: '#19BDA9',
     gradient: {
       LIGHT_GREEN: '#92FF96',
       TEAL: '#09CBB4',

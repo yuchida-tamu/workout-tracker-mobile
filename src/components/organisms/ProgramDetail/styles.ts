@@ -75,10 +75,12 @@ export const styles = StyleSheet.create({
     width: windowWidth,
   },
   workoutItemContainer: {
-    height: SIZES.card.large,
-    width: SIZES.card.large,
     marginHorizontal: SPACING.SMALL,
-    backgroundColor: COLOR.WHITE,
+    backgroundColor: COLOR.bg.DARK_PRIMARY,
+    borderRadius: SIZES.BORDER_RADIUS,
+    justifyContent: 'center',
+    width: SIZES.card.large,
+    height: SIZES.card.xsmall,
     ...boxShadow,
   },
   workoutImageContainer: {
@@ -86,7 +88,6 @@ export const styles = StyleSheet.create({
     backgroundColor: COLOR.GRAY,
   },
   workoutItemDescription: {
-    flex: 0.4,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -95,7 +96,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   workoutItemTitle: {
-    color: COLOR.PRIMARY,
+    color: COLOR.WHITE,
     textAlign: 'center',
     fontSize: SIZES.font.REGULAR,
     letterSpacing: 4,
@@ -103,5 +104,51 @@ export const styles = StyleSheet.create({
   completeMessageContainer: {
     flex: 1,
     justifyContent: 'center',
+  },
+  progressItemContainer: {
+    backgroundColor: COLOR.SECONDARY,
+    borderRadius: SIZES.BORDER_RADIUS,
+    ...boxShadow,
+    paddingVertical: SPACING.SMALL,
+    paddingHorizontal: SPACING.XSMALL,
+    marginTop: SPACING.SMALL,
+  },
+  progressContentRow: {
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+  },
+
+  progressItemDataContainer: {},
+  progressItemDataLabel: {
+    backgroundColor: COLOR.bg.DARK_SECONDARY,
+    width: 80,
+    height: 24,
+    borderRadius: 12,
+  },
+  progressItemDataLabelText: {
+    color: COLOR.WHITE,
+    textAlign: 'center',
+  },
+  progressItemDataText: {
+    color: COLOR.WHITE,
+    fontWeight: 'bold',
+    fontSize: SIZES.font.LARGE,
+  },
+  progressDisplayCloseButtonContainer: {
+    alignItems: 'center',
+  },
+  progressDisplayCloseButton: {
+    width: SIZES.icon.large,
+    height: SIZES.icon.large,
+    borderRadius: SIZES.BORDER_RADIUS,
+    backgroundColor: COLOR.SECONDARY,
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...boxShadow,
+    marginTop: SPACING.SMALL,
+  },
+  progressDisplayCloseText: {
+    fontSize: SIZES.font.REGULAR,
+    color: COLOR.WHITE,
   },
 });
