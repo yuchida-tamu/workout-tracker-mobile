@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { StyleProp, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { StyleProp, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,

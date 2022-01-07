@@ -1,17 +1,9 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { COLOR } from '../../../constants/colors';
 import { SIZES } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
-import {
-  FlatList,
-  FlatListProps,
-  TouchableOpacity,
-  View,
-  Dimensions,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import { FlatList, FlatListProps, TouchableOpacity, View, StyleSheet, Text } from 'react-native';
 
 type Props = {
   onChange: (value: boolean[]) => void;

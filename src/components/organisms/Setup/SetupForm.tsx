@@ -22,11 +22,7 @@ type SetupFormType = {
 };
 
 export const SetupForm: React.FC<SetupFormPanelProps> = ({ index = 0, onPress, onSubmit }) => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { control, handleSubmit } = useForm({
     defaultValues: {
       username: '',
       goal: '',

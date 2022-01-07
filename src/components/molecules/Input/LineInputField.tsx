@@ -14,7 +14,7 @@ type Props = {
 
 export const LineTextInput: React.FC<Props> = ({ onChangeText, onBlur, value, style, label }) => {
   return (
-    <View style={lineTextStyles.container}>
+    <View style={[lineTextStyles.container, style]}>
       <Text>{label}</Text>
       <TextInput
         style={lineTextStyles.input}

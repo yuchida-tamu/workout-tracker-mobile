@@ -6,7 +6,6 @@ import { SPACING } from '../../../constants/spacing';
 import { UploadIcon } from '../../atoms/icons/UploadIcon';
 import { Row } from '../../atoms/Row';
 import * as ImagePicker from 'expo-image-picker';
-import { boxShadow } from '../../../styles/styles';
 import { CameraIcon } from '../../atoms/icons/CameraIcon';
 
 type Props = {
@@ -14,8 +13,6 @@ type Props = {
   uri: string;
   setImage: (uri: string) => void;
 };
-
-const height = 70;
 
 export const UploadInputField: React.FC<Props> = ({ label, uri, setImage }) => {
   const openPhotoLibrary = useCallback(async () => {

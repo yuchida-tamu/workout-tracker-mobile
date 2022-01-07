@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { commonStyle } from '../styles/styles';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';

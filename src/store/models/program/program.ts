@@ -1,14 +1,7 @@
 import { SchdeuleModel, ScheduleType } from './schedule';
 import { WorkoutModelType } from '../workout/workout';
 import { Category } from '../../../enums/categories';
-import {
-  RecordGroupType,
-  RecordGroupModel,
-  cerateRecordGroup,
-  addRecordToGroup,
-} from '../workout/recordGroup';
-import { RecordHolderModel, RecordHolderType } from '../workout/recordHolder';
-import { RecordType } from '../workout/record';
+import { RecordGroupType, RecordGroupModel } from '../workout/recordGroup';
 
 export type ProgramType = {
   id: string;

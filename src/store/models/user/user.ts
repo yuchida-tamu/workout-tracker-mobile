@@ -1,8 +1,5 @@
-import { updateRecord } from '../../actions/program/actions';
 import { ProgramModel, ProgramType } from '../program/program';
 import { SchdeuleModel, ScheduleType } from '../program/schedule';
-import { RecordType } from '../workout/record';
-import { RecordHolderType } from '../workout/recordHolder';
 import { AchievementModel, AchievementType } from './achievement';
 import { GoalModel, GoalType } from './goal';
 import { RecordGroupType } from '../workout/recordGroup';

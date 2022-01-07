@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { ReactElement, ReactEventHandler } from 'react';
+import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { boxShadow } from '../../styles/styles';
 

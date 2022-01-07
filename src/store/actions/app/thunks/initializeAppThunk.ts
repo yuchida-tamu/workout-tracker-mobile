@@ -2,7 +2,6 @@ import { ThunkAction } from '@reduxjs/toolkit';
 import { Dispatch } from 'react';
 import { Action } from 'redux';
 import { UserStorageUtil } from '../../../../utils/storage/userStorage';
-import { UserModelType } from '../../../models/user/user';
 import { RootState } from '../../../store';
 import { clearUser } from '../../user/actions';
 import { AppActions, updateProcessingStatus, updateSetupStatus } from '../action';
