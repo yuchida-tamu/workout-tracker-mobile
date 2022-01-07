@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import { windowHeight, windowWidth } from '../../constants/sizes';
 
 type Props = {

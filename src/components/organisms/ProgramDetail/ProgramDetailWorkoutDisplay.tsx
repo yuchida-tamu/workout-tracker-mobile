@@ -55,14 +55,15 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
     };
   });
 
-  const onPressWorkoutItemHandler = (index: number) => {
-    onPress(index);
-    if (index < workoutList.length) {
-      setSelectedWorkout(workoutList[index]);
-    }
-  };
-
-  const onCloseHandler = () => {};
+  const onPressWorkoutItemHandler = useCallback(
+    (index: number) => {
+      onPress(index);
+      if (index < workoutList.length) {
+        setSelectedWorkout(workoutList[index]);
+      }
+    },
+    [onPress, workoutList],
+  );
 
   const renderItem = useCallback<NonNullable<FlatListProps<WorkoutModelType>['renderItem']>>(
     ({ item, index }) => {
@@ -76,12 +77,12 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
         </TouchableOpacity>
       );
     },
-    [isExpanded],
+    [animatedStyle, onPressWorkoutItemHandler],
   );
 
   const renderProgressItem = useCallback<
     NonNullable<FlatListProps<ProgressDisplayDataType>['renderItem']>
-  >(({ item, index }) => {
+  >(({ item }) => {
     return (
       <View style={styles.progressItemContainer}>
         <Text>{item.date}</Text>

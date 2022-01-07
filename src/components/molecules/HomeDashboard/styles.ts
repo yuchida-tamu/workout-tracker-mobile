@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { SPACING } from '../../../constants/spacing';
 
 const ITEM_HEIGHT = 156;

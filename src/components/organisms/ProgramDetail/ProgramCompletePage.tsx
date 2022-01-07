@@ -2,9 +2,9 @@ import React from 'react';
 import { LinearGradientView } from '../../atoms/LinearGradientView';
 import { COLOR } from '../../../constants/colors';
 import { styles } from './styles';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { LinearGradientButton } from '../../atoms/Button';
-import { Title, FONT_SIZE } from '../../atoms/TitleText';
+import { Title } from '../../atoms/TitleText';
 
 type Props = {
   navigate: () => void;

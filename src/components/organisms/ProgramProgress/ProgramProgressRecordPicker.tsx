@@ -1,5 +1,5 @@
 import { Picker } from '@react-native-picker/picker';
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { COLOR } from '../../../constants/colors';

@@ -82,7 +82,7 @@ export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
       ],
     });
     setTimeout(() => goBack(), 200);
-  }, []);
+  }, [goBack, navigation, program.id]);
 
   const next = useCallback(() => {
     if (setRecordHolder && setIndexOfRecord && setProgress) {

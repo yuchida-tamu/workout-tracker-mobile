@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View } from 'react-native';
 import { COLOR } from '../../../constants/colors';
 import { ProgramType } from '../../../store/models/program/program';
 import { LinearGradientButton } from '../../atoms/Button';
@@ -11,8 +11,6 @@ import { ProgramDetailSchedule } from './ProgramDetailSchedule';
 import { ProgramDetailWokroutDisplay } from './ProgramDetailWorkoutDisplay';
 import { styles } from './styles';
 import { ProgramContext } from '../../../context/program';
-import { useDispatch } from 'react-redux';
-import { addNewRecordGroupToProgram } from '../../../store/actions/user/actions';
 import { RecordGroupModel } from '../../../store/models/workout/recordGroup';
 import { useSharedValue } from 'react-native-reanimated';
 import { RecordHolderModel } from '../../../store/models/workout/recordHolder';
@@ -25,11 +23,10 @@ export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
   const [isStarted, setIsStarted] = useState(false);
   const { setProgramId, setProgress, setRecordHolder, setIndexOfRecord } =
     useContext(ProgramContext);
-  const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false);
   const opacity = useSharedValue(1);
 
-  const onPress = (index: number) => {
+  const onPress = () => {
     opacity.value = 0;
     setTimeout(() => {
       setIsExpanded(true);

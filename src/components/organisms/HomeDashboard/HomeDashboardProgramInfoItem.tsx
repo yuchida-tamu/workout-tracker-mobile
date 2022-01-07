@@ -1,12 +1,7 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import Svg, { Circle } from 'react-native-svg';
+import { Text, TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 import { COLOR } from '../../../constants/colors';
-import {
-  programIdSelector,
-  programSelector,
-} from '../../../store/selectors/program/programSelector';
 import { numberOfProgramsSelector } from '../../../store/selectors/user/userSelector';
 import { CircleGraphSkelton } from '../../atoms/CircleGraphSkelton';
 import { LinearGradientView } from '../../atoms/LinearGradientView';

@@ -13,7 +13,6 @@ import { RootStackParamList } from './RootStack';
 import { DashbaordIcon } from '../components/atoms/icons/DashboardIcon';
 import { UserIcon } from '../components/atoms/icons/UserIcon';
 import { ProgramDetailScreen } from '../screens/ProgramDetailScreen';
-import { ProgramCompletePage } from '../components/organisms/ProgramDetail/ProgramCompletePage';
 import { ProgramCompleteScreen } from '../screens/ProgramCompleteScreen';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();

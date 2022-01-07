@@ -1,6 +1,5 @@
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
-import { COLOR } from '../../../constants/colors';
 
 type Props = {
   size: number;

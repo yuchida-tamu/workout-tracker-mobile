@@ -1,7 +1,7 @@
 import { ScheduleType } from '../../models/program/schedule';
 import { UserModelType } from '../../models/user/user';
 import { ActionTypes } from './types';
-import { RecordGroupType, RecordGroupModel } from '../../models/workout/recordGroup';
+import { RecordGroupType } from '../../models/workout/recordGroup';
 
 type CreateNewUserAction = {
   type: ActionTypes.R_CREATE_NEW_USER;

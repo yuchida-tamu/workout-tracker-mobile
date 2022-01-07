@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, FlatListProps, TouchableOpacity, View, StyleSheet, Text } from 'react-native';
 import { COLOR } from '../../../constants/colors';
-import { SIZES, windowWidth } from '../../../constants/sizes';
+import { SIZES } from '../../../constants/sizes';
 import { Category } from '../../../enums/categories';
 
 const categories = [
