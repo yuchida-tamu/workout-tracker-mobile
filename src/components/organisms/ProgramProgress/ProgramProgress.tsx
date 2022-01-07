@@ -11,11 +11,8 @@ import { ProgramDetailHeader } from '../ProgramDetail/ProgramDetailHeader';
 import { ProgramProgressEmptyRecord } from './ProgramProgressEmptyRecord';
 import { styles } from './styles';
 import { RecordType } from '../../../store/models/workout/record';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateProgramProgress } from '../../../store/actions/user/actions';
-import { userSelector } from '../../../store/selectors/user/userSelector';
-import { updateUserThunk } from '../../../store/actions/user/thunks/updateUserThunk';
-import { navigate } from '../../../navigation/RootNavigation';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../navigation/RootStack';
@@ -53,24 +50,14 @@ export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
   const [isLast, setIsLast] = useState(false);
   const nextPosition = position + 1;
   const dispatch = useDispatch();
-  const user = useSelector(userSelector);
   const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'ProgramDetail'>>();
-
-  useEffect(() => {
-    //initialize progress context
-
-    if (setRecordHolder && setIndexOfRecord) {
-      setRecordHolder(RecordHolderModel.create({ workoutId: program.workoutList[0].id }));
-      setIndexOfRecord(0);
-    }
-  }, []);
 
   useEffect(() => {
     setIsLast(false);
     if (nextPosition >= program.workoutList.length) {
       setIsLast(true);
     }
-  }, [nextPosition]);
+  }, [nextPosition, program.workoutList.length]);
 
   const isDisabled = useMemo(() => recordHolder.records.length <= 0, [recordHolder.records.length]);
 
@@ -86,34 +73,7 @@ export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
     return total.toString();
   }, [recordHolder.records]);
 
-  const next = useCallback(() => {
-    if (setRecordHolder && setIndexOfRecord && setProgress) {
-      const p = RecordGroupModel.cerateRecordGroup({ ...progress });
-      const updatedRecordGroup = RecordGroupModel.cerateRecordGroup({
-        recordHolders: [...p.recordHolders, recordHolder],
-      });
-
-      setProgress(updatedRecordGroup);
-
-      setPosition(nextPosition);
-      if (nextPosition <= program.workoutList.length - 1) {
-        setRecordHolder(
-          RecordHolderModel.create({ workoutId: program.workoutList[nextPosition].id }),
-        );
-      }
-      setIndexOfRecord(0);
-
-      //update state in redux
-      dispatch(updateProgramProgress(updatedRecordGroup, program.id));
-    }
-    if (isLast) {
-      finish();
-    }
-  }, [recordHolder, setRecordHolder, setIndexOfRecord, setProgress]);
   const finish = useCallback(() => {
-    dispatch(updateUserThunk(user));
-    console.log('finish', user);
-    goBack();
     navigation.reset({
       index: 1,
       routes: [
@@ -121,7 +81,43 @@ export const ProgramProgress: React.FC<Props> = ({ program, goBack }) => {
         { name: 'ProgramComplete', params: { programId: program.id } },
       ],
     });
+    setTimeout(() => goBack(), 200);
   }, []);
+
+  const next = useCallback(() => {
+    if (setRecordHolder && setIndexOfRecord && setProgress) {
+      const updatedRecordGroup = RecordGroupModel.cerateRecordGroup({
+        id: progress.id,
+        recordHolders: [...progress.recordHolders, recordHolder],
+      });
+      setProgress(updatedRecordGroup);
+      setPosition(isLast ? nextPosition - 1 : nextPosition);
+      if (nextPosition <= program.workoutList.length - 1) {
+        setRecordHolder(
+          RecordHolderModel.create({ workoutId: program.workoutList[nextPosition].id }),
+        );
+      }
+      setIndexOfRecord(0);
+
+      // //update state in redux
+      dispatch(updateProgramProgress(updatedRecordGroup, program.id));
+    }
+    if (isLast) {
+      finish();
+    }
+  }, [
+    setRecordHolder,
+    setIndexOfRecord,
+    setProgress,
+    isLast,
+    progress,
+    recordHolder,
+    nextPosition,
+    program.workoutList,
+    program.id,
+    dispatch,
+    finish,
+  ]);
 
   return (
     <View style={{ flex: 1 }}>

@@ -15,7 +15,7 @@ export function updateUserThunk(
 
     try {
       const response = await UserStorageUtil.StoreUser(user);
-      console.log(user);
+
       if (response.result && !response.error) {
         dispatch(updateUser(response.result as UserModelType));
       }

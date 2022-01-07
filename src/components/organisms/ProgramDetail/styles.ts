@@ -111,6 +111,7 @@ export const styles = StyleSheet.create({
     ...boxShadow,
     paddingVertical: SPACING.SMALL,
     paddingHorizontal: SPACING.XSMALL,
+    marginTop: SPACING.SMALL,
   },
   progressContentRow: {
     justifyContent: 'space-around',
@@ -132,5 +133,22 @@ export const styles = StyleSheet.create({
     color: COLOR.WHITE,
     fontWeight: 'bold',
     fontSize: SIZES.font.LARGE,
+  },
+  progressDisplayCloseButtonContainer: {
+    alignItems: 'center',
+  },
+  progressDisplayCloseButton: {
+    width: SIZES.icon.large,
+    height: SIZES.icon.large,
+    borderRadius: SIZES.BORDER_RADIUS,
+    backgroundColor: COLOR.SECONDARY,
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...boxShadow,
+    marginTop: SPACING.SMALL,
+  },
+  progressDisplayCloseText: {
+    fontSize: SIZES.font.REGULAR,
+    color: COLOR.WHITE,
   },
 });

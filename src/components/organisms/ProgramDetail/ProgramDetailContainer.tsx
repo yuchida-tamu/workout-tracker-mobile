@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { addNewRecordGroupToProgram } from '../../../store/actions/user/actions';
 import { RecordGroupModel } from '../../../store/models/workout/recordGroup';
 import { useSharedValue } from 'react-native-reanimated';
+import { RecordHolderModel } from '../../../store/models/workout/recordHolder';
 
 type Props = {
   program: ProgramType;
@@ -22,31 +23,37 @@ type Props = {
 
 export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
   const [isStarted, setIsStarted] = useState(false);
-  const { setProgramId, setProgress } = useContext(ProgramContext);
+  const { setProgramId, setProgress, setRecordHolder, setIndexOfRecord } =
+    useContext(ProgramContext);
   const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false);
   const opacity = useSharedValue(1);
 
   const onPress = (index: number) => {
     opacity.value = 0;
-    setIsExpanded(true);
+    setTimeout(() => {
+      setIsExpanded(true);
+    }, 500);
+  };
+
+  const onCloseProgressList = () => {
+    opacity.value = 1;
+    setIsExpanded(false);
   };
 
   const start = () => {
-    setIsStarted(!isStarted);
-    if (setProgramId) {
+    if (setProgramId && setRecordHolder && setIndexOfRecord && setProgress) {
       setProgramId(program.id);
+      setProgress(RecordGroupModel.cerateRecordGroup());
+      setRecordHolder(RecordHolderModel.create({ workoutId: program.workoutList[0].id }));
+      setIndexOfRecord(0);
+      setIsStarted(!isStarted);
     }
-    dispatch(addNewRecordGroupToProgram(program.id));
   };
 
   const goBack = () => {
     setIsStarted(false);
   };
-
-  useEffect(() => {
-    if (setProgress) setProgress(RecordGroupModel.cerateRecordGroup());
-  }, []);
 
   return (
     <LinearGradientView
@@ -56,12 +63,17 @@ export const ProgramDetailContainer: React.FC<Props> = ({ program }) => {
       {!isStarted ? (
         <>
           <ProgramDetailHeader programName={program.name} />
-          <ProgramDetailSchedule schedule={program.schedule} programId={program.id} />
-          {!isExpanded && <ProgramDetailQuantityDisplay quantity={program.workoutList.length} />}
+          {!isExpanded && (
+            <>
+              <ProgramDetailSchedule schedule={program.schedule} programId={program.id} />
+              <ProgramDetailQuantityDisplay quantity={program.workoutList.length} />
+            </>
+          )}
           <ProgramDetailWokroutDisplay
             workoutList={program.workoutList}
             isExpanded={isExpanded}
             onPress={onPress}
+            onClose={onCloseProgressList}
             opacity={opacity}
             programId={program.id}
           />

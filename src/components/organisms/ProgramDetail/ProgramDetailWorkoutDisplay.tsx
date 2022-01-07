@@ -1,37 +1,25 @@
 import React, { useCallback, useState } from 'react';
-import {
-  FlatList,
-  FlatListProps,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  SectionList,
-  SectionListProps,
-} from 'react-native';
+import { FlatList, FlatListProps, Text, View, TouchableOpacity } from 'react-native';
 import { WorkoutModelType } from '../../../store/models/workout/workout';
 import { styles } from './styles';
 import Animated, {
   useAnimatedStyle,
-  useSharedValue,
   withTiming,
   Easing,
   interpolate,
 } from 'react-native-reanimated';
-import { SIZES, windowWidth } from '../../../constants/sizes';
 import { useSelector } from 'react-redux';
 import {
-  progressSelector,
   progressFilteredByWorkoutSelector,
   ProgressDisplayDataType,
 } from '../../../store/selectors/user/userSelector';
-import { RecordGroupType } from '../../../store/models/workout/recordGroup';
 
 type Props = {
   workoutList: WorkoutModelType[];
   isExpanded: boolean;
   opacity: Animated.SharedValue<number>;
   onPress: (index: number) => void;
+  onClose: () => void;
   programId: string;
 };
 
@@ -41,11 +29,13 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
   opacity,
   isExpanded,
   programId,
+  onClose,
 }) => {
   const [selectedWorkout, setSelectedWorkout] = useState(workoutList[0]);
   const progressList: ProgressDisplayDataType[] | undefined = useSelector(
     progressFilteredByWorkoutSelector(programId, selectedWorkout.id),
   );
+
   const animatedStyle = useAnimatedStyle(() => {
     const translate = interpolate(opacity.value, [1, 0], [0, -100]);
 
@@ -65,10 +55,19 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
     };
   });
 
+  const onPressWorkoutItemHandler = (index: number) => {
+    onPress(index);
+    if (index < workoutList.length) {
+      setSelectedWorkout(workoutList[index]);
+    }
+  };
+
+  const onCloseHandler = () => {};
+
   const renderItem = useCallback<NonNullable<FlatListProps<WorkoutModelType>['renderItem']>>(
     ({ item, index }) => {
       return (
-        <TouchableOpacity activeOpacity={1} onPress={() => onPress(index)}>
+        <TouchableOpacity activeOpacity={1} onPress={() => onPressWorkoutItemHandler(index)}>
           <Animated.View style={[styles.workoutItemContainer, animatedStyle]}>
             <View style={styles.workoutItemDescription}>
               <Text style={styles.workoutItemTitle}>{item.name}</Text>
@@ -91,19 +90,19 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
             <View style={styles.progressItemDataLabel}>
               <Text style={styles.progressItemDataLabelText}>load/rep</Text>
             </View>
-            <Text style={styles.progressItemDataText}>{item.loadPerRep}</Text>
+            <Text style={styles.progressItemDataText}>{item.loadPerRep.toFixed(2)}</Text>
           </View>
           <View style={styles.progressItemDataContainer}>
             <View style={styles.progressItemDataLabel}>
               <Text style={styles.progressItemDataLabelText}>max</Text>
             </View>
-            <Text style={styles.progressItemDataText}>{item.loadPerRep}</Text>
+            <Text style={styles.progressItemDataText}>{item.max.toFixed(2)}</Text>
           </View>
           <View style={styles.progressItemDataContainer}>
             <View style={styles.progressItemDataLabel}>
               <Text style={styles.progressItemDataLabelText}>total</Text>
             </View>
-            <Text style={styles.progressItemDataText}>{item.loadPerRep}</Text>
+            <Text style={styles.progressItemDataText}>{item.total.toFixed(2)}</Text>
           </View>
         </View>
       </View>
@@ -112,15 +111,22 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
 
   return (
     <View style={styles.workoutListContainer}>
-      <FlatList
-        data={workoutList}
-        renderItem={renderItem}
-        horizontal
-        contentContainerStyle={styles.displayContentContainer}
-        showsHorizontalScrollIndicator={false}
-      />
-      {progressList && (
-        <View>
+      {!isExpanded && (
+        <FlatList
+          data={workoutList}
+          renderItem={renderItem}
+          horizontal
+          contentContainerStyle={styles.displayContentContainer}
+          showsHorizontalScrollIndicator={false}
+        />
+      )}
+      {progressList && isExpanded && (
+        <View style={{ flex: 1 }}>
+          <View style={styles.progressDisplayCloseButtonContainer}>
+            <TouchableOpacity onPress={onClose} style={styles.progressDisplayCloseButton}>
+              <Text style={styles.progressDisplayCloseText}>x</Text>
+            </TouchableOpacity>
+          </View>
           <FlatList data={progressList} renderItem={renderProgressItem} />
         </View>
       )}

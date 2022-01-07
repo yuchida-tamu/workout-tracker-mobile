@@ -42,7 +42,7 @@ export const progressFilteredByWorkoutSelector =
       let totalReps = 0;
       rg.recordHolders.forEach((item) => {
         item.records.forEach((record) => {
-          total += record.load;
+          total += record.load * record.reps;
           totalReps += record.reps;
           if (record.load > max) {
             max = record.load;
