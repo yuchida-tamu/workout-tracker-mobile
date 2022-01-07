@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { COLOR } from '../../../constants/colors';
 import { Category } from '../../../enums/categories';
@@ -29,7 +29,11 @@ type Props = {
 };
 
 export const ProgramAddForm: React.FC<Props> = ({ close }) => {
-  const { control, handleSubmit } = useForm<ProgramFormType>();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ProgramFormType>();
   const dispatch = useDispatch();
   const user = useSelector(userSelector);
 
@@ -46,26 +50,50 @@ export const ProgramAddForm: React.FC<Props> = ({ close }) => {
     dispatch(updateUserThunk(update));
     close();
   };
-
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
   return (
     <ScrollView contentContainerStyle={styles.addFormContainer} pointerEvents="box-none">
       <Controller
         control={control}
         name="programName"
+        rules={{
+          required: true,
+          maxLength: 60,
+          min: 1,
+        }}
         render={({ field: { onChange, onBlur, value } }) => (
           <InputField label="プログラム名" onBlur={onBlur} onChangeText={onChange} value={value} />
         )}
       />
+      {errors.programName && errors.programName.type === 'required' && (
+        <Text style={styles.errorText}>名前を入力してください</Text>
+      )}
+      {errors.programName && errors.programName.type === 'maxLength' && (
+        <Text style={styles.errorText}>60字以内に設定してください</Text>
+      )}
       <Controller
         control={control}
         name="days"
+        rules={{
+          required: true,
+          minLength: 1,
+        }}
         render={({ field: { onChange } }) => <WeeklyScheduleInput onChange={onChange} />}
       />
+      {errors.days && <Text style={styles.errorText}>曜日を設定してください</Text>}
       <Controller
         control={control}
         name="workoutList"
+        rules={{
+          required: true,
+        }}
         render={({ field: { onChange } }) => <WorkoutSelect onChange={onChange} />}
       />
+      {errors.workoutList && (
+        <Text style={styles.errorText}>ワークアウト種目を選択してください</Text>
+      )}
       <Controller
         control={control}
         name="category"

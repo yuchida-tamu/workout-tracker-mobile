@@ -94,4 +94,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  errorText: {
+    color: COLOR.text.WARNING,
+    fontSize: SIZES.font.SMALL,
+    textAlign: 'left',
+    marginBottom: SPACING.SMALL,
+    alignSelf: 'flex-start',
+    marginHorizontal: SPACING.LARGE,
+  },
 });

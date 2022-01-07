@@ -83,7 +83,7 @@ export const WorkoutSelect: React.FC<Props> = ({ onChange }) => {
   );
 };
 
-const LIST_HEIGHT = 220;
+const LIST_HEIGHT = 200;
 const NUMBER_INDICATOR_SIZE = 20;
 
 const styles = StyleSheet.create({

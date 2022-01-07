@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-
 import { COLOR } from '../../../constants/colors';
 import { SIZES } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
@@ -19,6 +18,9 @@ export const WeeklyScheduleInput: React.FC<Props> = ({ onChange }) => {
     (index: number) => {
       const updated = daysState.map((d, i) => (index === i ? !d : d));
       setDayState(updated);
+      if (updated.filter((item) => item).length === 0) {
+        return onChange([]);
+      }
       onChange(updated);
     },
     [daysState, onChange],

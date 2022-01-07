@@ -13,6 +13,7 @@ export const COLOR = {
   text: {
     BLACK: BASE.BLACK,
     WHITE: BASE.WHITE,
+    WARNING: '#FF5656',
   },
   bg: {
     DARK_PRIMARY: '#683780',
