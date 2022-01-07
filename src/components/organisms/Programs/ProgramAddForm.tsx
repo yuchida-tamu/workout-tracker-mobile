@@ -67,8 +67,12 @@ export const ProgramAddForm: React.FC<Props> = ({ close }) => {
           <InputField label="プログラム名" onBlur={onBlur} onChangeText={onChange} value={value} />
         )}
       />
-      {errors.programName && <Text style={styles.errorText}>名前を入力してください</Text>}
-
+      {errors.programName && errors.programName.type === 'required' && (
+        <Text style={styles.errorText}>名前を入力してください</Text>
+      )}
+      {errors.programName && errors.programName.type === 'maxLength' && (
+        <Text style={styles.errorText}>60字以内に設定してください</Text>
+      )}
       <Controller
         control={control}
         name="days"
