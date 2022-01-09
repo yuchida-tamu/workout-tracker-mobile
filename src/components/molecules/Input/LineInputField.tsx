@@ -21,6 +21,7 @@ export const LineTextInput: React.FC<Props> = ({ onChangeText, onBlur, value, st
         onChangeText={onChangeText}
         onBlur={onBlur}
         value={value}
+        defaultValue=""
       />
     </View>
   );
