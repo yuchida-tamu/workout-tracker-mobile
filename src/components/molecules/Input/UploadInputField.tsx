@@ -59,7 +59,11 @@ export const UploadInputField: React.FC<Props> = ({ label, uri, setImage }) => {
     <View style={styles.inputField}>
       <Text style={styles.label}>{label}</Text>
       <View style={styles.container}>
-        <Image style={styles.image} source={{ uri: uri }} />
+        {uri && uri.length > 0 ? (
+          <Image style={styles.image} source={{ uri: uri }} />
+        ) : (
+          <View style={styles.image} />
+        )}
         <Row>
           <TouchableOpacity
             style={[styles.uploadButton, styles.library]}

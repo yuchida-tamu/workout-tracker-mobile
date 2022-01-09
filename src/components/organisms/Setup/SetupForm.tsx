@@ -6,7 +6,8 @@ import { GoalModel } from '../../../store/models/user/goal';
 import { FONT_SIZE, Title } from '../../atoms/TitleText';
 import { LineTextInput } from '../../molecules/Input/LineInputField';
 import { styles } from './styles';
-import { mockUser } from '../../../mock/user';
+import { UploadInputField } from '../../molecules/Input/UploadInputField';
+import { pageList, VisiblePage } from '../../../screens/SetupScreen';
 
 type SetupFormPanelProps = {
   index: number;
@@ -14,39 +15,34 @@ type SetupFormPanelProps = {
   onSubmit: (user: UserModelType) => void;
 };
 
-const NUMBER_OF_PANEL = 2;
-
 type SetupFormType = {
   username: string;
   goal: string;
+  profile: string;
 };
 
-enum VisiblePage {
-  NAME = 'NAME',
-  GOAL = 'GOAL',
-}
-
 export const SetupForm: React.FC<SetupFormPanelProps> = ({ index = 0, onPress, onSubmit }) => {
-  const [visiblePage, setVisiblePage] = useState<VisiblePage>(VisiblePage.NAME);
+  const [canGoToNext, setCanGoToNext] = useState(false);
   const { control, handleSubmit } = useForm({
     defaultValues: {
       username: '',
       goal: '',
+      profile: '',
     },
   });
 
   const next = () => {
+    if (!canGoToNext) return;
     Keyboard.dismiss();
-    setVisiblePage(VisiblePage.GOAL);
     onPress();
+    setCanGoToNext(true);
   };
 
   const submitHandler = (data: SetupFormType) => {
     const user = UserModel.create({
       username: data.username,
       goal: GoalModel.create({ goal: data.goal }),
-      //Delete only for development
-      programs: mockUser.programs,
+      iconUrl: data.profile,
     });
     onSubmit(user);
   };
@@ -60,7 +56,14 @@ export const SetupForm: React.FC<SetupFormPanelProps> = ({ index = 0, onPress, o
           control={control}
           rules={{ required: true, minLength: 35 }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <LineTextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <LineTextInput
+              onBlur={onBlur}
+              onChangeText={(text) => {
+                if (text.length > 0) setCanGoToNext(true);
+                onChange();
+              }}
+              value={value}
+            />
           )}
           defaultValue=""
         />
@@ -87,13 +90,32 @@ export const SetupForm: React.FC<SetupFormPanelProps> = ({ index = 0, onPress, o
     [control],
   );
 
+  const uploadProfileImage = useMemo(
+    () => (
+      <>
+        <Title text="プロフィール画像（任意）" size={FONT_SIZE.small} />
+        <Controller
+          name="profile"
+          control={control}
+          rules={{ required: false }}
+          render={({ field: { onChange, value } }) => (
+            <UploadInputField uri={value} setImage={onChange} label={''} />
+          )}
+          defaultValue=""
+        />
+      </>
+    ),
+    [control],
+  );
+
   return (
     <View style={styles.container}>
-      <View>
-        {visiblePage === VisiblePage.NAME && usernameInput}
-        {visiblePage === VisiblePage.GOAL && goalInput}
+      <View style={styles.inputContainer}>
+        {pageList[index] === VisiblePage.NAME && usernameInput}
+        {pageList[index] === VisiblePage.GOAL && goalInput}
+        {pageList[index] === VisiblePage.PROFILE && uploadProfileImage}
       </View>
-      {index < NUMBER_OF_PANEL - 1 ? (
+      {index < pageList.length - 1 ? (
         <TouchableOpacity style={styles.nextButtonContainer} onPress={next}>
           <Text style={styles.nextButtonText}>次へ</Text>
         </TouchableOpacity>
