@@ -8,14 +8,20 @@ import { setupOnLaunchThunk } from '../store/actions/app/thunks/setupOnLaunchThu
 
 import { UserModelType } from '../store/models/user/user';
 
-export const NUMBER_PANEL = 2;
+export enum VisiblePage {
+  NAME = 'NAME',
+  GOAL = 'GOAL',
+  PROFILE = 'PROFILE',
+}
+
+export const pageList = [VisiblePage.NAME, VisiblePage.GOAL, VisiblePage.PROFILE];
 
 export const SetupScreen = () => {
   const [index, setIndex] = useState(0);
   const [isFormOpen, setIsFormOpem] = useState(false);
   const dispatch = useDispatch();
   const onPressHandler = () => {
-    if (index + 1 < NUMBER_PANEL) {
+    if (index + 1 < pageList.length) {
       setIndex(index + 1);
     }
   };

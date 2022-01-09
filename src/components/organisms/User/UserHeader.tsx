@@ -21,7 +21,11 @@ export const UserHeader: React.FC<Props> = ({ navigate }) => {
         <EditIcon />
       </TouchableOpacity>
       <View style={styles.iconContainer}>
-        <Image style={styles.iconImage} source={{ uri: user.iconUrl }} />
+        {user.iconUrl && user.iconUrl.length > 0 ? (
+          <Image style={styles.iconImage} source={{ uri: user.iconUrl }} />
+        ) : (
+          <View style={styles.iconImage} />
+        )}
       </View>
       <View style={styles.usernameConatiner}>
         <Text style={styles.usernameText}>{user.username}</Text>
