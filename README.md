@@ -3,11 +3,12 @@
 ## Setup
 
 ### プロジェクトをローカルにクローンする
-
 `git clone https://github.com/yuchida-tamu/workout-tracker-mobile.git`
 
-### モジュールをインストールする（yarn がない場合 `npm install --global yarn`）
+###NodeJSをインストールする
+`https://nodejs.org/en/`
 
+### モジュールをインストールする（yarn がない場合 `npm install --global yarn`）
 `yarn install`
 
 ### Husky
