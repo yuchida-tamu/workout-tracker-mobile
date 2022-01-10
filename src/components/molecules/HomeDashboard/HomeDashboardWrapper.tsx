@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { styles } from './styles';
 type Props = {
-  children?: ReactElement;
+  children?: JSX.Element | JSX.Element[];
 };
 
 export const HomeDashboardItemWrapper: React.FC<Props> = ({ children }) => {

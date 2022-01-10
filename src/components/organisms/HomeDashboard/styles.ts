@@ -37,11 +37,10 @@ export const styles = StyleSheet.create({
     marginVertical: SPACING.SMALL,
   },
   dashboardItem: {
-    height: '100%',
     justifyContent: 'center',
     borderRadius: SIZES.BORDER_RADIUS,
     paddingHorizontal: SPACING.MEDIUM,
-    marginHorizontal: SPACING.SMALL,
+    paddingVertical: SPACING.XSMALL,
   },
   dashboardItemText: {
     color: COLOR.text.BLACK,
@@ -51,12 +50,15 @@ export const styles = StyleSheet.create({
     fontSize: SIZES.font.SMALL,
   },
   dashboardItemContentText: {
-    marginVertical: SPACING.MEDIUM,
+    marginVertical: SPACING.XSMALL,
     fontSize: SIZES.font.LARGE,
     fontWeight: 'bold',
   },
   dashboardItemGraphConatainer: {
     width: ITEM_HEIGHT,
     height: ITEM_HEIGHT,
+  },
+  categoryRatioGraph: {
+    justifyContent: 'flex-start',
   },
 });
