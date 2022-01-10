@@ -58,4 +58,7 @@ export const styles = StyleSheet.create({
     width: ITEM_HEIGHT,
     height: ITEM_HEIGHT,
   },
+  categoryRatioGraph: {
+    justifyContent: 'flex-start',
+  },
 });

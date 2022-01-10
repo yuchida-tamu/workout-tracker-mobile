@@ -30,4 +30,16 @@ export const COLOR = {
   button: {
     WARNING: '#FF5656',
   },
+  graph: {
+    category: {
+      ARM: '#FF5733',
+      BACK: '#EBA729',
+      SHOULDERS: '#8BBA27',
+      LEGS: '#37A548',
+      CHEST: '#30BD9C',
+      ABS: '#3E98CF',
+      FULL_BODY: '#A651DE',
+      OTHER: '#DD58A2',
+    },
+  },
 };

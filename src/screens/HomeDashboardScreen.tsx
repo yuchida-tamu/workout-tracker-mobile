@@ -4,6 +4,8 @@ import { ScrollView, View } from 'react-native';
 import { HomeDashboardHeader } from '../components/organisms/HomeDashboard/HomeDashboardHeader';
 import { HomeDashboardNotification } from '../components/organisms/HomeDashboard/HomeDashboardNotification';
 import { HomeDashboardProgramInfoItem } from '../components/organisms/HomeDashboard/HomeDashboardProgramInfoItem';
+import { SIZES, windowHeight } from '../constants/sizes';
+import { SPACING } from '../constants/spacing';
 import { RootStackParamList } from '../navigation/RootStack';
 import { commonStyle } from '../styles/styles';
 
@@ -15,7 +17,12 @@ export const HomeDashboardScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={commonStyle.container}>
       <HomeDashboardHeader />
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          height: windowHeight - SIZES.card.small,
+          marginBottom: SPACING.LARGE,
+        }}>
         <HomeDashboardNotification />
         <HomeDashboardProgramInfoItem navigate={navigateToPrograms} />
       </ScrollView>

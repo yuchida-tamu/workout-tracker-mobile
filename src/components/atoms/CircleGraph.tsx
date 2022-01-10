@@ -64,7 +64,5 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
 
   const d = ['M', start.x, start.y, 'A', radius, radius, 0, arcSweep, 0, end.x, end.y].join(' ');
 
-  console.log(d);
-
   return d;
 }
