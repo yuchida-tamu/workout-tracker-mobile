@@ -18,6 +18,7 @@ export const LinearBarGraph: React.FC<Props> = ({
   style,
   horizontal = false,
 }) => {
+  console.log(width);
   const x1 = horizontal ? 0 : width / 2;
   const x2 = horizontal ? width : width / 2;
   const y1 = horizontal ? height / 2 : height;

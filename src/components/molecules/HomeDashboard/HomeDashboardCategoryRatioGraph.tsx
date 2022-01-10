@@ -13,23 +13,26 @@ type Props = {
 const HEIGHT = SIZES.graph.large;
 
 export const HomeDashboardCategoryRatioGraph: React.FC<Props> = ({ data, style }) => {
-  const renderGraph = data.map((d, index) => {
-    const graphHeight = windowWidth * 0.8 * d.ratio;
+  const renderGraph = data
+    .filter((d) => d.ratio >= 0.001)
+    .map((d, index) => {
+      const graphHeight = windowWidth * 0.8 * d.ratio;
 
-    return (
-      <View key={`${d.category}_${d.ratio}_${index}`}>
-        <LinearBarGraph
-          horizontal={true}
-          height={SIZES.font.REGULAR}
-          width={graphHeight}
-          color={d.color}
-          strokeWidth={SIZES.font.REGULAR}
-          style={{ justifyContent: 'flex-end' }}
-        />
-        {d.ratio >= 0.01 && <Text style={styles.categoryRatioLabel}>{d.category}</Text>}
-      </View>
-    );
-  });
+      console.log(graphHeight);
+      return (
+        <View key={`${d.category}_${d.ratio}_${index}`}>
+          <LinearBarGraph
+            horizontal={true}
+            height={SIZES.font.REGULAR}
+            width={graphHeight}
+            color={d.color}
+            strokeWidth={SIZES.font.REGULAR}
+            style={{ justifyContent: 'flex-end' }}
+          />
+          {d.ratio >= 0.01 && <Text style={styles.categoryRatioLabel}>{d.category}</Text>}
+        </View>
+      );
+    });
 
   return (
     <>
