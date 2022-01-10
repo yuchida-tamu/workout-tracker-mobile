@@ -36,7 +36,9 @@ export const HomeDashboardProgramInfoItem: React.FC<Props> = ({ navigate }) => {
             </Text>
           </LinearGradientView>
         </TouchableOpacity>
-        <HomeDashboardCategoryRatioGraph data={graphData} style={styles.categoryRatioGraph} />
+        {numberOfPrograms > 0 && (
+          <HomeDashboardCategoryRatioGraph data={graphData} style={styles.categoryRatioGraph} />
+        )}
       </View>
     </HomeDashboardItemWrapper>
   );
