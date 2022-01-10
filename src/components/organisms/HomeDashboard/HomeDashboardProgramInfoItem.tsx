@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { COLOR } from '../../../constants/colors';
 import { numberOfProgramsSelector } from '../../../store/selectors/user/userSelector';
@@ -16,24 +16,22 @@ export const HomeDashboardProgramInfoItem: React.FC<Props> = ({ navigate }) => {
 
   return (
     <HomeDashboardItemWrapper>
-      <>
+      <View style={{ flex: 1 }}>
         <TouchableOpacity onPress={navigate}>
           <LinearGradientView
             style={styles.dashboardItem}
             color1={COLOR.bg.gradient.PURPLE}
             color2={COLOR.bg.gradient.LIGHT_BLUE}
             isBoxShadow={true}>
-            <>
-              <Text style={[styles.dashboardItemText, styles.dashboardItemHeadingText]}>
-                プログラムの数
-              </Text>
-              <Text style={[styles.dashboardItemText, styles.dashboardItemContentText]}>
-                {numberOfPrograms}
-              </Text>
-            </>
+            <Text style={[styles.dashboardItemText, styles.dashboardItemHeadingText]}>
+              プログラムの数
+            </Text>
+            <Text style={[styles.dashboardItemText, styles.dashboardItemContentText]}>
+              {numberOfPrograms}
+            </Text>
           </LinearGradientView>
         </TouchableOpacity>
-      </>
+      </View>
     </HomeDashboardItemWrapper>
   );
 };
