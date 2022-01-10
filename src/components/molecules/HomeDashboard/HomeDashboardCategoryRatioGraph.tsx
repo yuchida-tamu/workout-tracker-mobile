@@ -1,7 +1,6 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { StyleProp, View, ViewStyle, Text } from 'react-native';
 import { SIZES, windowWidth } from '../../../constants/sizes';
-import { SPACING } from '../../../constants/spacing';
 import { Category } from '../../../enums/categories';
 import { LinearBarGraph } from '../../atoms/LinearBarGraph';
 import { styles } from './styles';
