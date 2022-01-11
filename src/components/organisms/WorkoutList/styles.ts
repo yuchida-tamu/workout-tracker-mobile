@@ -15,9 +15,16 @@ export const styles = StyleSheet.create({
       height: 5,
     },
   },
+  categoryIcon: {
+    position: 'absolute',
+    marginTop: 40,
+    marginLeft: 280,
+  },
+
   iconAndTextInput: {
     flexDirection: 'row',
     top: '10%',
+    marginTop: -20,
   },
   icon: {
     width: 50,

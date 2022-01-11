@@ -5,6 +5,7 @@ import { SearchButton } from '../../atoms/SearchButton';
 import { styles } from './styles';
 import { COLOR } from '../../../constants/colors';
 import { SIZES } from '../../../constants/sizes';
+import { CategoryIcon } from '../../atoms/icons/CategoryIcon';
 
 export const WorkoutListHeader = () => {
   return (
@@ -16,6 +17,9 @@ export const WorkoutListHeader = () => {
         <View style={styles.textInput}>
           <SearchBox />
         </View>
+      </View>
+      <View style={styles.categoryIcon}>
+        <CategoryIcon color={COLOR.PRIMARY} size={SIZES.icon.large * 1.7} />
       </View>
     </View>
   );

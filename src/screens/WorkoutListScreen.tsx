@@ -10,7 +10,7 @@ export const WorkoutListScreen = () => {
       <View style={{ flex: 0.3 }}>
         <WorkoutListHeader />
       </View>
-      <View style={{ flex: 2 }}>
+      <View style={{ flex: 2, marginTop: 40 }}>
         <WorkoutList />
       </View>
     </View>
