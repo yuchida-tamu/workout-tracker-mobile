@@ -12,11 +12,11 @@ export type WorkoutModelType = {
   isBodyWeight: boolean;
 };
 
-const create = (args: Partial<WorkoutModelType>) => {
+const create = (args: Partial<WorkoutModelType> = {}) => {
   return {
     id: `workOut_${Math.random()}`,
     name: '',
-    dificulty: 0,
+    difficulty: 0,
     description: '',
     category: Category.Default,
     setsRecommended: 0,

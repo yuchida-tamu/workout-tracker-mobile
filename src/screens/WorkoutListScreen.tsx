@@ -2,17 +2,12 @@ import React from 'react';
 import { View } from 'react-native';
 import { WorkoutListHeader } from '../components/organisms/WorkoutList/WorkoutListHeader';
 import { WorkoutList } from '../components/organisms/WorkoutList/WorkoutList';
-import { COLOR } from '../constants/colors';
+import { commonStyle } from '../styles/styles';
 
 export const WorkoutListScreen = () => {
   return (
-    <View style={{ flex: 1 }}>
-      <View style={{ flex: 0.3 }}>
-        <WorkoutListHeader />
-      </View>
-      <View style={{ flex: 2, marginTop: 40 }}>
-        <WorkoutList />
-      </View>
+    <View style={commonStyle.container}>
+      <WorkoutList />
     </View>
   );
 };

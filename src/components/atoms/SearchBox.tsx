@@ -1,10 +1,16 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
+import { TextInput, StyleSheet } from 'react-native';
+import { SIZES } from '../../constants/sizes';
+import { SPACING } from '../../constants/spacing';
 
 export const SearchBox = () => {
-  return (
-    <View>
-      <TextInput />
-    </View>
-  );
+  return <TextInput style={styles.textInput} />;
 };
+
+const styles = StyleSheet.create({
+  textInput: {
+    fontSize: SIZES.font.SMALL,
+    paddingHorizontal: SPACING.SMALL,
+    paddingVertical: SPACING.XSMALL,
+  },
+});

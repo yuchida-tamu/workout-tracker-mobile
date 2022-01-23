@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { SIZES } from '../../../constants/sizes';
+import { SPACING } from '../../../constants/spacing';
+import { COLOR } from '../../../constants/colors';
 
 export const styles = StyleSheet.create({
   headerFix: {
-    position: 'absolute',
-    top: 0,
-    height: '100%',
-    width: '100%',
+    height: 80,
+    width: '100%', //TODO: use constants
     backgroundColor: '#BB72DE',
     shadowColor: 'black',
     shadowRadius: 1,
@@ -19,30 +20,9 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     marginTop: 40,
     marginLeft: 280,
+    zIndex: 10,
   },
 
-  iconAndTextInput: {
-    flexDirection: 'row',
-    top: '10%',
-    marginTop: -20,
-  },
-  icon: {
-    width: 50,
-    marginLeft: 10,
-    color: '#FFFFFF',
-  },
-  textInput: {
-    height: 30,
-    width: '80%',
-    fontSize: 30,
-    borderColor: 'black',
-    borderWidth: 1,
-    backgroundColor: '#F0F0F0',
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
   workoutCard: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -88,7 +68,7 @@ export const styles = StyleSheet.create({
     width: '20%',
     borderTopRightRadius: 16,
     borderBottomRightRadius: 16,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLOR.WHITE,
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },

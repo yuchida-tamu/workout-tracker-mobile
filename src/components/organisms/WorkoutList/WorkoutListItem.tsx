@@ -1,9 +1,10 @@
 import React, { FC, useState } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
-import { Heart } from '../../atoms/Heart';
-import { Heart2 } from '../../atoms/Heart2';
-import { FilledStar } from '../../atoms/FilledStar';
+import { Heart } from '../../atoms/icons/Heart';
+import { FilledStar } from '../../atoms/icons/FilledStar';
+import { SIZES } from '../../../constants/sizes';
+import { COLOR } from '../../../constants/colors';
 
 type Props = {
   id: string;
@@ -21,7 +22,7 @@ export const WorkoutListItem: FC<Props> = ({ id, photo, name, level }) => {
   const makeLevel = () => {
     const levels = [];
     for (let i = 0; i < level; i++) {
-      levels.push(<FilledStar />);
+      levels.push(<FilledStar size={SIZES.icon.small} color={COLOR.SECONDARY} />);
     }
     return levels;
   };
@@ -41,7 +42,11 @@ export const WorkoutListItem: FC<Props> = ({ id, photo, name, level }) => {
       </View>
       <View style={styles.workoutHeartButtonBack}>
         <TouchableOpacity onPress={likeHandler} style={styles.heartButton}>
-          {isLiked ? <Heart /> : <Heart2 />}
+          {isLiked ? (
+            <Heart size={SIZES.icon.small} color={COLOR.PRIMARY} />
+          ) : (
+            <Heart size={SIZES.icon.small} color={COLOR.GRAY} />
+          )}
         </TouchableOpacity>
       </View>
     </View>
