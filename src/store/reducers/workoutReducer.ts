@@ -8,9 +8,9 @@ export function workoutReducer(
   action: WorkoutActions,
 ) {
   switch (action.type) {
-    case ActionTypes.R_CREATE_NEW_WORKOUT:
-      return WorkoutModel.create(action.payload.workout);
-    default:
-      return data;
+  case ActionTypes.R_CREATE_NEW_WORKOUT:
+    return WorkoutModel.create(action.payload.workout);
+  default:
+    return data;
   }
 }
