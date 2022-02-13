@@ -4,22 +4,22 @@ import { SPACING } from '../../../constants/spacing';
 import { COLOR } from '../../../constants/colors';
 
 export const styles = StyleSheet.create({
-  headerFix: {
-    height: 80,
+  fixedHeader: {
+    height: SIZES.height.MLARGE,
     width: '100%', //TODO: use constants
-    backgroundColor: '#BB72DE',
-    shadowColor: 'black',
+    backgroundColor: COLOR.PRIMARY,
+    shadowColor: COLOR.BLACK,
     shadowRadius: 1,
     shadowOpacity: 0.2,
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: SIZES.height.XSMALL,
     },
   },
   categoryIcon: {
     position: 'absolute',
-    marginTop: 40,
-    marginLeft: 280,
+    marginTop: SPACING.LARGE,
+    marginLeft: SPACING.XXLARGE,
     zIndex: 10,
   },
 
@@ -27,26 +27,26 @@ export const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 128,
-    width: 356,
-    shadowColor: 'black',
+    height: SIZES.height.XLARGE,
+    width: SIZES.width.XXLARGE,
+    shadowColor: COLOR.BLACK,
     shadowRadius: 2,
     shadowOpacity: 0.3,
     shadowOffset: {
-      width: 5,
-      height: 5,
+      width: SIZES.width.XSMALL,
+      height: SIZES.height.XSMALL,
     },
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    margin: 10,
+    backgroundColor: COLOR.WHITE,
+    borderRadius: SIZES.BORDER_RADIUS,
+    margin: SPACING.XSMALL,
     flexDirection: 'row',
   },
   workoutCover: {
     width: '30%',
     height: '100%',
-    borderTopLeftRadius: 16,
-    borderBottomLeftRadius: 16,
-    backgroundColor: 'orange',
+    borderTopLeftRadius: SIZES.BORDER_RADIUS,
+    borderBottomLeftRadius: SIZES.BORDER_RADIUS,
+    backgroundColor: COLOR.bg.gradient.ORANGE,
     justifyContent: 'center',
   },
   workoutContentContainer: {
@@ -60,33 +60,22 @@ export const styles = StyleSheet.create({
   workoutContent: {
     width: '100%',
     height: '100%',
-    padding: 5,
+    padding: SPACING.XSMALL,
     flex: 1,
   },
-  workoutHeartButtonBack: {
-    height: '100%',
+  workoutHeartButtonPosition: {
     width: '20%',
-    borderTopRightRadius: 16,
-    borderBottomRightRadius: 16,
-    backgroundColor: COLOR.WHITE,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
   },
-  heartButton: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  workoutNameAndLevel: {
-    borderBottomWidth: 3,
-    borderBottomColor: '#FFFFFF',
-    marginBottom: 20,
+  workoutNameAndDifficulty: {
+    borderBottomWidth: SIZES.width.XXSMALE,
+    borderBottomColor: COLOR.WHITE,
+    marginBottom: SPACING.MEDIUM,
   },
   workoutName: {
-    fontSize: 30,
-    color: '#BB72DE',
+    fontSize: SIZES.font.LARGE,
+    color: COLOR.PRIMARY,
   },
-  workoutLevel: {
+  workoutDifficulty: {
     flexDirection: 'row',
   },
 });

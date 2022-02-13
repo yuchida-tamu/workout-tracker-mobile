@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { COLOR } from '../../../constants/colors';
 import { SIZES } from '../../../constants/sizes';
+import { SPACING } from '../../../constants/spacing';
 import { SearchBox } from '../../atoms/SearchBox';
 import { SearchButton } from '../../atoms/SearchButton';
 
@@ -22,14 +23,14 @@ const searchFieldStyles = StyleSheet.create({
   iconAndTextInput: {
     flexDirection: 'row',
     top: '10%',
-    marginTop: -20,
+    marginTop: -SPACING.MEDIUM,
   },
   icon: {
-    width: 50,
-    marginLeft: 10,
+    width: SIZES.height.LARGE,
+    marginLeft: SPACING.XSMALL,
   },
   textInput: {
-    height: 30,
+    height: SIZES.height.MEDIUM,
     width: '80%',
     fontSize: SIZES.font.REGULAR,
     backgroundColor: '#F0F0F0',

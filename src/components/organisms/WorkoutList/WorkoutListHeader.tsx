@@ -8,7 +8,7 @@ import { SearchField } from '../../molecules/Input/SearchField';
 
 export const WorkoutListHeader = () => {
   return (
-    <View style={styles.headerFix}>
+    <View style={styles.fixedHeader}>
       <SearchField />
       <View style={styles.categoryIcon}>
         <CategoryIcon color={COLOR.PRIMARY} size={SIZES.icon.large * 1.7} />

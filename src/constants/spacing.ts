@@ -4,4 +4,5 @@ export const SPACING = {
   MEDIUM: 20,
   LARGE: 48,
   XLARGE: 144,
+  XXLARGE: 288,
 };

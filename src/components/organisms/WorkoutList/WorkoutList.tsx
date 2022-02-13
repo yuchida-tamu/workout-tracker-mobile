@@ -17,7 +17,7 @@ export const WorkoutList: React.FC = () => {
       id={item.id}
       photo={item.imageUrl}
       name={item.name}
-      level={item.difficulty}
+      difficulty={item.difficulty}
     />
   );
 
