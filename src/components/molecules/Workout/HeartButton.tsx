@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Heart } from '../../atoms/icons/Heart';
 import { SIZES } from '../../../constants/sizes';
@@ -7,9 +7,9 @@ import { styles } from './styles';
 
 export const HeartButton = () => {
   const [isLiked, setIsLiked] = useState(false);
-  const likeHandler = () => {
+  const likeHandler = useCallback(() => {
     setIsLiked((prev) => !prev);
-  };
+  }, []);
 
   return (
     <TouchableOpacity onPress={likeHandler} style={styles.heartButton}>

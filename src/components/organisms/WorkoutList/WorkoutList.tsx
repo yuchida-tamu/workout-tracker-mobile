@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ScrollView, View, FlatList, FlatListProps, Dimensions } from 'react-native';
 import { WorkoutListItem } from './WorkoutListItem';
 import { useSelector } from 'react-redux';
@@ -11,14 +11,18 @@ const windowHeight = Dimensions.get('window').height;
 export const WorkoutList: React.FC = () => {
   const workoutList = useSelector(workoutListSelector);
 
-  const renderItem = ({ item }: { item: WorkoutModelType; index: number }) => (
-    <WorkoutListItem
-      key={item.id}
-      id={item.id}
-      photo={item.imageUrl}
-      name={item.name}
-      difficulty={item.difficulty}
-    />
+  // const renderItem = ({ item }: { item: WorkoutModelType; index: number }) => (
+  const renderItem = useCallback(
+    ({ item }: { item: WorkoutModelType; index: number }) => (
+      <WorkoutListItem
+        key={item.id}
+        id={item.id}
+        photo={item.imageUrl}
+        name={item.name}
+        difficulty={item.difficulty}
+      />
+    ),
+    [],
   );
 
   return (
