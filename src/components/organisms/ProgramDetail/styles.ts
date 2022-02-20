@@ -112,18 +112,25 @@ export const styles = StyleSheet.create({
     paddingVertical: SPACING.SMALL,
     paddingHorizontal: SPACING.XSMALL,
     marginTop: SPACING.SMALL,
+    marginHorizontal: SPACING.XSMALL,
   },
   progressContentRow: {
     justifyContent: 'space-around',
     flexDirection: 'row',
+    marginTop: SPACING.XSMALL,
   },
 
-  progressItemDataContainer: {},
+  progressItemDataContainer: {
+    width: SIZES.progressData.small,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   progressItemDataLabel: {
     backgroundColor: COLOR.bg.DARK_SECONDARY,
     width: 80,
     height: 24,
     borderRadius: 12,
+    justifyContent: 'center',
   },
   progressItemDataLabelText: {
     color: COLOR.WHITE,
@@ -132,7 +139,7 @@ export const styles = StyleSheet.create({
   progressItemDataText: {
     color: COLOR.WHITE,
     fontWeight: 'bold',
-    fontSize: SIZES.font.LARGE,
+    fontSize: SIZES.font.REGULAR,
   },
   progressDisplayCloseButtonContainer: {
     alignItems: 'center',
@@ -153,5 +160,13 @@ export const styles = StyleSheet.create({
     fontSize: SIZES.font.REGULAR,
     color: COLOR.WHITE,
     textAlign: 'center',
+  },
+  progressDate: {
+    color: COLOR.BLACK,
+    marginBottom: SPACING.XSMALL,
+    marginLeft: SPACING.SMALL,
+  },
+  unitText: {
+    color: COLOR.BLACK,
   },
 });
