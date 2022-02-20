@@ -83,31 +83,9 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
   const renderProgressItem = useCallback<
     NonNullable<FlatListProps<ProgressDisplayDataType>['renderItem']>
   >(({ item }) => {
-    return (
-      <View style={styles.progressItemContainer}>
-        <Text>{item.date}</Text>
-        <View style={styles.progressContentRow}>
-          <View style={styles.progressItemDataContainer}>
-            <View style={styles.progressItemDataLabel}>
-              <Text style={styles.progressItemDataLabelText}>load/rep</Text>
-            </View>
-            <Text style={styles.progressItemDataText}>{item.loadPerRep.toFixed(2)}</Text>
-          </View>
-          <View style={styles.progressItemDataContainer}>
-            <View style={styles.progressItemDataLabel}>
-              <Text style={styles.progressItemDataLabelText}>max</Text>
-            </View>
-            <Text style={styles.progressItemDataText}>{item.max.toFixed(2)}</Text>
-          </View>
-          <View style={styles.progressItemDataContainer}>
-            <View style={styles.progressItemDataLabel}>
-              <Text style={styles.progressItemDataLabelText}>total</Text>
-            </View>
-            <Text style={styles.progressItemDataText}>{item.total.toFixed(2)}</Text>
-          </View>
-        </View>
-      </View>
-    );
+    const dateString = item.date.split('-');
+    const date = `${dateString[0]} / ${dateString[1]} / ${dateString[2]}`;
+    return <RecordItem item={item} date={date} />;
   }, []);
 
   return (
@@ -131,6 +109,51 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
           <FlatList data={progressList} renderItem={renderProgressItem} />
         </View>
       )}
+    </View>
+  );
+};
+
+const RecordItem = ({ item, date }: { item: ProgressDisplayDataType; date: string }) => {
+  return (
+    <View style={styles.progressItemContainer}>
+      <Text style={styles.progressDate}>{date}</Text>
+      <Labels />
+      <View style={styles.progressContentRow}>
+        <View style={styles.progressItemDataContainer}>
+          <Text style={styles.progressItemDataText}>{item.loadPerRep.toFixed(2)}</Text>
+          <Text style={styles.unitText}>回</Text>
+        </View>
+        <View style={styles.progressItemDataContainer}>
+          <Text style={styles.progressItemDataText}>{item.max.toFixed(2)}</Text>
+          <Text style={styles.unitText}>kg</Text>
+        </View>
+        <View style={styles.progressItemDataContainer}>
+          <Text style={styles.progressItemDataText}>{item.total.toFixed(2)}</Text>
+          <Text style={styles.unitText}>kg</Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const Labels = () => {
+  return (
+    <View style={styles.progressContentRow}>
+      <View style={styles.progressItemDataContainer}>
+        <View style={styles.progressItemDataLabel}>
+          <Text style={styles.progressItemDataLabelText}>load/rep</Text>
+        </View>
+      </View>
+      <View style={styles.progressItemDataContainer}>
+        <View style={styles.progressItemDataLabel}>
+          <Text style={styles.progressItemDataLabelText}>max</Text>
+        </View>
+      </View>
+      <View style={styles.progressItemDataContainer}>
+        <View style={styles.progressItemDataLabel}>
+          <Text style={styles.progressItemDataLabelText}>total</Text>
+        </View>
+      </View>
     </View>
   );
 };

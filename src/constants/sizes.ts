@@ -33,6 +33,11 @@ export const SIZES = {
     large: 200,
     xLarge: 288,
   },
+  progressData: {
+    small: 108,
+    medium: 144,
+    large: 200,
+  },
 };
 
 export enum BUTTON_SIZE {
