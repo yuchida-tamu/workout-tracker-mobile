@@ -14,6 +14,7 @@ import { DashbaordIcon } from '../components/atoms/icons/DashboardIcon';
 import { UserIcon } from '../components/atoms/icons/UserIcon';
 import { ProgramDetailScreen } from '../screens/ProgramDetailScreen';
 import { ProgramCompleteScreen } from '../screens/ProgramCompleteScreen';
+import { ProgramIcon } from '../components/atoms/icons/ProgramIcon';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -106,7 +107,13 @@ export const BottomTabNavigator = () => {
           tabBarIcon: ({ color, size }) => <DashbaordIcon color={color} size={size} />,
         }}
       />
-      <Tab.Screen name="Programs" component={ProgramsStackScreen} />
+      <Tab.Screen
+        name="Programs"
+        component={ProgramsStackScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <ProgramIcon color={color} size={size} />,
+        }}
+      />
       <Tab.Screen
         name="User"
         component={UserStackScreen}
