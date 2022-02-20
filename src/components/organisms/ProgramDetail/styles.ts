@@ -138,10 +138,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   progressDisplayCloseButton: {
-    width: SIZES.icon.large,
-    height: SIZES.icon.large,
-    borderRadius: SIZES.BORDER_RADIUS,
-    backgroundColor: COLOR.SECONDARY,
+    width: SIZES.icon.medium,
+    height: SIZES.icon.medium,
+    borderRadius: SIZES.icon.medium / 2,
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: COLOR.WHITE,
     justifyContent: 'center',
     alignItems: 'center',
     ...boxShadow,
@@ -150,5 +152,6 @@ export const styles = StyleSheet.create({
   progressDisplayCloseText: {
     fontSize: SIZES.font.REGULAR,
     color: COLOR.WHITE,
+    textAlign: 'center',
   },
 });
