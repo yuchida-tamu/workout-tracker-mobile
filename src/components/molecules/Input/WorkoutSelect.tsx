@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
   listContainer: { width: windowWidth },
   contentContainer: {
     paddingVertical: SPACING.XSMALL,
+    paddingHorizontal: SPACING.MEDIUM,
   },
   itemCard: {
     height: SIZES.card.small,
@@ -141,11 +142,10 @@ const styles = StyleSheet.create({
     color: COLOR.WHITE,
   },
   selectedItemContainer: {
-    width: 200,
     backgroundColor: COLOR.SECONDARY,
     paddingHorizontal: SPACING.SMALL,
     paddingVertical: SPACING.XSMALL,
-    marginLeft: SPACING.LARGE,
+
     marginVertical: 2,
     borderRadius: SIZES.BORDER_RADIUS,
     ...boxShadow,
@@ -155,5 +155,6 @@ const styles = StyleSheet.create({
   },
   selectedWorkoutList: {
     marginVertical: SPACING.SMALL,
+    paddingHorizontal: SPACING.LARGE,
   },
 });

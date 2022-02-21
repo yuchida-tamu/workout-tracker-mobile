@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   tabList: {
     alignItems: 'center',
-    paddingHorizontal: SPACING.LARGE,
+    paddingHorizontal: SPACING.MEDIUM,
   },
   tabContainer: {
     borderWidth: 1,
