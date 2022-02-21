@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, FlatListProps } from 'react-native';
 import { COLOR } from '../../../constants/colors';
 import { SIZES, windowWidth } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
@@ -61,6 +61,14 @@ export const WorkoutSelect: React.FC<Props> = ({ onChange }) => {
     );
   };
 
+  const renderSelectedItem = useCallback(({ item }: { item: WorkoutModelType }) => {
+    return (
+      <View style={styles.selectedItemContainer}>
+        <Text style={styles.selectedItemText}>{item.name}</Text>
+      </View>
+    );
+  }, []);
+
   return (
     <View style={styles.formContainer}>
       <View style={styles.labelContainer}>
@@ -77,6 +85,11 @@ export const WorkoutSelect: React.FC<Props> = ({ onChange }) => {
           renderItem={renderItem}
           contentContainerStyle={styles.contentContainer}
           showsHorizontalScrollIndicator={false}
+        />
+        <FlatList
+          data={selectedList}
+          renderItem={renderSelectedItem}
+          contentContainerStyle={styles.selectedWorkoutList}
         />
       </View>
     </View>
@@ -97,7 +110,6 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   formContainer: {
-    height: LIST_HEIGHT,
     alignItems: 'center',
     width: windowWidth,
   },
@@ -127,5 +139,21 @@ const styles = StyleSheet.create({
   },
   numberIndicatorText: {
     color: COLOR.WHITE,
+  },
+  selectedItemContainer: {
+    width: 200,
+    backgroundColor: COLOR.SECONDARY,
+    paddingHorizontal: SPACING.SMALL,
+    paddingVertical: SPACING.XSMALL,
+    marginLeft: SPACING.LARGE,
+    marginVertical: 2,
+    borderRadius: SIZES.BORDER_RADIUS,
+    ...boxShadow,
+  },
+  selectedItemText: {
+    color: COLOR.WHITE,
+  },
+  selectedWorkoutList: {
+    marginVertical: SPACING.SMALL,
   },
 });
