@@ -57,7 +57,7 @@ export const WorkoutSelect: React.FC<Props> = ({ onChange }) => {
       <TouchableOpacity
         onPress={() => onPressHandler(item)}
         style={[styles.itemCard, isSelected && styles.selected]}>
-        <Text>{item.name}</Text>
+        <Text style={styles.itemCardText}>{item.name}</Text>
       </TouchableOpacity>
     );
   };
@@ -161,5 +161,8 @@ const styles = StyleSheet.create({
   selectedWorkoutList: {
     marginVertical: SPACING.SMALL,
     paddingHorizontal: SPACING.LARGE,
+  },
+  itemCardText: {
+    color: COLOR.GRAY,
   },
 });
