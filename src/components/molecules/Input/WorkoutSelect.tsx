@@ -58,7 +58,6 @@ export const WorkoutSelect: React.FC<Props> = ({ onChange }) => {
         onPress={() => onPressHandler(item)}
         style={[styles.itemCard, isSelected && styles.selected]}>
         <Text>{item.name}</Text>
-        <Text>{isSelected ? 'CHECKED' : 'NOT'}</Text>
       </TouchableOpacity>
     );
   };
