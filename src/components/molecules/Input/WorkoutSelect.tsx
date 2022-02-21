@@ -54,7 +54,9 @@ export const WorkoutSelect: React.FC<Props> = ({ onChange }) => {
     const isSelected = filtered.length > 0;
 
     return (
-      <TouchableOpacity onPress={() => onPressHandler(item)} style={styles.itemCard}>
+      <TouchableOpacity
+        onPress={() => onPressHandler(item)}
+        style={[styles.itemCard, isSelected && styles.selected]}>
         <Text>{item.name}</Text>
         <Text>{isSelected ? 'CHECKED' : 'NOT'}</Text>
       </TouchableOpacity>
@@ -140,6 +142,10 @@ const styles = StyleSheet.create({
   },
   numberIndicatorText: {
     color: COLOR.WHITE,
+  },
+  selected: {
+    borderWidth: 2,
+    borderColor: COLOR.SECONDARY,
   },
   selectedItemContainer: {
     backgroundColor: COLOR.SECONDARY,
