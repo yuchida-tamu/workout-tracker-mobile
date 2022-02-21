@@ -1,7 +1,8 @@
 import React from 'react';
 import { FlatList, FlatListProps, TouchableOpacity, View, StyleSheet, Text } from 'react-native';
 import { COLOR } from '../../../constants/colors';
-import { SIZES } from '../../../constants/sizes';
+import { SIZES, windowWidth } from '../../../constants/sizes';
+import { SPACING } from '../../../constants/spacing';
 import { Category } from '../../../enums/categories';
 
 const categories = [
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
   },
   tabList: {
     alignItems: 'center',
+    paddingHorizontal: SPACING.LARGE,
   },
   tabContainer: {
     borderWidth: 1,
