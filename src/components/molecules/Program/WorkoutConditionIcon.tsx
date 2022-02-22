@@ -13,18 +13,18 @@ type Props = {
 export const WorkoutConditionIcon: React.FC<Props> = ({ condition, size }) => {
   const icon = useMemo(() => {
     switch (condition) {
-      case 1:
-        return <BadIcon size={size} />;
-      case 2:
-        return <NotGoodIcon size={size} />;
-      case 3:
-        return <OkIcon size={size} />;
-      case 4:
-        return <GoodIcon size={size} />;
-      case 5:
-        return <GreatIcon size={size} />;
-      default:
-        return <OkIcon size={size} />;
+    case 1:
+      return <BadIcon size={size} />;
+    case 2:
+      return <NotGoodIcon size={size} />;
+    case 3:
+      return <OkIcon size={size} />;
+    case 4:
+      return <GoodIcon size={size} />;
+    case 5:
+      return <GreatIcon size={size} />;
+    default:
+      return <OkIcon size={size} />;
     }
   }, [condition, size]);
 
