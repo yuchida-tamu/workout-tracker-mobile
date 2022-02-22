@@ -5,6 +5,7 @@ export type RecordGroupType = {
   id: string;
   date: string;
   recordHolders: RecordHolderType[];
+  condition: number;
 };
 
 export const formatDate = (date: Date) => {
@@ -18,6 +19,7 @@ export const cerateRecordGroup = (args: Partial<RecordGroupType> = {}): RecordGr
     id: `rg_${Math.random()}`,
     date: dateString,
     recordHolders: new Array<RecordHolderType>(),
+    condition: 0,
     ...args,
   };
 };

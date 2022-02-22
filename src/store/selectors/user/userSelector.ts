@@ -9,6 +9,7 @@ export type ProgressDisplayDataType = {
   total: number;
   loadPerRep: number;
   max: number;
+  condition: number;
 };
 
 type CategoryCounterType = {
@@ -150,6 +151,7 @@ export const progressFilteredByWorkoutSelector =
         id: progress.id,
         date: progress.date,
         recordHolders: progress.recordHolders.filter((rh) => rh.workoutId === workoutId),
+        condition: progress.condition,
       };
     });
 
@@ -173,6 +175,7 @@ export const progressFilteredByWorkoutSelector =
         loadPerRep: total / totalReps,
         max,
         total,
+        condition: rg.condition,
       };
     });
 

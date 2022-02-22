@@ -1,5 +1,6 @@
 export enum ModalType {
   RECORD_PICKER = 'RECORD_PICKER',
+  CONDITION_PICKER = 'CONDITION_PICKER',
   NONE = 'CLOSE',
 }
 

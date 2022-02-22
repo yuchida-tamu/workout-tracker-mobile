@@ -13,6 +13,9 @@ import {
   progressFilteredByWorkoutSelector,
   ProgressDisplayDataType,
 } from '../../../store/selectors/user/userSelector';
+import { SPACING } from '../../../constants/spacing';
+import { COLOR } from '../../../constants/colors';
+import { WorkoutConditionIcon } from '../../molecules/Program/WorkoutConditionIcon';
 
 type Props = {
   workoutList: WorkoutModelType[];
@@ -116,7 +119,18 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
 const RecordItem = ({ item, date }: { item: ProgressDisplayDataType; date: string }) => {
   return (
     <View style={styles.progressItemContainer}>
-      <Text style={styles.progressDate}>{date}</Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Text style={styles.progressDate}>{date}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text
+            style={{
+              color: COLOR.LIGHT_GRAY,
+            }}>
+            体調：
+          </Text>
+          <WorkoutConditionIcon condition={item.condition} size={30} />
+        </View>
+      </View>
       <Labels />
       <View style={styles.progressContentRow}>
         <View style={styles.progressItemDataContainer}>
