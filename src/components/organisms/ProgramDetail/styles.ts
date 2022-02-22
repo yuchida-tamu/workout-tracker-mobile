@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     width: windowWidth,
   },
   bannerOverlay: {
@@ -102,7 +102,6 @@ export const styles = StyleSheet.create({
     letterSpacing: 4,
   },
   completeMessageContainer: {
-    flex: 1,
     justifyContent: 'center',
   },
   progressItemContainer: {
@@ -162,11 +161,55 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   progressDate: {
-    color: COLOR.BLACK,
+    color: COLOR.WHITE,
     marginBottom: SPACING.XSMALL,
     marginLeft: SPACING.SMALL,
   },
   unitText: {
     color: COLOR.BLACK,
+  },
+  pickerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    width: windowWidth * 0.8,
+    borderRadius: SIZES.BORDER_RADIUS,
+    height: 150,
+    marginVertical: SPACING.LARGE,
+  },
+  backdrop: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  checker: {
+    width: SIZES.checker.regular,
+    height: SIZES.checker.regular,
+    borderRadius: SIZES.checker.regular / 2,
+    backgroundColor: COLOR.LIGHT_GRAY,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  recordPickerButton: {
+    marginVertical: SPACING.MEDIUM,
+  },
+  message: {
+    lineHeight: SIZES.font.LARGE,
+    fontSize: SIZES.font.SMALL,
+    marginTop: SPACING.MEDIUM,
+    color: COLOR.WHITE,
+  },
+  checkerContainer: { flexDirection: 'column', alignItems: 'center' },
+  checkerText: { color: COLOR.BLACK },
+  checked: {
+    width: SIZES.checker.small,
+    height: SIZES.checker.small,
+    borderRadius: SIZES.checker.small / 2,
+    backgroundColor: COLOR.PRIMARY,
+  },
+  list: { flex: 1 },
+  listContent: {
+    width: windowWidth * 0.8,
+    justifyContent: 'space-around',
+    marginVertical: SPACING.MEDIUM,
   },
 });
