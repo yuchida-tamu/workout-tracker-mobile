@@ -15,6 +15,7 @@ import {
 } from '../../../store/selectors/user/userSelector';
 import { SPACING } from '../../../constants/spacing';
 import { COLOR } from '../../../constants/colors';
+import { WorkoutConditionIcon } from '../../molecules/Program/WorkoutConditionIcon';
 
 type Props = {
   workoutList: WorkoutModelType[];
@@ -120,9 +121,15 @@ const RecordItem = ({ item, date }: { item: ProgressDisplayDataType; date: strin
     <View style={styles.progressItemContainer}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <Text style={styles.progressDate}>{date}</Text>
-        <Text style={{ marginRight: SPACING.SMALL, color: COLOR.GRAY }}>
-          体調：{item.condition.toString()}
-        </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text
+            style={{
+              color: COLOR.LIGHT_GRAY,
+            }}>
+            体調：
+          </Text>
+          <WorkoutConditionIcon condition={item.condition} size={30} />
+        </View>
       </View>
       <Labels />
       <View style={styles.progressContentRow}>

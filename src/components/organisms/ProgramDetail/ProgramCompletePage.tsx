@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { ProgramContext } from '../../../context/program';
 import { updateProgramProgress } from '../../../store/actions/user/actions';
 import { RecordGroupModel } from '../../../store/models/workout/recordGroup';
+import { WorkoutConditionIcon } from '../../molecules/Program/WorkoutConditionIcon';
 
 type Props = {
   navigate: () => void;
@@ -32,18 +33,20 @@ export const ProgramCompletePage: React.FC<Props> = ({ navigate }) => {
   );
 
   const data = useMemo(() => new Array<number>(5), []);
+
   const renderItem = useCallback(
     ({ index }: { index: number }) => {
+      const isChecked = index + 1 === condition;
+
       return (
         <TouchableOpacity
           style={styles.checkerContainer}
           onPress={() => {
             onPressChecker(index);
           }}>
-          <View style={styles.checker}>
-            {condition === index + 1 && <View style={styles.checked} />}
+          <View style={[styles.checker, isChecked && styles.checked]}>
+            <WorkoutConditionIcon condition={index + 1} />
           </View>
-          <Text style={styles.checkerText}>{(index + 1).toString()}</Text>
         </TouchableOpacity>
       );
     },

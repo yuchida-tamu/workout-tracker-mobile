@@ -105,7 +105,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   progressItemContainer: {
-    backgroundColor: COLOR.SECONDARY,
+    backgroundColor: COLOR.bg.DARK_PRIMARY,
     borderRadius: SIZES.BORDER_RADIUS,
     ...boxShadow,
     paddingVertical: SPACING.SMALL,
@@ -125,7 +125,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   progressItemDataLabel: {
-    backgroundColor: COLOR.bg.DARK_SECONDARY,
+    borderWidth: 1,
+    borderColor: COLOR.bg.DARK_SECONDARY,
     width: 80,
     height: 24,
     borderRadius: 12,
@@ -166,7 +167,7 @@ export const styles = StyleSheet.create({
     marginLeft: SPACING.SMALL,
   },
   unitText: {
-    color: COLOR.BLACK,
+    color: COLOR.LIGHT_GRAY,
   },
   pickerContainer: {
     alignItems: 'center',
@@ -182,10 +183,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   checker: {
-    width: SIZES.checker.regular,
-    height: SIZES.checker.regular,
-    borderRadius: SIZES.checker.regular / 2,
-    backgroundColor: COLOR.LIGHT_GRAY,
+    width: 44,
+    height: 44,
+    borderRadius: 44 / 2,
+
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -201,10 +202,8 @@ export const styles = StyleSheet.create({
   checkerContainer: { flexDirection: 'column', alignItems: 'center' },
   checkerText: { color: COLOR.BLACK },
   checked: {
-    width: SIZES.checker.small,
-    height: SIZES.checker.small,
-    borderRadius: SIZES.checker.small / 2,
-    backgroundColor: COLOR.PRIMARY,
+    borderWidth: 2,
+    borderColor: COLOR.WHITE,
   },
   list: { flex: 1 },
   listContent: {
