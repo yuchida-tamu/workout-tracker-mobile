@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from 'react-native';
 import { COLOR } from '../../../constants/colors';
-import { SIZES } from '../../../constants/sizes';
+import { SIZES, windowWidth } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
 
 const width = Dimensions.get('screen').width;
@@ -20,12 +20,16 @@ export const styles = StyleSheet.create({
     letterSpacing: 1.5,
   },
   notificationContainer: {
-    width: '100%',
-    paddingHorizontal: SPACING.LARGE,
+    width: windowWidth * 0.8,
+    paddingHorizontal: SPACING.SMALL,
     paddingVertical: SPACING.MEDIUM,
     marginVertical: SPACING.MEDIUM,
     borderRadius: SIZES.BORDER_RADIUS,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
+  notificationExpanded: {},
   notificationText: {
     color: COLOR.WHITE,
     fontWeight: 'bold',
@@ -60,5 +64,22 @@ export const styles = StyleSheet.create({
   },
   categoryRatioGraph: {
     justifyContent: 'flex-start',
+  },
+  numOfProgramLabel: {
+    height: SIZES.icon.medium,
+    width: SIZES.icon.medium,
+    borderRadius: SIZES.icon.medium / 2,
+    backgroundColor: COLOR.WHITE,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: SPACING.XSMALL,
+  },
+  numOfProgramText: {
+    color: COLOR.SECONDARY,
+    fontWeight: 'bold',
+    fontSize: SIZES.font.SMALL,
+  },
+  proceedIconContainer: {
+    marginHorizontal: SPACING.SMALL,
   },
 });
