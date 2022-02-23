@@ -2,6 +2,7 @@ import { Dimensions, StyleSheet } from 'react-native';
 import { COLOR } from '../../../constants/colors';
 import { SIZES, windowWidth } from '../../../constants/sizes';
 import { SPACING } from '../../../constants/spacing';
+import { boxShadow } from '../../../styles/styles';
 
 const width = Dimensions.get('screen').width;
 export const ITEM_HEIGHT = 156;
@@ -82,4 +83,24 @@ export const styles = StyleSheet.create({
   proceedIconContainer: {
     marginHorizontal: SPACING.SMALL,
   },
+  programForTodayItemContainer: {
+    width: SIZES.card.small,
+    height: SIZES.card.xsmall,
+    borderRadius: 4,
+    ...boxShadow,
+    backgroundColor: COLOR.bg.gradient.ORANGE,
+    paddingTop: SPACING.XSMALL,
+    paddingHorizontal: SPACING.XSMALL,
+  },
+  programForTodayName: {
+    color: COLOR.WHITE,
+    fontSize: SIZES.font.REGULAR,
+    textAlign: 'center',
+  },
+  programForTodayDescription: {
+    color: COLOR.WHITE,
+  },
+  programsForTodayListContainer: { height: SIZES.card.small },
+  programsForTodayList: { borderBottomColor: COLOR.bg.gradient.YELLOW, borderBottomWidth: 2 },
+  programsForTodayListContent: { width: windowWidth * 0.8, height: SIZES.card.small },
 });
