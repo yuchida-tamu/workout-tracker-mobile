@@ -105,7 +105,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   progressItemContainer: {
-    backgroundColor: COLOR.bg.DARK_PRIMARY,
     borderRadius: SIZES.BORDER_RADIUS,
     ...boxShadow,
     paddingVertical: SPACING.SMALL,

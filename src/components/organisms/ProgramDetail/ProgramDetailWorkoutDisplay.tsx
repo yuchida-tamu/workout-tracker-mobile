@@ -16,6 +16,7 @@ import {
 import { SPACING } from '../../../constants/spacing';
 import { COLOR } from '../../../constants/colors';
 import { WorkoutConditionIcon } from '../../molecules/Program/WorkoutConditionIcon';
+import { LinearGradientView } from '../../atoms/LinearGradientView';
 
 type Props = {
   workoutList: WorkoutModelType[];
@@ -118,7 +119,13 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
 
 const RecordItem = ({ item, date }: { item: ProgressDisplayDataType; date: string }) => {
   return (
-    <View style={styles.progressItemContainer}>
+    <LinearGradientView
+      start={{ x: 0, y: 0.5 }}
+      end={{ x: 1, y: 0.5 }}
+      color1={COLOR.PRIMARY}
+      color2={COLOR.bg.DARK_PRIMARY}
+      style={styles.progressItemContainer}
+      isBoxShadow={true}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <Text style={styles.progressDate}>{date}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -146,7 +153,7 @@ const RecordItem = ({ item, date }: { item: ProgressDisplayDataType; date: strin
           <Text style={styles.unitText}>kg</Text>
         </View>
       </View>
-    </View>
+    </LinearGradientView>
   );
 };
 
