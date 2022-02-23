@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     paddingVertical: SPACING.XSMALL,
   },
   dashboardItemText: {
-    color: COLOR.text.BLACK,
+    color: COLOR.text.WHITE,
     textAlign: 'center',
   },
   dashboardItemHeadingText: {
