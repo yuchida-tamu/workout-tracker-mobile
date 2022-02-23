@@ -181,3 +181,10 @@ export const progressFilteredByWorkoutSelector =
 
     return processed;
   };
+
+export const programsForTodaySelector = (state: RootState) => {
+  const today = new Date();
+  const day = today.getDay();
+  const programsForToday = state.user.programs.filter((program) => program.schedule.days[day]);
+  return programsForToday;
+};
