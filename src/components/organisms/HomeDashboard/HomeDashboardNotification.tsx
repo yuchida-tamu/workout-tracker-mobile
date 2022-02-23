@@ -72,9 +72,11 @@ export const HomeDashboardNotification: React.FC<Props> = ({ programsForToday })
         start={start}
         end={end}
         isBoxShadow={true}>
-        <View style={styles.numOfProgramLabel}>
-          <Text style={styles.numOfProgramText}>{programsForToday.length}</Text>
-        </View>
+        {isExpanded ? (
+          <View style={styles.numOfProgramLabel}>
+            <Text style={styles.numOfProgramText}>{programsForToday.length}</Text>
+          </View>
+        ) : null}
         <Text style={styles.notificationText}>{message}</Text>
         {hasProgramsForToday ? (
           <TouchableOpacity style={styles.proceedIconContainer} onPress={onPressIcon}>
