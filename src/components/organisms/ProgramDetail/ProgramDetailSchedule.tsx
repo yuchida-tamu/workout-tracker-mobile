@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { FlatListProps, Text, TouchableOpacity, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { updateProgramSchedule } from '../../../store/actions/user/actions';
 import { updateUserThunk } from '../../../store/actions/user/thunks/updateUserThunk';
 import { SchdeuleModel, ScheduleType } from '../../../store/models/program/schedule';
 import { UserModel } from '../../../store/models/user/user';
