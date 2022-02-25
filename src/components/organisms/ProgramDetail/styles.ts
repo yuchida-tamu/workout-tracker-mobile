@@ -155,7 +155,7 @@ export const styles = StyleSheet.create({
     height: SIZES.icon.medium,
     borderRadius: SIZES.icon.medium / 2,
     backgroundColor: 'transparent',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: COLOR.WHITE,
     justifyContent: 'center',
     alignItems: 'center',
