@@ -76,11 +76,13 @@ export const styles = StyleSheet.create({
   },
   workoutItemContainer: {
     marginHorizontal: SPACING.SMALL,
+    paddingHorizontal: SPACING.XSMALL,
+    paddingVertical: SPACING.SMALL,
     backgroundColor: COLOR.bg.DARK_PRIMARY,
     borderRadius: SIZES.BORDER_RADIUS,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     width: SIZES.card.large,
-    height: SIZES.card.xsmall,
+    height: SIZES.card.medium,
     ...boxShadow,
   },
   workoutImageContainer: {
@@ -90,6 +92,9 @@ export const styles = StyleSheet.create({
   workoutItemDescription: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  workoutItemDescriptionText: {
+    color: COLOR.LIGHT_GRAY,
   },
   displayContentContainer: {
     justifyContent: 'center',
@@ -168,5 +173,16 @@ export const styles = StyleSheet.create({
   },
   unitText: {
     color: COLOR.BLACK,
+  },
+  workoutItemIconContainer: {
+    paddingHorizontal: SPACING.SMALL,
+    alignSelf: 'flex-end',
+    width: SIZES.icon.medium,
+    height: SIZES.icon.medium,
+    borderRadius: SIZES.icon.medium / 2,
+    borderWidth: 1,
+    borderColor: COLOR.LIGHT_GRAY,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
