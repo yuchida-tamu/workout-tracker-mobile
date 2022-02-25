@@ -25,8 +25,10 @@ export const HomeDashboardProgramInfoItem: React.FC<Props> = ({ navigate }) => {
         <TouchableOpacity onPress={navigate}>
           <LinearGradientView
             style={styles.dashboardItem}
-            color1={COLOR.bg.gradient.PURPLE}
-            color2={COLOR.bg.gradient.LIGHT_BLUE}
+            color1={COLOR.PRIMARY}
+            color2={COLOR.bg.DARK_PRIMARY}
+            start={{ x: 0, y: 0.5 }}
+            end={{ x: 1, y: 0.5 }}
             isBoxShadow={true}>
             <Text style={[styles.dashboardItemText, styles.dashboardItemHeadingText]}>
               プログラムの数

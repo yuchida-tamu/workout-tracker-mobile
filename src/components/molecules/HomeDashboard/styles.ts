@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     marginVertical: SPACING.SMALL,
   },
   categoryRatioLabel: {
-    color: COLOR.LIGHT_GRAY,
+    color: COLOR.GRAY,
     fontSize: SIZES.font.label.SMALL,
   },
   labelContainer: {

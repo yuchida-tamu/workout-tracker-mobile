@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     width: windowWidth,
   },
   bannerOverlay: {
@@ -108,11 +108,9 @@ export const styles = StyleSheet.create({
     letterSpacing: 4,
   },
   completeMessageContainer: {
-    flex: 1,
     justifyContent: 'center',
   },
   progressItemContainer: {
-    backgroundColor: COLOR.SECONDARY,
     borderRadius: SIZES.BORDER_RADIUS,
     ...boxShadow,
     paddingVertical: SPACING.SMALL,
@@ -132,7 +130,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   progressItemDataLabel: {
-    backgroundColor: COLOR.bg.DARK_SECONDARY,
+    borderWidth: 1,
+    borderColor: COLOR.bg.DARK_SECONDARY,
     width: 80,
     height: 24,
     borderRadius: 12,
@@ -168,12 +167,54 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   progressDate: {
-    color: COLOR.BLACK,
+    color: COLOR.WHITE,
     marginBottom: SPACING.XSMALL,
     marginLeft: SPACING.SMALL,
   },
   unitText: {
-    color: COLOR.BLACK,
+    color: COLOR.LIGHT_GRAY,
+  },
+  pickerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    width: windowWidth * 0.8,
+    borderRadius: SIZES.BORDER_RADIUS,
+    height: 150,
+    marginVertical: SPACING.LARGE,
+  },
+  backdrop: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  checker: {
+    width: 44,
+    height: 44,
+    borderRadius: 44 / 2,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  recordPickerButton: {
+    marginVertical: SPACING.MEDIUM,
+  },
+  message: {
+    lineHeight: SIZES.font.LARGE,
+    fontSize: SIZES.font.SMALL,
+    marginTop: SPACING.MEDIUM,
+    color: COLOR.WHITE,
+  },
+  checkerContainer: { flexDirection: 'column', alignItems: 'center' },
+  checkerText: { color: COLOR.BLACK },
+  checked: {
+    borderWidth: 2,
+    borderColor: COLOR.WHITE,
+  },
+  list: { flex: 1 },
+  listContent: {
+    width: windowWidth * 0.8,
+    justifyContent: 'space-around',
+    marginVertical: SPACING.MEDIUM,
   },
   workoutItemIconContainer: {
     paddingHorizontal: SPACING.SMALL,
