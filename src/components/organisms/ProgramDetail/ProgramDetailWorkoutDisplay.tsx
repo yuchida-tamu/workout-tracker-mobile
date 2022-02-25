@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { FlatList, FlatListProps, Text, View, TouchableOpacity } from 'react-native';
 import { WorkoutModelType } from '../../../store/models/workout/workout';
 import { styles } from './styles';
@@ -13,6 +13,7 @@ import {
   progressFilteredByWorkoutSelector,
   ProgressDisplayDataType,
 } from '../../../store/selectors/user/userSelector';
+import { ProgramIcon } from '../../atoms/icons/ProgramIcon';
 import { SPACING } from '../../../constants/spacing';
 import { COLOR } from '../../../constants/colors';
 import { WorkoutConditionIcon } from '../../molecules/Program/WorkoutConditionIcon';
@@ -71,11 +72,20 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
 
   const renderItem = useCallback<NonNullable<FlatListProps<WorkoutModelType>['renderItem']>>(
     ({ item, index }) => {
+      const onPress = () => onPressWorkoutItemHandler(index);
       return (
-        <TouchableOpacity activeOpacity={1} onPress={() => onPressWorkoutItemHandler(index)}>
+        <TouchableOpacity activeOpacity={1} onPress={onPress}>
           <Animated.View style={[styles.workoutItemContainer, animatedStyle]}>
             <View style={styles.workoutItemDescription}>
               <Text style={styles.workoutItemTitle}>{item.name}</Text>
+            </View>
+            <View>
+              <Text style={[styles.workoutItemDescriptionText, { textAlign: 'center' }]}>
+                {item.category}
+              </Text>
+            </View>
+            <View style={styles.workoutItemIconContainer}>
+              <ProgramIcon size={22} />
             </View>
           </Animated.View>
         </TouchableOpacity>
@@ -90,6 +100,14 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
     const dateString = item.date.split('-');
     const date = `${dateString[0]} / ${dateString[1]} / ${dateString[2]}`;
     return <RecordItem item={item} date={date} />;
+  }, []);
+
+  const EmptyComponent = useMemo(() => {
+    return (
+      <View style={styles.emptyComponentContainer}>
+        <Text style={styles.emptyComponentText}>データがありません</Text>
+      </View>
+    );
   }, []);
 
   return (
@@ -110,7 +128,11 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
               <Text style={styles.progressDisplayCloseText}>x</Text>
             </TouchableOpacity>
           </View>
-          <FlatList data={progressList} renderItem={renderProgressItem} />
+          <FlatList
+            data={progressList}
+            renderItem={renderProgressItem}
+            ListEmptyComponent={EmptyComponent}
+          />
         </View>
       )}
     </View>

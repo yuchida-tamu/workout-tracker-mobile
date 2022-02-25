@@ -8,6 +8,7 @@ const BANNER_HEIGHT = 96;
 const SCHEDULE_CONTAINER_HEIGHT = 72;
 const DAY_MARKER_SIZE = 36;
 const windowWidth = Dimensions.get('window').width;
+const EMPTY_COMPONENT_HEIGHT = 72;
 
 export const styles = StyleSheet.create({
   programDetailBanner: {
@@ -76,11 +77,13 @@ export const styles = StyleSheet.create({
   },
   workoutItemContainer: {
     marginHorizontal: SPACING.SMALL,
+    paddingHorizontal: SPACING.XSMALL,
+    paddingVertical: SPACING.SMALL,
     backgroundColor: COLOR.bg.DARK_PRIMARY,
     borderRadius: SIZES.BORDER_RADIUS,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     width: SIZES.card.large,
-    height: SIZES.card.xsmall,
+    height: SIZES.card.medium,
     ...boxShadow,
   },
   workoutImageContainer: {
@@ -90,6 +93,9 @@ export const styles = StyleSheet.create({
   workoutItemDescription: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  workoutItemDescriptionText: {
+    color: COLOR.LIGHT_GRAY,
   },
   displayContentContainer: {
     justifyContent: 'center',
@@ -148,7 +154,7 @@ export const styles = StyleSheet.create({
     height: SIZES.icon.medium,
     borderRadius: SIZES.icon.medium / 2,
     backgroundColor: 'transparent',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: COLOR.WHITE,
     justifyContent: 'center',
     alignItems: 'center',
@@ -209,5 +215,26 @@ export const styles = StyleSheet.create({
     width: windowWidth * 0.8,
     justifyContent: 'space-around',
     marginVertical: SPACING.MEDIUM,
+  },
+  workoutItemIconContainer: {
+    paddingHorizontal: SPACING.SMALL,
+    alignSelf: 'flex-end',
+    width: SIZES.icon.medium,
+    height: SIZES.icon.medium,
+    borderRadius: SIZES.icon.medium / 2,
+    borderWidth: 1,
+    borderColor: COLOR.LIGHT_GRAY,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyComponentContainer: {
+    height: EMPTY_COMPONENT_HEIGHT,
+    justifyContent: 'center',
+    marginVertical: SPACING.MEDIUM,
+  },
+  emptyComponentText: {
+    color: COLOR.WHITE,
+    textAlign: 'center',
+    fontSize: SIZES.font.SMALL,
   },
 });
