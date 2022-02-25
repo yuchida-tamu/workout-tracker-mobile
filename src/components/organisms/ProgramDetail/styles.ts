@@ -8,6 +8,7 @@ const BANNER_HEIGHT = 96;
 const SCHEDULE_CONTAINER_HEIGHT = 72;
 const DAY_MARKER_SIZE = 36;
 const windowWidth = Dimensions.get('window').width;
+const EMPTY_COMPONENT_HEIGHT = 72;
 
 export const styles = StyleSheet.create({
   programDetailBanner: {
@@ -184,5 +185,15 @@ export const styles = StyleSheet.create({
     borderColor: COLOR.LIGHT_GRAY,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  emptyComponentContainer: {
+    height: EMPTY_COMPONENT_HEIGHT,
+    justifyContent: 'center',
+    marginVertical: SPACING.MEDIUM,
+  },
+  emptyComponentText: {
+    color: COLOR.WHITE,
+    textAlign: 'center',
+    fontSize: SIZES.font.SMALL,
   },
 });

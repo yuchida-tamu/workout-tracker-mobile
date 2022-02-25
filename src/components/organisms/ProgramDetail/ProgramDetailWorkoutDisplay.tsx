@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { FlatList, FlatListProps, Text, View, TouchableOpacity } from 'react-native';
 import { WorkoutModelType } from '../../../store/models/workout/workout';
 import { styles } from './styles';
@@ -98,6 +98,14 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
     return <RecordItem item={item} date={date} />;
   }, []);
 
+  const EmptyComponent = useMemo(() => {
+    return (
+      <View style={styles.emptyComponentContainer}>
+        <Text style={styles.emptyComponentText}>データがありません</Text>
+      </View>
+    );
+  }, []);
+
   return (
     <View style={styles.workoutListContainer}>
       {!isExpanded && (
@@ -116,7 +124,11 @@ export const ProgramDetailWokroutDisplay: React.FC<Props> = ({
               <Text style={styles.progressDisplayCloseText}>x</Text>
             </TouchableOpacity>
           </View>
-          <FlatList data={progressList} renderItem={renderProgressItem} />
+          <FlatList
+            data={progressList}
+            renderItem={renderProgressItem}
+            ListEmptyComponent={EmptyComponent}
+          />
         </View>
       )}
     </View>
