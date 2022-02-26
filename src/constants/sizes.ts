@@ -38,6 +38,10 @@ export const SIZES = {
     medium: 144,
     large: 200,
   },
+  checker: {
+    regular: 20,
+    small: 12,
+  },
 };
 
 export enum BUTTON_SIZE {

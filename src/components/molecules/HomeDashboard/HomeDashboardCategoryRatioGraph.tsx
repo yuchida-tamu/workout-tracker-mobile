@@ -18,7 +18,6 @@ export const HomeDashboardCategoryRatioGraph: React.FC<Props> = ({ data, style }
     .map((d, index) => {
       const graphHeight = windowWidth * 0.8 * d.ratio;
 
-      console.log(graphHeight);
       return (
         <View key={`${d.category}_${d.ratio}_${index}`}>
           <LinearBarGraph
