@@ -6,6 +6,7 @@ import { SPACING } from '../../../constants/spacing';
 import { Category } from '../../../enums/categories';
 import { WorkoutModel, WorkoutModelType } from '../../../store/models/workout/workout';
 import { boxShadow } from '../../../styles/styles';
+import { GoodIcon } from '../../atoms/icons/Conditions/GoodIcon';
 import { CategoryTabList } from './CategoryTabListProps';
 
 const categories = [
@@ -52,12 +53,23 @@ export const WorkoutSelect: React.FC<Props> = ({ onChange }) => {
   const renderItem = ({ item }: { item: WorkoutModelType }) => {
     const filtered = selectedList.filter((i) => i.id === item.id);
     const isSelected = filtered.length > 0;
+    // TODO: replace the icon with the appropriate one later!!
+    const difficulty = Array.from({ length: item.difficulty }).map((_, index) => (
+      <GoodIcon key={index} size={22} />
+    ));
 
     return (
       <TouchableOpacity
         onPress={() => onPressHandler(item)}
         style={[styles.itemCard, isSelected && styles.selected]}>
-        <Text style={styles.itemCardText}>{item.name}</Text>
+        <View style={styles.itemCardHeader}>
+          <Text style={styles.itemCardTitleText}>{item.name}</Text>
+          <View style={styles.difficultyIconContainer}>{difficulty}</View>
+        </View>
+
+        <View style={styles.itemDesctiptionContainer}>
+          <Text style={styles.itemCardText}>{item.description}</Text>
+        </View>
       </TouchableOpacity>
     );
   };
@@ -120,14 +132,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.MEDIUM,
   },
   itemCard: {
-    height: SIZES.card.small,
-    width: SIZES.card.medium,
+    minHeight: SIZES.card.medium,
+
     borderRadius: SIZES.BORDER_RADIUS,
     marginHorizontal: SPACING.XSMALL,
     paddingVertical: SPACING.SMALL,
     paddingHorizontal: SPACING.XSMALL,
     backgroundColor: COLOR.WHITE,
     ...boxShadow,
+  },
+  itemCardHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: SPACING.XSMALL,
   },
   numberIndicator: {
     // height: NUMBER_INDICATOR_SIZE,
@@ -164,5 +182,14 @@ const styles = StyleSheet.create({
   },
   itemCardText: {
     color: COLOR.GRAY,
+  },
+  itemCardTitleText: {
+    color: COLOR.text.BLACK,
+  },
+  itemDesctiptionContainer: {
+    width: SIZES.card.medium,
+  },
+  difficultyIconContainer: {
+    flexDirection: 'row',
   },
 });
