@@ -4,17 +4,10 @@ import { GradientBackdrop } from '../components/atoms/GradientBackdrop';
 import { SetupWelcomePanel } from '../components/molecules/Setup/SetupWelcomePanel';
 import { SetupForm } from '../components/organisms/Setup/SetupForm';
 import { COLOR } from '../constants/colors';
+import { pageList } from '../domain/setup/SetUpInfo';
 import { setupOnLaunchThunk } from '../store/actions/app/thunks/setupOnLaunchThunk';
 
 import { UserModelType } from '../store/models/user/user';
-
-export enum VisiblePage {
-  NAME = 'NAME',
-  GOAL = 'GOAL',
-  PROFILE = 'PROFILE',
-}
-
-export const pageList = [VisiblePage.NAME, VisiblePage.GOAL, VisiblePage.PROFILE];
 
 export const SetupScreen = () => {
   const [index, setIndex] = useState(0);

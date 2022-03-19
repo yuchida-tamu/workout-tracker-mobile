@@ -7,7 +7,7 @@ import { FONT_SIZE, Title } from '../../atoms/TitleText';
 import { LineTextInput } from '../../molecules/Input/LineInputField';
 import { styles } from './styles';
 import { UploadInputField } from '../../molecules/Input/UploadInputField';
-import { pageList, VisiblePage } from '../../../screens/SetupScreen';
+import { pageList, VisiblePage } from '../../../domain/setup/SetUpInfo';
 
 type SetupFormPanelProps = {
   index: number;
